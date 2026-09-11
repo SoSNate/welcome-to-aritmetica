@@ -19,6 +19,16 @@
   <meta name="twitter:description" content="כלי אבחון, שיגור משימות ומעקב אחר תלמידים - שממשיך לעבוד גם כשהתלמיד לא מולכם.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2LG23S0P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1C2LG23S0P');
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
@@ -114,12 +124,33 @@
       </div>
     </section>
 
-    <section class="glass-panel p-6 sm:p-10 mb-10 text-center space-y-2">
-      <h2 class="font-space text-xl font-bold mb-2">מחירון</h2>
+    <!-- Gift Bonus Banner -->
+    <section class="glass-panel p-6 sm:p-8 mb-10 text-center space-y-3 relative overflow-hidden border-2 border-amber-400/30" style="background: radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 80%);">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold">
+        <span>🎁</span><span>בונוס בלעדי להצטרפות מורים</span>
+      </div>
+      <h2 class="font-space text-2xl sm:text-3xl font-bold text-amber-300">מערכת ניהול שיעורים מקומית במתנה!</h2>
+      <p class="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
+        נרשמים ל-14 ימי ניסיון חינם בחשבונאוטיקה או רוכשים כל אחד מהמסלולים, ומקבלים מיד <strong class="text-white">מערכת עצמאית מקומית לניהול יומן שיעורים, תשלומים, מעקב תלמידים וחישובי הכנסות</strong> (פועלת ישירות במחשב שלכם, שומרת נתונים מקומית ואינה תלויה ברשת!).
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a href="https://aritmetica.nt-school.app/teacher" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-2.5 !px-6 !text-sm font-bold shadow-lg shadow-amber-500/20">
+          🚀 כניסה לחשבונאוטיקה וקבלת המתנה (14 ימי ניסיון חינם)
+        </a>
+      </div>
+    </section>
+
+    <section class="glass-panel p-6 sm:p-10 mb-10 text-center space-y-4">
+      <h2 class="font-space text-xl font-bold mb-2">מחירון מסלולי מורים</h2>
       <p style="color:var(--text-muted);">
         <span style="color:var(--text-primary); font-weight:700;">מסלול עצמאי החל מ-100 ₪ לחודש</span> (עד 2 תלמידים + 35 ₪ לתלמיד נוסף), <span style="color:var(--text-primary); font-weight:700;">מסלול שותפות הורים ב-59 ₪ לתלמיד</span>, ומסלול חצי-שנתי למורים מובילים (עד 10 תלמידים ב-1,499 ₪).
       </p>
-      <p class="text-sm"><a href="pricing.html" style="color:var(--accent-turquoise); font-weight:700;">למחירון המלא ולכל המסלולים ←</a></p>
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a href="https://aritmetica.nt-school.app/teacher?plan=teacher_independent" target="_blank" rel="noopener" class="glass-btn !py-2 !px-4 !text-xs">מסלול עצמאי (100 ₪) + מתנה ←</a>
+        <a href="https://aritmetica.nt-school.app/teacher?plan=teacher_engaged_monthly" target="_blank" rel="noopener" class="glass-btn !py-2 !px-4 !text-xs">שותפות הורים (59 ₪) + מתנה ←</a>
+        <a href="https://aritmetica.nt-school.app/teacher?plan=teacher_bundle_6m" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-2 !px-4 !text-xs">מורים מובילים (1,499 ₪) + מתנה ←</a>
+      </div>
+      <p class="text-sm pt-2"><a href="pricing.html" style="color:var(--accent-turquoise); font-weight:700;">למחירון המלא ולכל הפרטים ←</a></p>
       <p style="color:var(--text-muted);" class="text-xs">🎁 14 ימי ניסיון חינם מלאים ללא התחייבות.</p>
     </section>
 
