@@ -127,18 +127,21 @@
     <!-- Unified Gift & Pricing CTA Card -->
     <section class="glass-panel p-6 sm:p-8 mb-10 text-center space-y-4 relative overflow-hidden border-2 border-amber-400/30" style="background: radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 80%);">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold">
-        <span>🎁</span><span>בונוס בלעדי להצטרפות מורים</span>
+        <span>🎁</span><span>בונוס בלעדי למורים</span>
       </div>
       <h2 class="font-space text-2xl sm:text-3xl font-bold text-amber-300">מערכת ניהול שיעורים מקומית במתנה!</h2>
       <p class="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
-        נרשמים ל-14 ימי ניסיון חינם בחשבונאוטיקה או רוכשים כל אחד מהמסלולים, ומקבלים מיד <strong class="text-white">מערכת עצמאית מקומית לניהול יומן שיעורים, תשלומים, מעקב תלמידים וחישובי הכנסות</strong> (פועלת ישירות במחשב שלכם, שומרת נתונים מקומית ואינה תלויה ברשת!).
+        השאירו פרטים בטופס למטה וקבלו מיד במתנה <strong class="text-white">מערכת עצמאית מקומית לניהול יומן שיעורים, תשלומים, מעקב תלמידים וחישובי הכנסות</strong> (ללא צורך בהרשמה לחשבונאוטיקה או בתשלום, פועלת ישירות במחשב שלכם ושומרת נתונים מקומית!).
       </p>
       <div class="pt-2 flex flex-wrap justify-center gap-3">
-        <a href="pricing.html#teacher-pricing" class="glass-btn glass-btn-primary !py-3 !px-7 !text-sm font-bold shadow-lg shadow-amber-500/20">
-          💳 למסלולי המורים שלנו ולמחירון המלא ←
+        <a href="#signup" class="glass-btn !py-3 !px-7 !text-sm font-bold shadow-lg" style="background:linear-gradient(135deg, rgba(245,158,11,0.2) 0%, rgba(245,158,11,0.35) 100%); border-color:rgba(245,158,11,0.5); color:#fde68a;">
+          🎁 לקבלת המתנה בהשארת פרטים ←
+        </a>
+        <a href="pricing.html#teacher-pricing" class="glass-btn glass-btn-primary !py-3 !px-7 !text-sm font-bold">
+          💳 למסלולי המורים והמחירון ←
         </a>
       </div>
-      <p style="color:var(--text-muted);" class="text-xs">🎁 14 ימי ניסיון חינם מלאים ללא התחייבות · מחירי פיילוט ב-50% הנחה בתוקף!</p>
+      <p style="color:var(--text-muted);" class="text-xs">🔥 מחירי פיילוט מיוחדים – 50% הנחה על כל מסלולי המורים בתוקף!</p>
     </section>
 
     <!-- Signup -->
@@ -150,8 +153,8 @@
 
       <div id="form-card" class="glass-panel p-6 sm:p-8 space-y-4">
         <div class="text-center space-y-1 mb-2">
-          <h3 class="font-space text-lg font-bold">🤝 רוצים להשתלב במערכת עם ליווי מלא?</h3>
-          <p class="text-sm" style="color:var(--text-muted);">תשאירו פרטים ונחזור אליכם עם הצטרפות מלווה, שלב אחר שלב.</p>
+          <h3 class="font-space text-lg font-bold">🎁 השארת פרטים וקבלת המתנה</h3>
+          <p class="text-sm" style="color:var(--text-muted);">השאירו פרטים לקבלת מערכת ניהול השיעורים במתנה מידית, וליצירת קשר לליווי והתאמת מסלול.</p>
         </div>
         <form id="teacherForm" data-prefix="f" class="space-y-4">
           <div id="f-error-message" class="hidden p-3 rounded-xl text-xs font-semibold" style="background:rgba(255,107,74,0.12); color:var(--accent-flame);"></div>
@@ -164,14 +167,30 @@
             <option value="3 תלמידים">3 תלמידים</option>
             <option value="4 תלמידים">4 תלמידים</option>
           </select>
-          <button type="submit" data-mode="info" class="glass-btn glass-btn-primary w-full justify-center">השאירו פרטים 🚀</button>
+          <button type="submit" data-mode="info" class="glass-btn glass-btn-primary w-full justify-center">השאירו פרטים וקבלו את המתנה 🎁</button>
           <p class="text-center text-xs" style="color:var(--text-muted);">🔒 הפרטים נשמרים ומשמשים אותנו ליצירת קשר בלבד.</p>
         </form>
       </div>
-      <div id="success-card" class="hidden glass-panel p-6 sm:p-8 text-center space-y-3">
-        <p style="color:var(--accent-turquoise); font-weight:700;">קיבלנו את הפרטים!</p>
-        <p style="color:var(--text-muted);" class="text-sm">נחזור אליכם בקרוב. אפשר גם להמשיך למדריך ההפעלה כבר עכשיו.</p>
-        <a href="#guide" class="glass-btn glass-btn-primary">למדריך ההפעלה</a>
+      <div id="success-card" class="hidden glass-panel p-6 sm:p-8 text-center space-y-4 border border-amber-400/40">
+        <div class="w-12 h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto text-2xl">🎁</div>
+        <p style="color:var(--accent-turquoise); font-weight:700;" class="text-lg">תודה! הפרטים התקבלו בהצלחה</p>
+        <p style="color:var(--text-muted);" class="text-sm">הנה המתנה שלכם: מערכת ניהול שיעורים, לו״ז ותלמידים מקומית</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <a href="https://aritmetica.nt-school.app/tutor-schedule.html" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-2.5 !px-5 text-sm font-bold">
+            🚀 פתיחת מערכת ניהול השיעורים בדפדפן
+          </a>
+          <a href="https://drive.google.com/uc?export=download&id=1nh9ivYBTDF6t9zdpOFXCfurNQ1LDhrLa" target="_blank" rel="noopener" class="glass-btn !py-2.5 !px-5 text-sm font-bold">
+            📥 הורדת קובץ למחשב
+          </a>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-2 justify-center">
+          <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn !py-2 !px-4 text-xs">
+            כניסה לחשבונאוטיקה 🚀
+          </a>
+          <a href="#guide" class="glass-btn !py-2 !px-4 text-xs">
+            למדריך ההפעלה
+          </a>
+        </div>
       </div>
 
       <div class="text-center">
