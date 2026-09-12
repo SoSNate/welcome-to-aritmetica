@@ -147,17 +147,17 @@
       <div class="space-y-2">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold" style="background:rgba(138,180,255,0.12); border:1px solid rgba(138,180,255,0.25); color:var(--accent-blue);">
           <span>🛸</span>
-          <span>צוות התמיכה והסוכנים זמין עבורכם</span>
+          <span>זמינים עבורכם ב-WhatsApp ובמייל</span>
         </div>
         <h2 class="font-space text-2xl sm:text-3xl font-bold">לא מצאתם את התשובה? אנחנו כאן! 💙</h2>
         <p style="color:var(--text-muted);" class="text-sm max-w-lg mx-auto leading-relaxed">
-          מוזמנים לשאול אותנו כל שאלה – במייל או בוואטסאפ ישיר עם מענה אישי מהיר.
+          מוזמנים לשאול אותנו כל שאלה – נשמח לעזור ולענות על הכל.
         </p>
       </div>
 
-      <!-- Quick Action Buttons: WhatsApp & Email -->
+      <!-- Action Buttons: WhatsApp & Email -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-        <!-- WhatsApp direct to agent -->
+        <!-- WhatsApp -->
         <a
           href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A9%D7%90%D7%9C%D7%95%D7%AA%20%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA%20%D7%A9%D7%9C%20%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%90%D7%95%D7%98%D7%99%D7%A7%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%F0%9F%9A%80"
           target="_blank"
@@ -166,60 +166,17 @@
           style="background:linear-gradient(135deg, #22C55E 0%, #16A34A 100%); color:white; border:none; box-shadow:0 8px 24px rgba(34,197,94,0.25);"
         >
           <span class="text-xl">💬</span>
-          <span>פנייה בוואטסאפ לסוכן ⚡</span>
+          <span>פנייה ב-WhatsApp</span>
         </a>
 
-        <!-- Mail direct -->
+        <!-- Mail -->
         <a
           href="mailto:service@nt-school.app?subject=%D7%A9%D7%90%D7%9C%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A9%D7%90%D7%9C%D7%95%D7%AA%20%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA%20-%20%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%90%D7%95%D7%98%D7%99%D7%A7%D7%94&body=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%20%D7%95%D7%A6%D7%95%D7%95%D7%AA%20%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%90%D7%95%D7%98%D7%99%D7%A7%D7%94%2C%0A%0A%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C%3A%0A"
           class="glass-btn glass-btn-primary flex items-center justify-center gap-2.5 !py-3.5 !px-5 !rounded-2xl font-bold text-sm sm:text-base transition-all active:scale-95"
         >
           <span class="text-xl">✉️</span>
-          <span>שליחת מייל עם שאלות</span>
+          <span>שליחת מייל</span>
         </a>
-      </div>
-
-      <!-- Quick Question Box with direct send helper -->
-      <div class="max-w-xl mx-auto rounded-2xl p-4 sm:p-5 text-right space-y-3" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-panel);">
-        <div class="flex items-center gap-2 text-xs font-bold" style="color:var(--accent-blue);">
-          <span>✍️</span>
-          <span>כתיבת שאלה מהירה:</span>
-        </div>
-        <textarea
-          id="customQuestionText"
-          rows="2"
-          placeholder="הקלידו כאן את השאלה שלכם..."
-          class="w-full px-3.5 py-2.5 rounded-xl text-sm leading-relaxed"
-          style="background:rgba(0,0,0,0.3); border:1px solid var(--border-panel); color:white; resize:vertical;"
-        ></textarea>
-        <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
-          <span style="color:var(--text-muted);">מענה תוך שעות ספורות ⏱️</span>
-          <div class="flex items-center gap-2">
-            <button
-              type="button"
-              onclick="sendQuickQuestion('wa')"
-              class="px-3 py-1.5 rounded-xl font-bold text-xs inline-flex items-center gap-1.5 transition-all cursor-pointer"
-              style="background:rgba(34,197,94,0.15); border:1px solid rgba(34,197,94,0.35); color:#4ade80;"
-            >
-              <span>💬 שליחה ב-WhatsApp</span>
-            </button>
-            <button
-              type="button"
-              onclick="sendQuickQuestion('mail')"
-              class="px-3 py-1.5 rounded-xl font-bold text-xs inline-flex items-center gap-1.5 transition-all cursor-pointer"
-              style="background:rgba(138,180,255,0.15); border:1px solid rgba(138,180,255,0.35); color:var(--accent-blue);"
-            >
-              <span>✉️ שליחה במייל</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Direct Contact Info Footer inside Card -->
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium pt-2" style="color:var(--text-muted);">
-        <span class="inline-flex items-center gap-1">📞 טלפון / וואטסאפ: <b class="text-white">055-2569496</b></span>
-        <span>•</span>
-        <span class="inline-flex items-center gap-1">📧 דוא"ל רשמי: <b class="text-white">service@nt-school.app</b></span>
       </div>
     </div>
   </main>
@@ -240,21 +197,6 @@
   <script>
     initStarfield();
     initJwstParallax();
-
-    function sendQuickQuestion(channel) {
-      const input = document.getElementById('customQuestionText');
-      const text = (input ? input.value : '').trim();
-      const defaultMsg = 'היי נתנאל, הגעתי מדף השאלות ותשובות של חשבונאוטיקה ואשמח לקבל פרטים נוספים 🚀';
-      const msgToSend = text || defaultMsg;
-      
-      if (channel === 'wa') {
-        const waUrl = 'https://wa.me/972552569496?text=' + encodeURIComponent(msgToSend);
-        window.open(waUrl, '_blank');
-      } else {
-        const mailUrl = 'mailto:service@nt-school.app?subject=' + encodeURIComponent('שאלה מדף השאלות ותשובות - חשבונאוטיקה') + '&body=' + encodeURIComponent(msgToSend);
-        window.location.href = mailUrl;
-      }
-    }
 
     const faqData = [
       { q: 'איך תלמיד מתחיל לשחק? צריך להוריד אפליקציה?', a: 'ממש לא. המערכת פועלת ישירות מהדפדפן (כרום, ספארי וכו׳) - בלי התקנה. אפשר להתחבר מטאבלט, נייד או מחשב. המורה או ההורה שולחים קישור אישי לתלמיד, וכל מה שצריך זה ללחוץ ולהתחיל. מומלץ להוסיף את הקישור למסך הבית כדי שייפתח כמו אפליקציה.' },
