@@ -8,7 +8,7 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="מחירון | חשבונאוטיקה">
-  <meta property="og:description" content="מחירים למורים פרטיים ולהורים - הפיילוט כרגע פתוח וחינמי לגמרי.">
+  <meta property="og:description" content="מחירים למורים פרטיים ולהורים - מחירי פיילוט, ו-14 ימי ניסיון חינם ללא כרטיס אשראי.">
   <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
   <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -16,18 +16,11 @@
   <meta property="og:image:height" content="1024">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="מחירון | חשבונאוטיקה">
-  <meta name="twitter:description" content="מחירים למורים פרטיים ולהורים - הפיילוט כרגע פתוח וחינמי לגמרי.">
+  <meta name="twitter:description" content="מחירים למורים פרטיים ולהורים - מחירי פיילוט, ו-14 ימי ניסיון חינם ללא כרטיס אשראי.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2LG23S0P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1C2LG23S0P');
-  </script>
+  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
+       against this site's own stream (G-4X19P4M4PX). -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +55,7 @@
         <span>💳</span><span>מחירון</span>
       </div>
       <h1 class="font-space text-3xl sm:text-4xl font-bold">בחרו את המסלול שמתאים לכם</h1>
-      <p style="color:var(--text-muted);">כרגע הפיילוט פתוח וחינמי לגמרי, ללא התחייבות - המחירים למטה ייכנסו לתוקף בהמשך.</p>
+      <p style="color:var(--text-muted);">מתחילים ב-14 ימי ניסיון חינם, ללא כרטיס אשראי וללא התחייבות. המחירים למטה הם מחירי הפיילוט, והם בתוקף עכשיו.</p>
     </div>
 
     <!-- Parents -->
@@ -197,5 +190,11 @@
 
   <script src="assets/starfield.js"></script>
   <script>initStarfield();</script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script>
+    if (typeof initAccessibilityWidget === 'function') initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
+  </script>
 </body>
 </html>

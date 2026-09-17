@@ -19,15 +19,8 @@
   <meta name="twitter:description" content="כל מה שרציתם לדעת על חוויית הלמידה, ההרשמה והמעקב במערכת.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2LG23S0P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1C2LG23S0P');
-  </script>
+  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
+       against this site's own stream (G-4X19P4M4PX). -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -220,6 +213,12 @@
       `;
       faqList.appendChild(details);
     });
+  </script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script>
+    if (typeof initAccessibilityWidget === 'function') initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
   </script>
 </body>
 </html>

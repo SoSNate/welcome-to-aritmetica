@@ -11,6 +11,19 @@ function submitLeadForm(formEl, role, onSuccess) {
   const errorDiv = document.getElementById(prefix + '-error-message');
   if (errorDiv) errorDiv.classList.add('hidden');
 
+  // Consent is a condition of collecting these details, not a formality: the
+  // form gathers a name, a phone number and an email and forwards them to an
+  // external Apps Script. Checked here as well as in the markup so the
+  // required attribute cannot simply be removed in devtools.
+  const consentBox = document.getElementById(prefix + '-consent');
+  if (consentBox && !consentBox.checked) {
+    if (errorDiv) {
+      errorDiv.textContent = 'יש לאשר את מדיניות הפרטיות ואת החזרה אליכם כדי לשלוח.';
+      errorDiv.classList.remove('hidden');
+    }
+    return false;
+  }
+
   const name = document.getElementById(prefix + '-name').value.trim();
   const phone = document.getElementById(prefix + '-phone').value.trim();
   const email = document.getElementById(prefix + '-email').value.trim();
@@ -37,11 +50,15 @@ function submitLeadForm(formEl, role, onSuccess) {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, phone: phone, email: email, studentsCount: studentsCount, role: role })
+    body: JSON.stringify({
+      name: name, phone: phone, email: email, studentsCount: studentsCount, role: role,
+      consentAt: new Date().toISOString()
+    })
   });
   const timeoutPromise = new Promise(function (resolve) { setTimeout(resolve, 5000); });
 
   Promise.race([submitPromise, timeoutPromise]).then(function () {
+    if (window.gtag) window.gtag('event', 'lead_submit', { role: role });
     if (onSuccess) onSuccess();
   });
   submitPromise.catch(function () {});

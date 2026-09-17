@@ -19,15 +19,8 @@
   <meta name="twitter:description" content="סביבת חידות ללימוד חשבון, כדי שהילדים ירגישו את המספרים זזים ויראו את המתמטיקה חיה.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2LG23S0P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1C2LG23S0P');
-  </script>
+  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
+       against this site's own stream (G-4X19P4M4PX). -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -64,7 +57,7 @@
   <main class="relative z-10 max-w-5xl mx-auto px-5 pt-32 sm:pt-40 pb-20">
     <section class="text-center space-y-7">
       <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:8px 16px;">
-        <span>✨</span><span>פיילוט פעיל · חינמי לגמרי</span>
+        <span>✨</span><span>פיילוט פעיל · 14 ימי ניסיון חינם</span>
       </div>
       <h1 class="font-space text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
         למידה במסלול <br>
@@ -143,6 +136,10 @@
         <input id="inst-name" placeholder="שם מלא ותפקיד" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
         <input id="inst-phone" type="tel" placeholder="050-0000000" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
         <input id="inst-email" type="email" placeholder="אימייל" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+        <label class="flex items-start gap-2 text-xs leading-relaxed" style="color:var(--text-muted);">
+          <input type="checkbox" id="inst-consent" required style="margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--accent-blue);">
+          <span>אני מאשר/ת שתחזרו אליי בטלפון או במייל, ואת <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:700;">מדיניות הפרטיות</a>.</span>
+        </label>
         <button type="submit" class="glass-btn glass-btn-primary w-full justify-center">שליחה</button>
       </form>
       <div id="institution-success" class="hidden text-center py-4">
@@ -169,8 +166,10 @@
   <script src="assets/gallery.js"></script>
   <script src="assets/lead-form.js"></script>
   <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
   <script>
     initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
 
     if (window.innerWidth < 640) {
       initSolarSystem({ top: '-8%', left: '-30%', scale: 0.55, rotateOffset: 0, parallaxYFactor: 0.25, parallaxXFactor: 0 });
@@ -202,6 +201,7 @@
           roleSwitch.setAttribute('data-role', role);
           roleSwitch.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
+          if (window.gtag) window.gtag('event', 'role_switch', { role: role });
           roleText.textContent = roleCopy[role].text;
           roleCta.textContent = roleCopy[role].ctaText;
           roleCta.href = roleCopy[role].ctaHref;
@@ -231,6 +231,7 @@
     const instModal = document.getElementById('institution-modal');
     const instCloseBtn = document.getElementById('institution-close-btn');
     instOpenBtn.addEventListener('click', function () {
+      if (window.gtag) window.gtag('event', 'lead_form_open', { role: 'institution' });
       instModal.classList.remove('hidden');
       instModal.style.display = 'flex';
     });

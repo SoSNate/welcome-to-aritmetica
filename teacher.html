@@ -19,15 +19,8 @@
   <meta name="twitter:description" content="כלי אבחון, שיגור משימות ומעקב אחר תלמידים - שממשיך לעבוד גם כשהתלמיד לא מולכם.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2LG23S0P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1C2LG23S0P');
-  </script>
+  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
+       against this site's own stream (G-4X19P4M4PX). -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -165,8 +158,12 @@
             <option value="תלמיד אחד">תלמיד אחד</option>
             <option value="2 תלמידים">2 תלמידים</option>
             <option value="3 תלמידים">3 תלמידים</option>
-            <option value="4 תלמידים">4 תלמידים</option>
+            <option value="4 תלמידים ומעלה">4 תלמידים ומעלה</option>
           </select>
+          <label class="flex items-start gap-2 text-xs leading-relaxed" style="color:var(--text-muted);">
+            <input type="checkbox" id="f-consent" required style="margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--accent-blue);">
+            <span>אני מאשר/ת שתחזרו אליי בטלפון או במייל, ואת <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:700;">מדיניות הפרטיות</a>.</span>
+          </label>
           <button type="submit" data-mode="info" class="glass-btn glass-btn-primary w-full justify-center">השאירו פרטים וקבלו את המתנה 🎁</button>
           <p class="text-center text-xs" style="color:var(--text-muted);">🔒 הפרטים נשמרים ומשמשים אותנו ליצירת קשר בלבד.</p>
         </form>
@@ -227,7 +224,7 @@
           <div class="space-y-1">
             <h3 class="font-space text-lg font-bold">הוספת תלמיד חדש</h3>
             <p class="text-sm leading-relaxed" style="color:var(--text-muted);">
-              במסך <span style="color:var(--text-primary); font-weight:700;">"לוח המורה"</span> לוחצים "הוסף תלמיד" ומזינים את שמו. המערכת מייצרת עבורו <span style="color:var(--text-primary); font-weight:700;">קוד כניסה</span> וקישור אישי - מעבירים לתלמיד או להורה בוואטסאפ, והוא נכנס בלחיצה בלי סיסמה. כל תרגול שיבצע בין השיעורים יופיע אצלכם אוטומטית. אפשר לנהל עד 4 תלמידים במקביל.
+              במסך <span style="color:var(--text-primary); font-weight:700;">"לוח המורה"</span> לוחצים "הוסף תלמיד" ומזינים את שמו. המערכת מייצרת עבורו <span style="color:var(--text-primary); font-weight:700;">קוד כניסה</span> וקישור אישי - מעבירים לתלמיד או להורה בוואטסאפ, והוא נכנס בלחיצה בלי סיסמה. כל תרגול שיבצע בין השיעורים יופיע אצלכם אוטומטית. המסלול כולל 2 תלמידים, וניתן להוסיף תלמידים נוספים בתוספת תשלום.
             </p>
           </div>
         </div>
@@ -317,6 +314,12 @@
       revealGuide();
       document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
     });
+  </script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script>
+    if (typeof initAccessibilityWidget === 'function') initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
   </script>
 </body>
 </html>
