@@ -36,14 +36,6 @@
       100% { transform:translate(-25px,45px) scale(1.08); } 
     }
 
-    .black-hole-container { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none; }
-    .black-hole-core { 
-      position:absolute; left:88%; top:20%; transform:translate(-50%,-50%); width:80px; height:80px; background:#000000; border-radius:50%; z-index:20;
-      transition:width 0.35s cubic-bezier(.22,.61,.36,1), height 0.35s cubic-bezier(.22,.61,.36,1);
-      box-shadow:0 0 28px 8px rgba(180,210,255,0.55), 0 0 60px 16px rgba(157,139,255,0.35), inset 0 0 10px 2px rgba(255,255,255,0.3); 
-    }
-    .spacetime-canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
-
     .step-badge {
       width: 44px;
       height: 44px;
@@ -121,10 +113,6 @@
   <div class="nebula nebula-blue"></div>
   <div class="nebula nebula-purple"></div>
   <div class="nebula nebula-turquoise"></div>
-  <div id="bh-system" class="black-hole-container">
-    <canvas id="spacetime-canvas" class="spacetime-canvas"></canvas>
-    <div class="black-hole-core"></div>
-  </div>
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full z-50 p-2 sm:p-4">
@@ -618,11 +606,11 @@
     <p>© 2026 חשבונאוטיקה · מסלול קבוצת הפיילוט הראשונית</p>
   </footer>
 
-  <script src="assets/black-hole.js"></script>
+  <script src="assets/solar-system.js"></script>
   <script src="assets/starfield.js"></script>
   <script>
-    if (typeof initBlackHole === 'function') {
-      initBlackHole({ coreXRatio: 0.88, coreYRatio: 0.20, driftPerScrollPx: 0.1, growPerScrollPx: 0.04, maxGrowth: 50 });
+    if (typeof initSolarSystem === 'function') {
+      initSolarSystem({ top: '22%', left: '82%', scale: 1, rotateOffset: 25 });
     }
     if (typeof initStarfield === 'function') {
       initStarfield();
