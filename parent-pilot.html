@@ -36,21 +36,24 @@
       overflow: hidden;
     }
 
-    body {
-      background-color: #050510;
+    .glass-panel {
+      background: rgba(8, 14, 32, 0.90) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border: 1px solid rgba(138, 180, 255, 0.24) !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
     }
-    
-    @keyframes nebulaFloat { 
-      0% { transform:translate(0,0) scale(1); } 
-      100% { transform:translate(-25px,45px) scale(1.08); } 
+
+    .text-glow {
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 3px rgba(0, 0, 0, 0.8);
     }
 
     .step-badge {
       width: 48px;
       height: 48px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(138,180,255,0.2) 0%, rgba(157,139,255,0.2) 100%);
-      border: 1px solid rgba(138,180,255,0.4);
+      background: linear-gradient(135deg, rgba(138,180,255,0.25) 0%, rgba(157,139,255,0.25) 100%);
+      border: 1px solid rgba(138,180,255,0.45);
       color: var(--accent-blue);
       display: flex;
       align-items: center;
@@ -444,49 +447,176 @@
         <div class="flex items-start gap-4">
           <div class="step-badge">6</div>
           <div class="space-y-1">
-            <h3 class="font-space text-lg sm:text-xl font-bold text-white">דשבורד הניהול והלמידה שלכם</h3>
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">מפת היכולות ודשבורד ההורים שלכם</h3>
             <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
-              מיד לאחר פתרון התרגיל הראשון תעברו לדשבורד המלא. הנה מה שמחכה לכם שם:
+              במקום מבחנים או ציונים יבשים — המערכת ממפה 8 אשכולות מיומנות בזמן אמת מתוך תרגולי הילד, ומציגה לכם תמונת מצב מפורטת ומדויקת:
             </p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Progress Tab -->
-          <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3.5">
-            <div class="flex items-center justify-between">
-              <span class="text-sm sm:text-base font-bold text-indigo-300">📊 לשונית התקדמות</span>
-              <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-200 font-medium">תמונת מצב</span>
+        <!-- Capabilities Radar & Skill Map Live Mockup -->
+        <div class="mockup-window border border-indigo-500/30">
+          <div class="mockup-header flex items-center justify-between">
+            <div class="mockup-dots">
+              <span class="mockup-dot bg-rose-500/80"></span>
+              <span class="mockup-dot bg-amber-500/80"></span>
+              <span class="mockup-dot bg-emerald-500/80"></span>
             </div>
-            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
-              מציגה יכולות, דאטה בזמן אמת מתרגילי הילד, זיהוי נקודות שצריך לחזק ונקודות לשימור, ומדד מוטיבציה שבועי.
-            </p>
-            <!-- Mini Radar Preview -->
-            <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 text-center text-sm space-y-2.5">
-              <div class="flex justify-between text-xs sm:text-sm text-slate-300 font-mono">
-                <span>כפל ולוח הכפל: 92%</span>
-                <span>שברים: 78%</span>
-              </div>
-              <div class="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
-                <div class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full" style="width:85%;"></div>
-              </div>
+            <div class="flex items-center gap-2 text-xs font-mono text-indigo-200">
+              <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+              <span>דשבורד הורים · מפת יכולות ורדאר מיומנויות</span>
             </div>
           </div>
 
-          <!-- Consistency Tab -->
-          <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3.5">
-            <div class="flex items-center justify-between">
-              <span class="text-sm sm:text-base font-bold text-amber-300">🔥 לשונית התמדה וחוזה פרסים</span>
-              <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-200 font-medium">מוטיבציה אישית</span>
+          <div class="p-5 sm:p-7 space-y-6 bg-slate-950/60">
+            
+            <!-- Grid: Radar Chart + Skills Breakdown -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              
+              <!-- SVG Radar Map (5 Cols) -->
+              <div class="lg:col-span-5 flex flex-col items-center justify-center p-4 rounded-2xl bg-indigo-950/20 border border-indigo-500/20">
+                <p class="text-xs sm:text-sm font-bold text-indigo-300 mb-2">📡 רדאר שליטה במיומנויות (8 צירים)</p>
+                <div class="relative w-[260px] h-[260px] flex items-center justify-center">
+                  <svg viewBox="0 0 280 280" class="w-full h-full overflow-visible">
+                    <defs>
+                      <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#818cf8" stop-opacity="0.5" />
+                        <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.1" />
+                      </radialGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    <!-- Concentric Grid Webs -->
+                    <circle cx="140" cy="140" r="100" fill="none" stroke="rgba(129, 140, 248, 0.15)" stroke-width="1" stroke-dasharray="3,3" />
+                    <circle cx="140" cy="140" r="75" fill="none" stroke="rgba(129, 140, 248, 0.2)" stroke-width="1" />
+                    <circle cx="140" cy="140" r="50" fill="none" stroke="rgba(129, 140, 248, 0.2)" stroke-width="1" />
+                    <circle cx="140" cy="140" r="25" fill="none" stroke="rgba(129, 140, 248, 0.2)" stroke-width="1" />
+
+                    <!-- 8 Axis Lines -->
+                    <line x1="140" y1="40" x2="140" y2="240" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                    <line x1="40" y1="140" x2="240" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                    <line x1="69" y1="69" x2="211" y2="211" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+                    <line x1="69" y1="211" x2="211" y2="69" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+                    <!-- Active Student Mastery Polygon -->
+                    <polygon points="140,48 206,73 218,140 188,188 140,225 76,204 58,140 85,85"
+                      fill="url(#radarGlow)"
+                      stroke="#818cf8"
+                      stroke-width="2.5"
+                      filter="url(#glow)"
+                    />
+
+                    <!-- Vertex Indicator Points -->
+                    <circle cx="140" cy="48" r="4.5" fill="#38bdf8" />
+                    <circle cx="206" cy="73" r="4.5" fill="#818cf8" />
+                    <circle cx="218" cy="140" r="4.5" fill="#c084fc" />
+                    <circle cx="188" cy="188" r="4.5" fill="#f472b6" />
+                    <circle cx="140" cy="225" r="4.5" fill="#fb7185" />
+                    <circle cx="76" cy="204" r="4.5" fill="#34d399" />
+                    <circle cx="58" cy="140" r="4.5" fill="#4ade80" />
+                    <circle cx="85" cy="85" r="4.5" fill="#a3e635" />
+
+                    <!-- Axis Labels -->
+                    <text x="140" y="24" text-anchor="middle" fill="#e0e7ff" font-size="10.5" font-weight="bold">אריתמטיקה (92%)</text>
+                    <text x="228" y="62" text-anchor="start" fill="#c7d2fe" font-size="10" font-weight="bold">כפל וחילוק</text>
+                    <text x="248" y="144" text-anchor="start" fill="#e9d5ff" font-size="10" font-weight="bold">שברים (78%)</text>
+                    <text x="216" y="215" text-anchor="start" fill="#fbcfe8" font-size="10" font-weight="bold">עשרוניים</text>
+                    <text x="140" y="258" text-anchor="middle" fill="#fecdd3" font-size="10" font-weight="bold">שטחים והנדסה (85%)</text>
+                    <text x="56" y="222" text-anchor="end" fill="#a7f3d0" font-size="10" font-weight="bold">לוגיקה (88%)</text>
+                    <text x="26" y="144" text-anchor="end" fill="#bbf7d0" font-size="10" font-weight="bold">הבנת הנקרא</text>
+                    <text x="52" y="66" text-anchor="end" fill="#d9f99d" font-size="10" font-weight="bold">אחוזים ויחס</text>
+                  </svg>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-2 text-center">הערכה דינמית מבוססת ביצועים · ללא השוואה לילדים אחרים</p>
+              </div>
+
+              <!-- Skills Mastery Breakdown (7 Cols) -->
+              <div class="lg:col-span-7 space-y-3.5">
+                <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                  <span class="text-sm font-bold text-white">🎯 תמונת שליטה במיומנויות הליבה</span>
+                  <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">מעקב חי</span>
+                </div>
+
+                <!-- Skill 1 -->
+                <div class="space-y-1.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex justify-between text-xs sm:text-sm font-medium">
+                    <span class="text-white">✖️➗ כפל ולוח הכפל (עובדות יסוד וקפיצות)</span>
+                    <span class="font-mono text-emerald-400 font-bold">92% · רמה 6 (מצוין)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full" style="width:92%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="space-y-1.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex justify-between text-xs sm:text-sm font-medium">
+                    <span class="text-white">🍕 שברים פשוטים (חלק משלם ומשמעות)</span>
+                    <span class="font-mono text-indigo-300 font-bold">78% · רמה 4 (מתקדם)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-400 rounded-full" style="width:78%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="space-y-1.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex justify-between text-xs sm:text-sm font-medium">
+                    <span class="text-white">📐 שטחים, היקפים וצורות (מהנדסי צורות)</span>
+                    <span class="font-mono text-cyan-300 font-bold">85% · רמה 5 (שליטה טובה)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full" style="width:85%;"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="space-y-1.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex justify-between text-xs sm:text-sm font-medium">
+                    <span class="text-white">⚖️ לוגיקה, סדר פעולות ומשוואות</span>
+                    <span class="font-mono text-purple-300 font-bold">88% · רמה 5 (חשיבה מעולה)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-cyan-500 to-purple-400 rounded-full" style="width:88%;"></div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
-              הגדרת יעד יומי (5-15 דק׳), מעקב רצף ימים (סטריק), וחוזה פרסים אופציונלי שבו אתם קובעים פרס משפחתי תמורת התמדה (התמדה ולא לחץ ביצועים!).
-            </p>
-            <!-- Mini Reward Card -->
-            <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 text-right text-sm space-y-1">
-              <p class="font-bold text-amber-200">🎁 חוזה פעיל: 5 ימי תרגול</p>
-              <p class="text-xs sm:text-sm text-slate-300">פרס נבחר: טיול גלידה משפחתי 🍦</p>
+
+            <!-- Insight Engine & Motivation Contract Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/10">
+              
+              <!-- AI Recommendation Insight -->
+              <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/25 space-y-2">
+                <div class="flex items-center gap-2 text-indigo-200 text-xs sm:text-sm font-bold">
+                  <span>💡</span>
+                  <span>מנוע התובנות האוטונומי:</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  המערכת מזהה קושי נקודתי (למשל: מעבר משבר למספר עשרוני) ומכוונת את מסלול המשחק הבא באופן מדורג — ללא תסכול וללא צורך בהתערבותכם.
+                </p>
+              </div>
+
+              <!-- Streak & Reward Contract -->
+              <div class="p-4 rounded-xl bg-amber-950/30 border border-amber-500/25 space-y-2">
+                <div class="flex items-center justify-between text-amber-200 text-xs sm:text-sm font-bold">
+                  <span class="flex items-center gap-1.5"><span>🔥</span><span>התמדה וחוזה פרסים:</span></span>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono">5 ימי רצף</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  הגדרת יעד יומי גמיש (5–15 דק׳) וחוזה פרסים משפחתי מעצים: <strong class="text-amber-300">"5 ימי תרגול = טיול גלידה משפחתי 🍦"</strong>
+                </p>
+              </div>
+
             </div>
+
           </div>
         </div>
 
