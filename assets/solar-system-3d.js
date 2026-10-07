@@ -329,10 +329,9 @@ function initSolarSystem3D() {
       starMaterials[2].opacity = 0.45 + Math.sin(time * 3.2 + 1) * 0.35;
     }
 
-    // Scroll parallax: Solar system scrolls UP and disappears quickly as user scrolls down!
+    // Ambient background: Solar system stays peacefully in top-left corner
     const scrollY = window.scrollY || window.pageYOffset || 0;
-    const scrollOffset = scrollY * 0.22; // moves up decisively on scroll
-    solarSystemGroup.position.y = basePosY + scrollOffset;
+    solarSystemGroup.position.y = basePosY + scrollY * 0.02;
 
     // Spaceship position & forward look direction
     const currentPos = getPathPosition(time);
