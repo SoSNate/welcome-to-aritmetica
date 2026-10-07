@@ -27,11 +27,11 @@ function initSolarSystem3D() {
   container.innerHTML = '';
   container.appendChild(renderer.domElement);
 
-  // Ambient lighting (soft so shaded areas look deep)
-  const ambientLight = new THREE.AmbientLight(0x505878, 0.5);
+  // Ambient lighting
+  const ambientLight = new THREE.AmbientLight(0x505878, 0.55);
   scene.add(ambientLight);
 
-  // Directional backlight for space atmosphere
+  // Directional backlight
   const dirLight = new THREE.DirectionalLight(0x8ab4ff, 0.6);
   dirLight.position.set(30, 40, 50);
   scene.add(dirLight);
@@ -59,9 +59,9 @@ function initSolarSystem3D() {
   for (let i = 0; i < 3; i++) {
     const starGeo = new THREE.BufferGeometry();
     const starVertices = [];
-    for (let j = 0; j < 140; j++) {
-      const x = (Math.random() - 0.5) * 500;
-      const y = (Math.random() - 0.5) * 350;
+    for (let j = 0; j < 150; j++) {
+      const x = (Math.random() - 0.5) * 550;
+      const y = (Math.random() - 0.5) * 400;
       const z = -40 - Math.random() * 250;
       starVertices.push(x, y, z);
     }
@@ -84,28 +84,28 @@ function initSolarSystem3D() {
   scene.add(starsGroup);
 
   // ----------------------------------------------------
-  // Solar System Group - positioned at top-left corner
+  // Solar System Group - Placed far top-left & glides up on scroll
   // ----------------------------------------------------
   const solarSystemGroup = new THREE.Group();
   
   // Point light from the sun
-  const sunLight = new THREE.PointLight(0xffedd5, 2.2, 350);
+  const sunLight = new THREE.PointLight(0xffedd5, 2.0, 300);
   solarSystemGroup.add(sunLight);
 
-  // Sun (warm glowing sphere, reduced scale to not overwhelm)
-  const sunGeometry = new THREE.SphereGeometry(6.5, 32, 32);
+  // Sun
+  const sunGeometry = new THREE.SphereGeometry(6.0, 32, 32);
   const sunMaterial = new THREE.MeshBasicMaterial({
     color: 0xffd54f,
   });
   const sun = new THREE.Mesh(sunGeometry, sunMaterial);
   solarSystemGroup.add(sun);
 
-  // Sun Halo (gentle atmospheric glow)
-  const haloGeometry = new THREE.SphereGeometry(8.5, 32, 32);
+  // Sun Halo
+  const haloGeometry = new THREE.SphereGeometry(7.8, 32, 32);
   const haloMaterial = new THREE.MeshBasicMaterial({
     color: 0xffb74d,
     transparent: true,
-    opacity: 0.15,
+    opacity: 0.14,
     blending: THREE.AdditiveBlending
   });
   const sunHalo = new THREE.Mesh(haloGeometry, haloMaterial);
@@ -114,17 +114,15 @@ function initSolarSystem3D() {
   // Planets
   const planets = [];
   function createPlanet(size, color, distance, speed, hasRing = false) {
-    // Orbit line
     const orbitCurve = new THREE.EllipseCurve(0, 0, distance, distance, 0, 2 * Math.PI, false, 0);
     const orbitPoints = orbitCurve.getPoints(80);
     const orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitPoints);
     orbitGeometry.rotateX(-Math.PI / 2);
 
-    const orbitMaterial = new THREE.LineBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.18 });
+    const orbitMaterial = new THREE.LineBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.16 });
     const orbitLine = new THREE.Line(orbitGeometry, orbitMaterial);
     solarSystemGroup.add(orbitLine);
 
-    // Planet body
     const geometry = new THREE.SphereGeometry(size, 24, 24);
     const material = new THREE.MeshStandardMaterial({
       color: color,
@@ -156,46 +154,46 @@ function initSolarSystem3D() {
     planets.push({ mesh: planet, obj: planetObj, distance: distance, speed: speed });
   }
 
-  createPlanet(1.2, 0x94a3b8, 14, 0.016);  // Mercury-like
-  createPlanet(1.8, 0xfb923c, 21, 0.012);  // Venus/Mars-like
-  createPlanet(2.1, 0x38bdf8, 30, 0.009);  // Earth-like
-  createPlanet(2.6, 0xfacc15, 42, 0.006, true); // Saturn with ring
+  createPlanet(1.1, 0x94a3b8, 13, 0.016);  // Mercury-like
+  createPlanet(1.6, 0xfb923c, 20, 0.012);  // Venus/Mars-like
+  createPlanet(1.9, 0x38bdf8, 28, 0.009);  // Earth-like
+  createPlanet(2.4, 0xfacc15, 39, 0.006, true); // Saturn with ring
 
-  // Position at upper-left corner and tilted sideways
+  let basePosX = -55;
+  let basePosY = 38;
+
   function updateSolarSystemPosition() {
     const aspect = window.innerWidth / window.innerHeight;
-    // Calculate top-left coordinate in 3D camera space at z = -20
     const vFOV = (camera.fov * Math.PI) / 180;
     const dist = camera.position.z - (-20);
     const height = 2 * Math.tan(vFOV / 2) * dist;
     const width = height * aspect;
 
-    // Place Sun in upper-left corner
-    const posX = -width * 0.38;
-    const posY = height * 0.34;
-    solarSystemGroup.position.set(posX, posY, -20);
-    solarSystemGroup.scale.set(0.72, 0.72, 0.72);
+    // Position Sun far into top-left corner
+    basePosX = -width * 0.46;
+    basePosY = height * 0.38;
+    solarSystemGroup.position.set(basePosX, basePosY, -20);
+    solarSystemGroup.scale.set(0.62, 0.62, 0.62);
   }
 
   updateSolarSystemPosition();
 
-  // Tilt sideways and towards viewer for 3D perspective
-  solarSystemGroup.rotation.x = 40 * (Math.PI / 180);
-  solarSystemGroup.rotation.y = -22 * (Math.PI / 180);
-  solarSystemGroup.rotation.z = 12 * (Math.PI / 180);
+  // Tilt sideways
+  solarSystemGroup.rotation.x = 42 * (Math.PI / 180);
+  solarSystemGroup.rotation.y = -30 * (Math.PI / 180);
+  solarSystemGroup.rotation.z = 18 * (Math.PI / 180);
   scene.add(solarSystemGroup);
 
   // ----------------------------------------------------
-  // Spaceship - Distinct, visible and freely wandering
+  // Spaceship - Freely roaming & hovering across viewport
   // ----------------------------------------------------
   const spaceshipGroup = new THREE.Group();
   const spaceshipInner = new THREE.Group();
   spaceshipGroup.add(spaceshipInner);
 
-  // Scale spaceship so it is clearly visible and cute
-  spaceshipInner.scale.set(2.2, 2.2, 2.2);
+  spaceshipInner.scale.set(2.4, 2.4, 2.4);
 
-  // Main rocket body (white aerodynamic capsule)
+  // Main rocket body
   const bodyGeometry = new THREE.SphereGeometry(2.5, 32, 32);
   const bodyMaterial = new THREE.MeshStandardMaterial({
     color: 0xffffff,
@@ -206,7 +204,7 @@ function initSolarSystem3D() {
   spaceshipBody.scale.set(1, 1, 1.7);
   spaceshipInner.add(spaceshipBody);
 
-  // Vibrant red nose cone
+  // Red nose cone
   const noseGeometry = new THREE.ConeGeometry(2.5, 3.2, 32);
   const noseMaterial = new THREE.MeshStandardMaterial({
     color: 0xff4757,
@@ -231,13 +229,13 @@ function initSolarSystem3D() {
     roughness: 0.1,
     metalness: 0.85,
     emissive: 0x00f2fe,
-    emissiveIntensity: 0.3
+    emissiveIntensity: 0.35
   });
   const windowMesh = new THREE.Mesh(winGeo, winMat);
   windowMesh.position.set(0, 2.4, -0.8);
   spaceshipInner.add(windowMesh);
 
-  // 3 Symmetrical aerodynamic fins
+  // Symmetrical fins
   const finShape = new THREE.Shape();
   finShape.moveTo(-1.2, 0);
   finShape.lineTo(1.8, 0);
@@ -291,15 +289,15 @@ function initSolarSystem3D() {
   const exhaustParticles = [];
   const particleGeo = new THREE.SphereGeometry(0.7, 8, 8);
 
-  // Smooth free-flight path that sweeps across screen in front of camera
+  // Smooth free-flight path across visible viewport
   function getPathPosition(t) {
     const aspect = window.innerWidth / window.innerHeight;
-    const spanX = 38 * Math.max(1, aspect);
-    const spanY = 24;
+    const spanX = 36 * Math.max(1, aspect);
+    const spanY = 22;
 
-    const x = Math.sin(t * 0.35) * spanX + Math.cos(t * 0.18) * 8;
-    const y = Math.cos(t * 0.28) * spanY + Math.sin(t * 0.42) * 6;
-    const z = Math.sin(t * 0.22) * 20 + 8; // In front of camera (z: -12 to +28)
+    const x = Math.sin(t * 0.26) * spanX + Math.sin(t * 0.58) * 8;
+    const y = Math.cos(t * 0.20) * spanY + Math.sin(t * 0.42) * 6;
+    const z = Math.sin(t * 0.24) * 20 + 8; // In front of camera (z: -12 to +28)
     return new THREE.Vector3(x, y, z);
   }
 
@@ -326,6 +324,11 @@ function initSolarSystem3D() {
       starMaterials[2].opacity = 0.45 + Math.sin(time * 3.2 + 1) * 0.35;
     }
 
+    // Scroll parallax: Solar system scrolls UP and disappears as user scrolls down!
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const scrollOffset = scrollY * 0.15; // moves upwards with scrolling
+    solarSystemGroup.position.y = basePosY + scrollOffset;
+
     // Spaceship position & look direction
     const currentPos = getPathPosition(time);
     const nextPos = getPathPosition(time + 0.05);
@@ -336,10 +339,10 @@ function initSolarSystem3D() {
     // Subtle gentle rolling & pitch
     spaceshipInner.rotation.z = Math.sin(time * 3.5) * 0.18;
     spaceshipInner.rotation.x = Math.cos(time * 2.8) * 0.12;
-    spaceshipInner.rotation.y = Math.PI; // Inverts model so nose points along movement direction
+    spaceshipInner.rotation.y = Math.PI; // Inverts model so nose points forward along motion
 
     // Emit exhaust smoke particles from rear
-    if (Math.random() > 0.35) {
+    if (Math.random() > 0.32) {
       const pMat = new THREE.MeshBasicMaterial({
         color: Math.random() > 0.5 ? 0x93c5fd : 0xffedd5,
         transparent: true,
