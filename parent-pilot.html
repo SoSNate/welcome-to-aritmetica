@@ -19,17 +19,26 @@
   <meta name="twitter:description" content="מדריך הצטרפות ושיגור משימה להורים בקבוצת הפיילוט הראשונית של חשבונאוטיקה.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
 
   <style>
-    #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
 
-    .nebula { position:fixed; border-radius:50%; filter:blur(120px); z-index:-2; animation:nebulaFloat 25s infinite ease-in-out alternate; opacity:0.45; pointer-events:none; }
-    .nebula-blue { width:70vw; height:70vw; background:rgba(138,180,255,0.12); top:-20vh; right:-10vw; }
-    .nebula-purple { width:65vw; height:65vw; background:rgba(157,139,255,0.1); bottom:-15vh; left:-10vw; animation-delay:-6s; }
-    .nebula-turquoise { width:50vw; height:50vw; background:rgba(94,234,212,0.08); top:40vh; left:20vw; animation-delay:-12s; }
+    body {
+      background-color: #050510;
+    }
     
     @keyframes nebulaFloat { 
       0% { transform:translate(0,0) scale(1); } 
@@ -103,10 +112,7 @@
 </head>
 <body class="antialiased">
 
-  <canvas id="starfield"></canvas>
-  <div class="nebula nebula-blue"></div>
-  <div class="nebula nebula-purple"></div>
-  <div class="nebula nebula-turquoise"></div>
+  <div id="canvas-container"></div>
 
   <!-- Navbar -->
   <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4">
@@ -591,7 +597,7 @@
       <p class="text-sm sm:text-base text-slate-200">התחברו כעת והכינו את האסטרונאוט שלכם לשיגור ראשון:</p>
       <div>
         <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base sm:text-lg font-bold !py-4 !px-10 shadow-indigo-500/50">
-          כניסה ישירה לדשבורד הורים (aritmetica.nt-school.app/parent) 🚀
+          כניסה ישירה לדשבורד הורים 🚀
         </a>
       </div>
     </div>
@@ -611,14 +617,10 @@
     <p>© 2026 חשבונאוטיקה · מסלול קבוצת הפיילוט הראשונית</p>
   </footer>
 
-  <script src="assets/solar-system.js"></script>
-  <script src="assets/starfield.js"></script>
+  <script src="assets/solar-system-3d.js"></script>
   <script>
-    if (typeof initSolarSystem === 'function') {
-      initSolarSystem({ top: '22%', left: '82%', scale: 1, rotateOffset: 25 });
-    }
-    if (typeof initStarfield === 'function') {
-      initStarfield();
+    if (typeof initSolarSystem3D === 'function') {
+      initSolarSystem3D();
     }
   </script>
   <script src="assets/accessibility.js"></script>
