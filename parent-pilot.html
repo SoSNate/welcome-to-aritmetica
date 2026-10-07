@@ -37,8 +37,8 @@
     }
 
     .step-badge {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 14px;
       background: linear-gradient(135deg, rgba(138,180,255,0.2) 0%, rgba(157,139,255,0.2) 100%);
       border: 1px solid rgba(138,180,255,0.4);
@@ -47,7 +47,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       box-shadow: 0 0 15px rgba(138,180,255,0.25);
       flex-shrink: 0;
     }
@@ -56,14 +56,14 @@
     .mockup-window {
       background: #090f26;
       border: 1px solid rgba(138, 180, 255, 0.25);
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 12px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .mockup-header {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 10px 14px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,8 +73,8 @@
       gap: 6px;
     }
     .mockup-dot {
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
     }
 
@@ -97,13 +97,7 @@
     }
 
     .font-mono {
-      font-family: 'JetBrains Mono', monospace, monospace;
-    }
-
-    .sticky-cta {
-      position: sticky;
-      bottom: 16px;
-      z-index: 40;
+      font-family: 'JetBrains Mono', monospace;
     }
   </style>
 </head>
@@ -119,7 +113,7 @@
     <div class="max-w-6xl mx-auto glass-panel !rounded-full px-3 sm:px-5 py-2 sm:py-2.5 flex justify-between items-center gap-2">
       <a href="#" class="flex items-center gap-2 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
         <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-white/20 shadow-sm">
-        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה <span class="hidden md:inline-block text-[11px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-normal border border-indigo-400/30">פיילוט הורים</span></span>
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה <span class="hidden md:inline-block text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-normal border border-indigo-400/30">פיילוט הורים</span></span>
       </a>
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <a href="#steps" class="hidden sm:inline-flex glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-4 !text-xs sm:!text-sm">מדריך השיגור 🧭</a>
@@ -173,7 +167,7 @@
         </div>
       </div>
 
-      <div class="space-y-4 text-sm sm:text-base leading-relaxed" style="color:rgba(234,240,250,0.92);">
+      <div class="space-y-4 text-base sm:text-lg leading-relaxed" style="color:rgba(234,240,250,0.95);">
         <p>
           אני כותב לכם כאן הסבר מכל הלב על המערכת שבניתי, הייעוד שלה, ואיך נוכל יחד איתכם לייצר מערך שיעזור לכל ילדי ישראל ללמוד חשבון בקלות, בסקרנות ובצורה חוויתית באמת.
         </p>
@@ -181,34 +175,34 @@
           המערכת מכילה <strong class="text-white font-bold underline decoration-indigo-400/60 decoration-2 underline-offset-4">10 סוגי תבניות חידתיות ייחודיות</strong> בחשבון, המאפשרות לילדים (בדגש על כיתות ד׳–ו׳ וגם כיתות היסוד א׳–ג׳) לתרגל חשבון בצורה ויזואלית שבה הם רואים ומרגישים את המתמטיקה זזה — במקום דפי עבודה משעממים.
         </p>
 
-        <div class="p-4 sm:p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/25 space-y-2.5 my-4">
-          <p class="font-bold text-white flex items-center gap-2">
+        <div class="p-5 sm:p-6 rounded-2xl bg-indigo-950/40 border border-indigo-500/25 space-y-3 my-4">
+          <p class="font-bold text-white text-base sm:text-lg flex items-center gap-2">
             <span>🪐</span><span>החזון שמוביל אותנו:</span>
           </p>
-          <ul class="space-y-2 text-xs sm:text-sm pr-2 text-slate-300">
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-400 font-bold">✓</span>
+          <ul class="space-y-2.5 text-sm sm:text-base pr-2 text-slate-200">
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold text-lg">✓</span>
               <span><strong>שלווה ונחת להורים:</strong> פתרון אמיתי לבעיית "הילד שלא רוצה ללמוד" בלי ויכוחים ומאבקים כל ערב.</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-400 font-bold">✓</span>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold text-lg">✓</span>
               <span><strong>למידה אינטראקטיבית מעצימה:</strong> אתגר מחשבתי בקצב האישי של הילד, עם חוויית משחק מלאת ביטחון.</span>
             </li>
           </ul>
         </div>
 
         <!-- Pilot nature transparency alert -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2 my-4">
-          <p class="font-bold text-amber-300 flex items-center gap-2 text-sm sm:text-base">
+        <div class="p-5 sm:p-6 rounded-2xl bg-amber-500/10 border border-amber-500/35 space-y-2.5 my-4">
+          <p class="font-bold text-amber-300 flex items-center gap-2 text-base sm:text-lg">
             <span>⚠️</span><span>הבהרה חשובה על אופי הפיילוט הראשוני:</span>
           </p>
-          <p class="text-xs sm:text-sm leading-relaxed text-amber-100/90">
+          <p class="text-sm sm:text-base leading-relaxed text-amber-100">
             מטרת הפיילוט היא לבדוק את חוויית הלמידה ואת אופן השימוש בפועל על ידי ילדים והורים. <strong>לכן יש מצב שלא הכל יעבוד חלק לגמרי בתחילת הדרך</strong>. 
             אנחנו מלווים אתכם מקרוב, והסבלנות, הדיווחים והמשובים שלכם הם הכוח שמסייע לנו לדייק ולשפר את המערכת יחד איתכם!
           </p>
         </div>
 
-        <p class="text-xs sm:text-sm text-slate-400">
+        <p class="text-sm sm:text-base text-slate-300">
           לפניכם פירוט מלא של שלבי ההתחברות, כיצד להכין את הילד למשימה ומה תראו בכל מסך.
         </p>
       </div>
@@ -218,11 +212,11 @@
     <section id="steps" class="space-y-8 scroll-mt-24">
       
       <div class="text-center space-y-2">
-        <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:6px 14px;">
-          <span>🗺️</span><span>מסלול השיגור צעד-אחר-צעד</span>
+        <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:6px 16px;">
+          <span>🗺️</span><span class="text-sm font-bold">מסלול השיגור צעד-אחר-צעד</span>
         </div>
-        <h2 class="font-space text-2xl sm:text-3xl font-bold">איך מצטרפים ומשגרים משימה?</h2>
-        <p class="text-xs sm:text-sm" style="color:var(--text-muted);">תהליך פשוט, מהיר ושקוף שלוקח פחות מ-2 דקות</p>
+        <h2 class="font-space text-2xl sm:text-3xl font-bold text-white">איך מצטרפים ומשגרים משימה?</h2>
+        <p class="text-sm sm:text-base" style="color:var(--text-muted);">תהליך פשוט, מהיר ושקוף שלוקח פחות מ-2 דקות</p>
       </div>
 
       <!-- Step 1 -->
@@ -230,8 +224,8 @@
         <div class="flex items-start gap-4">
           <div class="step-badge">1</div>
           <div class="space-y-1">
-            <h3 class="font-space text-lg sm:text-xl font-bold text-white">התחברות עצמאית לדשבורד ההורים</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <h3 class="font-space text-xl sm:text-2xl font-bold text-white">התחברות עצמאית לדשבורד ההורים</h3>
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               נכנסים לדשבורד ההורים באמצעות חשבון Google שלכם בלחיצה אחת. אין צורך לזכור שמות משתמש או סיסמאות מורכבות.
             </p>
           </div>
@@ -240,24 +234,24 @@
         <!-- UI Mockup 1: Sign in -->
         <div class="mockup-window">
           <div class="mockup-header">
-            <span class="text-xs font-mono text-slate-400">parent.aritmetica.app/login</span>
+            <span class="text-xs sm:text-sm font-mono text-slate-300">parent.aritmetica.app/login</span>
             <div class="mockup-dots">
               <div class="mockup-dot bg-rose-500/80"></div>
               <div class="mockup-dot bg-amber-500/80"></div>
               <div class="mockup-dot bg-emerald-500/80"></div>
             </div>
           </div>
-          <div class="p-6 text-center space-y-4">
-            <div class="w-12 h-12 mx-auto rounded-full bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-xl">
+          <div class="p-6 sm:p-8 text-center space-y-4">
+            <div class="w-14 h-14 mx-auto rounded-full bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-2xl">
               🛡️
             </div>
-            <div>
-              <p class="text-base font-bold text-white">כניסה למרכז בקרת הורים</p>
-              <p class="text-xs text-slate-400">התחברו כדי לצפות בהתקדמות ולקבוע יעדים</p>
+            <div class="space-y-1">
+              <p class="text-lg sm:text-xl font-bold text-white">כניסה למרכז בקרת הורים</p>
+              <p class="text-sm text-slate-300">התחברו כדי לצפות בהתקדמות ולקבוע יעדים</p>
             </div>
-            <div class="max-w-xs mx-auto">
-              <div class="p-3 rounded-xl bg-white text-slate-900 font-bold text-xs flex items-center justify-center gap-2.5 shadow-md">
-                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+            <div class="max-w-xs mx-auto pt-2">
+              <div class="p-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm flex items-center justify-center gap-3 shadow-md select-none">
+                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
                 <span>המשך באמצעות Google</span>
               </div>
             </div>
@@ -271,7 +265,7 @@
           <div class="step-badge">2</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">הזנת טלפון וליווי אישי ב-WhatsApp</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               בשלב הבא תתבקשו להזין את שמכם ומספר הטלפון שלכם. הסוכן החכם שלנו ב-WhatsApp ישלח לכם הודעה לאחר כמה דקות וילווה אתכם לאורך כל הדרך.
             </p>
           </div>
@@ -279,32 +273,32 @@
 
         <!-- UI Mockup 2: Phone & WhatsApp bubble -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="mockup-window p-5 space-y-3">
-            <p class="text-xs font-bold text-slate-300">פרטי התקשרות וליווי</p>
-            <div class="space-y-2 text-xs">
-              <div class="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 flex justify-between">
+          <div class="mockup-window p-5 sm:p-6 space-y-4">
+            <p class="text-sm font-bold text-slate-200">פרטי התקשרות וליווי</p>
+            <div class="space-y-2.5 text-sm">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-200 flex justify-between">
                 <span>שם ההורה:</span>
                 <span class="font-bold text-white">נתנאל</span>
               </div>
-              <div class="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 flex justify-between">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-200 flex justify-between">
                 <span>טלפון נייד:</span>
                 <span class="font-bold text-white font-mono">050-XXXXXXX</span>
               </div>
             </div>
-            <div class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+            <div class="text-xs sm:text-sm text-emerald-400 flex items-center gap-1.5 font-medium">
               <span>🔒</span><span>משמש ליצירת קשר וליווי בלבד</span>
             </div>
           </div>
 
-          <div class="p-4 rounded-2xl bg-[#0b141a] border border-[#1f2c34] text-right space-y-2 shadow-lg">
-            <div class="flex items-center gap-2 pb-2 border-b border-[#1f2c34]">
-              <div class="w-7 h-7 rounded-full bg-emerald-600 flex items-center justify-center text-xs text-white">🤖</div>
+          <div class="p-5 rounded-2xl bg-[#0b141a] border border-[#1f2c34] text-right space-y-3 shadow-lg">
+            <div class="flex items-center gap-2.5 pb-2.5 border-b border-[#1f2c34]">
+              <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-sm text-white">🤖</div>
               <div>
-                <p class="text-xs font-bold text-white">סוכן הליווי · חשבונאוטיקה</p>
-                <p class="text-[10px] text-emerald-400 font-medium">מחובר כעת בוואטסאפ</p>
+                <p class="text-sm font-bold text-white">סוכן הליווי · חשבונאוטיקה</p>
+                <p class="text-xs text-emerald-400 font-medium">מחובר כעת בוואטסאפ</p>
               </div>
             </div>
-            <div class="p-3 rounded-xl bg-[#005c4b] text-white text-xs leading-relaxed max-w-[90%] mr-auto rounded-tr-none shadow">
+            <div class="p-3.5 rounded-xl bg-[#005c4b] text-white text-sm leading-relaxed max-w-[92%] mr-auto rounded-tr-none shadow">
               היי נתנאל! 🚀 ראיתי שהתחברת לחשבונאוטיקה. אני כאן כדי לוודא שהשיגור של האסטרונאוט שלכם עובר חלק. צריכים עזרה בכל שלב? אני זמין כאן!
             </div>
           </div>
@@ -317,10 +311,10 @@
           <div class="step-badge">3</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">טקס יצירת אסטרונאוט ("הכן אסטרונאוט למשימה")</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               המטרה היא לייצר מתהליך ההתחברות <strong class="text-white">טקס מעצים עבור הילד</strong> שירגיש שהוא מקבל פרס ומשימה חשובה — ולא שיעורי בית. הוא אסטרונאוט במשימה, לא תלמיד בבית ספר!
             </p>
-            <div class="inline-flex items-center gap-2 px-3 py-1 mt-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mt-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-semibold">
               <span>🛡️</span>
               <span>פרטיות מוחלטת: מזינים שם פרטי וכיתה בלבד (ללא איסוף שום פרט אישי נוסף).</span>
             </div>
@@ -328,35 +322,35 @@
         </div>
 
         <!-- UI Mockup 3: Astronaut Card -->
-        <div class="mockup-window p-6 space-y-4">
+        <div class="mockup-window p-6 sm:p-7 space-y-5">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-white/10">
             <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-600/30 border border-indigo-400/40 flex items-center justify-center text-2xl">
+              <div class="w-14 h-14 rounded-2xl bg-indigo-600/30 border border-indigo-400/40 flex items-center justify-center text-3xl">
                 👨‍🚀
               </div>
               <div class="text-right">
-                <p class="font-bold text-white text-sm sm:text-base">הכן אסטרונאוט למשימה</p>
-                <p class="text-xs text-slate-400">הגדרת פרופיל חללי לקבלת קישור קסם</p>
+                <p class="font-bold text-white text-base sm:text-lg">הכן אסטרונאוט למשימה</p>
+                <p class="text-xs sm:text-sm text-slate-300">הגדרת פרופיל חללי לקבלת קישור קסם</p>
               </div>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+            <span class="text-xs sm:text-sm font-mono px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 font-bold">
               שלב 2 מתוך 3
             </span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-right">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-right">
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1">שם האסטרונאוט/ית:</label>
-              <div class="p-2.5 rounded-xl bg-white/5 border border-indigo-500/30 text-sm text-white font-medium">
+              <label class="block text-sm font-bold text-slate-200 mb-1.5">שם האסטרונאוט/ית:</label>
+              <div class="p-3 rounded-xl bg-white/5 border border-indigo-500/30 text-sm sm:text-base text-white font-medium">
                 איתי 🚀
               </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1">כיתה:</label>
-              <div class="grid grid-cols-3 gap-1.5">
-                <div class="p-2 text-center text-xs rounded-lg bg-indigo-600 text-white font-bold border border-indigo-400">כיתה ד׳</div>
-                <div class="p-2 text-center text-xs rounded-lg bg-white/5 text-slate-300 border border-white/10">כיתה ה׳</div>
-                <div class="p-2 text-center text-xs rounded-lg bg-white/5 text-slate-300 border border-white/10">כיתה ו׳</div>
+              <label class="block text-sm font-bold text-slate-200 mb-1.5">כיתה:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="p-2.5 text-center text-xs sm:text-sm rounded-xl bg-indigo-600 text-white font-bold border border-indigo-400">כיתה ד׳</div>
+                <div class="p-2.5 text-center text-xs sm:text-sm rounded-xl bg-white/5 text-slate-300 border border-white/10">כיתה ה׳</div>
+                <div class="p-2.5 text-center text-xs sm:text-sm rounded-xl bg-white/5 text-slate-300 border border-white/10">כיתה ו׳</div>
               </div>
             </div>
           </div>
@@ -369,29 +363,34 @@
           <div class="step-badge">4</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">שיגור וקבלת "קישור קסם" ייעודי לילד</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               שיגרתם את הילד? מיד תקבלו <strong class="text-white">קישור קסם ייעודי</strong>. אם יש לו סמארטפון, טאבלט או מחשב — שולחים לו בוואטסאפ או פותחים ישירות. לחיצה אחת פותחת את המשחק מיידית ללא סיסמה.
             </p>
           </div>
         </div>
 
-        <!-- UI Mockup 4: Magic Link -->
-        <div class="mockup-window p-5 space-y-4">
-          <div class="p-3.5 rounded-xl bg-indigo-950/60 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5 text-right w-full sm:w-auto">
-              <span class="text-xl">✨</span>
+        <!-- UI Mockup 4: Magic Link (Clearly Illustrative & Safe) -->
+        <div class="mockup-window p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-bold text-indigo-300">🔗 כרטיס קישור הקסם של הילד</span>
+            <span class="text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">תצוגת הדמיה לדוגמה בלבד</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-indigo-950/60 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 text-right w-full sm:w-auto">
+              <span class="text-2xl">✨</span>
               <div>
-                <p class="text-xs font-bold text-white">קישור הקסם של איתי</p>
-                <p class="text-[11px] font-mono text-indigo-300 truncate max-w-[220px] sm:max-w-[300px]">https://aritmetica.nt-school.app/play?t=m_9f82...</p>
+                <p class="text-sm sm:text-base font-bold text-white">קישור הקסם של איתי</p>
+                <p class="text-xs sm:text-sm font-mono text-indigo-200 truncate max-w-[240px] sm:max-w-[340px]" dir="ltr">https://aritmetica.nt-school.app/play?t=[קישור_קסם_אישי]</p>
               </div>
             </div>
-            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-              <button class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5">
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end opacity-90">
+              <div class="px-3.5 py-2 rounded-xl bg-emerald-600 text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 select-none shadow">
                 <span>📲</span><span>שלח בוואטסאפ</span>
-              </button>
-              <button class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5">
+              </div>
+              <div class="px-3.5 py-2 rounded-xl bg-white/10 text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 select-none">
                 <span>📋</span><span>העתק</span>
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -403,31 +402,31 @@
           <div class="step-badge">5</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">בקרת שיגור והמראה: סנכרון התרגיל הראשון</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               ברגע שהילד פותח את המערכת ופותר את התרגיל הראשון שלו, המערכת מאמתת ומסנכרנת את הקשר בין מגרש המשחקים שלו לדשבורד שלכם — <strong class="text-white">בדיוק כמו חדר בקרה של נאס״א שמקבל אות מהחלל</strong>.
             </p>
           </div>
         </div>
 
         <!-- UI Mockup 5: Mission Control Radar Handshake -->
-        <div class="mockup-window p-6 relative overflow-hidden">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="mockup-window p-6 sm:p-7 relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
             <div class="flex items-center gap-4">
               <!-- Radar circle -->
               <div class="relative w-16 h-16 rounded-full border-2 border-emerald-500/40 bg-emerald-950/20 flex items-center justify-center shrink-0">
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 live-pulse"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-400 live-pulse"></div>
                 <div class="absolute inset-0 rounded-full border-t-2 border-emerald-400/80 radar-sweep"></div>
               </div>
               <div class="text-right space-y-1">
                 <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                  <p class="font-bold text-white text-sm sm:text-base">בקרת שיגור: ממתין לפתרון תרגיל ראשון</p>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <p class="font-bold text-white text-base sm:text-lg">בקרת שיגור: ממתין לפתרון תרגיל ראשון</p>
                 </div>
-                <p class="text-xs text-slate-400">איתי פתח את מגרש המשחקים · קליטת אות ראשונית מסונכרנת בזמן אמת</p>
+                <p class="text-sm text-slate-300">איתי פתח את מגרש המשחקים · קליטת אות ראשונית מסונכרנת בזמן אמת</p>
               </div>
             </div>
 
-            <div class="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold text-center">
+            <div class="px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-bold text-center shrink-0">
               🛰️ מוכן להמראה למסלול!
             </div>
           </div>
@@ -440,7 +439,7 @@
           <div class="step-badge">6</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">דשבורד הניהול והלמידה שלכם</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               מיד לאחר פתרון התרגיל הראשון תעברו לדשבורד המלא. הנה מה שמחכה לכם שם:
             </p>
           </div>
@@ -448,46 +447,46 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- Progress Tab -->
-          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+          <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3.5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-indigo-300">📊 לשונית התקדמות</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200">תמונת מצב</span>
+              <span class="text-sm sm:text-base font-bold text-indigo-300">📊 לשונית התקדמות</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-200 font-medium">תמונת מצב</span>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
               מציגה יכולות, דאטה בזמן אמת מתרגילי הילד, זיהוי נקודות שצריך לחזק ונקודות לשימור, ומדד מוטיבציה שבועי.
             </p>
             <!-- Mini Radar Preview -->
-            <div class="p-3 rounded-xl bg-black/30 border border-white/5 text-center text-xs space-y-2">
-              <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+            <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 text-center text-sm space-y-2.5">
+              <div class="flex justify-between text-xs sm:text-sm text-slate-300 font-mono">
                 <span>כפל ולוח הכפל: 92%</span>
                 <span>שברים: 78%</span>
               </div>
-              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
                 <div class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full" style="width:85%;"></div>
               </div>
             </div>
           </div>
 
           <!-- Consistency Tab -->
-          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+          <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3.5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-amber-300">🔥 לשונית התמדה וחוזה פרסים</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-200">מוטיבציה אישית</span>
+              <span class="text-sm sm:text-base font-bold text-amber-300">🔥 לשונית התמדה וחוזה פרסים</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-200 font-medium">מוטיבציה אישית</span>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
               הגדרת יעד יומי (5-15 דק׳), מעקב רצף ימים (סטריק), וחוזה פרסים אופציונלי שבו אתם קובעים פרס משפחתי תמורת התמדה (התמדה ולא לחץ ביצועים!).
             </p>
             <!-- Mini Reward Card -->
-            <div class="p-3 rounded-xl bg-black/30 border border-white/5 text-right text-xs space-y-1">
+            <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 text-right text-sm space-y-1">
               <p class="font-bold text-amber-200">🎁 חוזה פעיל: 5 ימי תרגול</p>
-              <p class="text-[11px] text-slate-400">פרס נבחר: טיול גלידה משפחתי 🍦</p>
+              <p class="text-xs sm:text-sm text-slate-300">פרס נבחר: טיול גלידה משפחתי 🍦</p>
             </div>
           </div>
         </div>
 
-        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-slate-400 space-y-1">
-          <p class="font-bold text-slate-200">⚙️ בלשונית ההגדרות:</p>
-          <p>תוכלו לנהל עד 2 ילדים ששוגרו למשימה, לאשר התראות פוש, לצפות במדיניות פרטיות והצהרת נגישות ועוד.</p>
+        <div class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 text-sm text-slate-300 space-y-1.5">
+          <p class="font-bold text-white text-base">⚙️ בלשונית ההגדרות:</p>
+          <p class="leading-relaxed">תוכלו לנהל עד 2 ילדים ששוגרו למשימה, לאשר התראות פוש, לצפות במדיניות פרטיות והצהרת נגישות ועוד.</p>
         </div>
       </article>
 
@@ -497,20 +496,20 @@
           <div class="step-badge">7</div>
           <div class="space-y-1">
             <h3 class="font-space text-lg sm:text-xl font-bold text-white">התקנה למסך הבית (PWA) וסיום ההגדרה</h3>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+            <p class="text-sm sm:text-base leading-relaxed" style="color:var(--text-muted);">
               סוכן ה-WhatsApp יוודא שאתם מסתדרים, וינחה אתכם להפעיל התראות ולהוסיף את המערכת למסך הבית שלכם ושל הילד — פעולה קצרה של 10 שניות שעוזרת להתמיד.
             </p>
           </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/25 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="space-y-1 text-right">
-            <p class="font-bold text-white text-sm">✨ זהו! סיימתם להתחבר, להתקין ולאשר התראות</p>
-            <p class="text-xs text-slate-300">
+        <div class="p-5 sm:p-6 rounded-2xl bg-emerald-950/25 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1.5 text-right">
+            <p class="font-bold text-white text-base sm:text-lg">✨ זהו! סיימתם להתחבר, להתקין ולאשר התראות</p>
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
               מעכשיו אתם יכולים לשבת רגל על רגל ולראות את הילדים שלכם מתרגלים ומתקדמים בכיף. הסוכן בווטסאפ ישלח לכם סיכום שבועי או יתזכר אתכם כשצריך.
             </p>
           </div>
-          <div class="text-3xl shrink-0">🧘‍♀️</div>
+          <div class="text-4xl shrink-0">🧘‍♀️</div>
         </div>
       </article>
 
@@ -518,41 +517,44 @@
 
     <!-- Pilot Superpower: Feedback Button -->
     <section class="glass-panel p-6 sm:p-10 space-y-5 text-right border-amber-500/30 bg-gradient-to-br from-amber-950/20 via-transparent to-transparent">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 flex items-center justify-center text-xl font-bold">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-amber-300 flex items-center justify-center text-2xl font-bold">
           ❗
         </div>
         <div>
           <h2 class="font-space text-xl sm:text-2xl font-bold text-white">אתם קבוצת פיילוט — ויש לכם השפעה ישירה!</h2>
-          <p class="text-xs sm:text-sm text-amber-300/90 font-medium">כפתור המשוב הייעודי ❗ זמין עבורכם ועבור הילד</p>
+          <p class="text-sm sm:text-base text-amber-300/90 font-medium">כפתור המשוב הייעודי ❗ זמין עבורכם ועבור הילד</p>
         </div>
       </div>
 
-      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+      <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
         בכל מסך במערכת מופיע כפתור <strong>❗</strong>. תוכלו לדווח על בעיות, תקלות, אתגרים שעלו במהלך התרגול ולהציע רעיונות חדשים. כל מסקנה ורעיון שתעזרו לנו לגבש יספקו לנו כלים לשפר את חווית הלמידה של הילד ואת חווית הבקרה שלכם.
       </p>
     </section>
 
     <!-- Pricing & Commitment Fee -->
-    <section class="glass-panel p-6 sm:p-10 text-center space-y-5 border-indigo-500/30">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold">
+    <section class="glass-panel p-6 sm:p-10 text-center space-y-4 border-indigo-500/30">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs sm:text-sm font-bold">
         <span>🔥</span>
         <span>מחיר מיוחד לקבוצת הפיילוט הראשונית</span>
       </div>
 
-      <h2 class="font-space text-3xl sm:text-4xl font-extrabold text-white">50 ₪ לחודש (עד 2 ילדים)</h2>
+      <div class="space-y-1 pt-1">
+        <h2 class="font-space text-3xl sm:text-5xl font-black text-white">50 ₪ לחודש</h2>
+        <p class="text-sm sm:text-base text-indigo-300 font-bold tracking-wide mt-1">(עד 2 ילדים)</p>
+      </div>
       
-      <p class="text-xs sm:text-sm max-w-xl mx-auto leading-relaxed" style="color:var(--text-muted);">
+      <p class="text-sm sm:text-base max-w-xl mx-auto leading-relaxed pt-2" style="color:var(--text-muted);">
         במקום 100 ₪. למה 50 ש״ח? גם כדמי רצינות (כי בדרך כלל מה שבא בחינם קל יותר לא לקחת ברצינות), וגם כדי לסייע בכיסוי הוצאות התפעול, השרתים והפיתוח השוטף.
       </p>
 
-      <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 max-w-md mx-auto text-xs text-indigo-200 flex items-center justify-center gap-2">
+      <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 max-w-md mx-auto text-sm text-indigo-200 flex items-center justify-center gap-2 font-medium">
         <span>🎁</span>
         <span>14 ימי ניסיון מלאים ללא התחייבות + ליווי אישי בוואטסאפ</span>
       </div>
 
-      <div class="pt-2">
-        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base !py-3.5 !px-8 shadow-xl">
+      <div class="pt-3">
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base sm:text-lg !py-3.5 !px-8 shadow-xl">
           הצטרפות לפיילוט וכניסה לדשבורד 🚀
         </a>
       </div>
@@ -560,14 +562,14 @@
 
     <!-- Community & Mutual Support: Pioneers WhatsApp Group -->
     <section class="glass-panel p-6 sm:p-8 text-center space-y-5 border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 to-transparent">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-bold">
         <span>💬</span>
         <span>קהילת הפיילוט בוואטסאפ</span>
       </div>
 
       <h3 class="font-space text-xl sm:text-2xl font-bold text-white">קבוצת החלוצים של חשבונאוטיקה</h3>
       
-      <p class="text-xs sm:text-sm max-w-xl mx-auto text-slate-300 leading-relaxed">
+      <p class="text-sm sm:text-base max-w-xl mx-auto text-slate-200 leading-relaxed">
         פתחנו קבוצת WhatsApp סגורה וייעודית להורי הפיילוט — מקום לשאול שאלות, לשתף טיפים ורעיונות איך לעודד את הילדים לתרגל בכיף, לקבל עדכונים שוטפים ולהשפיע יחד על המשך הפיתוח.
       </p>
 
@@ -578,17 +580,17 @@
         </a>
       </div>
 
-      <p class="text-sm font-bold text-emerald-400 pt-1">
+      <p class="text-base font-bold text-emerald-400 pt-1">
         שיהיה לכולנו בהצלחה ומסע מופלא לעבר למידה במסלול אחר! 🌟
       </p>
     </section>
 
     <!-- Final Direct CTA Sticky/Bottom Card -->
-    <div class="p-6 rounded-3xl bg-gradient-to-r from-blue-600/20 via-indigo-600/25 to-purple-600/20 border border-indigo-500/40 text-center space-y-4 shadow-2xl">
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-600/20 via-indigo-600/25 to-purple-600/20 border border-indigo-500/40 text-center space-y-4 shadow-2xl">
       <h3 class="font-space text-xl sm:text-2xl font-bold text-white">מוכנים לצאת לדרך?</h3>
-      <p class="text-xs sm:text-sm text-slate-300">התחברו כעת והכינו את האסטרונאוט שלכם לשיגור ראשון:</p>
+      <p class="text-sm sm:text-base text-slate-200">התחברו כעת והכינו את האסטרונאוט שלכם לשיגור ראשון:</p>
       <div>
-        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base font-bold !py-4 !px-10 shadow-indigo-500/50">
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base sm:text-lg font-bold !py-4 !px-10 shadow-indigo-500/50">
           כניסה ישירה לדשבורד הורים (aritmetica.nt-school.app/parent) 🚀
         </a>
       </div>
@@ -596,7 +598,7 @@
 
   </main>
 
-  <footer class="py-8 px-5 text-center text-xs relative z-10 space-y-3" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+  <footer class="py-8 px-5 text-center text-xs sm:text-sm relative z-10 space-y-3" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
     <div class="flex flex-wrap justify-center items-center gap-3">
       <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:bold;">כניסה לדשבורד הורים</a>
       <span>·</span>
