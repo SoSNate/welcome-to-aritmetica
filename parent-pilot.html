@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>הזמנה והנחיות לפיילוט הורים | חשבונאוטיקה</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="הזמנה והנחיות לפיילוט הורים | חשבונאוטיקה">
+  <meta property="og:description" content="מדריך הצטרפות ושיגור משימה להורים בקבוצת הפיילוט הראשונית של חשבונאוטיקה. למידת חשבון חוויתית ושקט נפשי להורים.">
+  <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+  <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="הזמנה והנחיות לפיילוט הורים | חשבונאוטיקה">
+  <meta name="twitter:description" content="מדריך הצטרפות ושיגור משימה להורים בקבוצת הפיילוט הראשונית של חשבונאוטיקה.">
+  <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+
+  <style>
+    #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
+
+    .nebula { position:fixed; border-radius:50%; filter:blur(120px); z-index:-2; animation:nebulaFloat 25s infinite ease-in-out alternate; opacity:0.45; pointer-events:none; }
+    .nebula-blue { width:70vw; height:70vw; background:rgba(138,180,255,0.12); top:-20vh; right:-10vw; }
+    .nebula-purple { width:65vw; height:65vw; background:rgba(157,139,255,0.1); bottom:-15vh; left:-10vw; animation-delay:-6s; }
+    .nebula-turquoise { width:50vw; height:50vw; background:rgba(94,234,212,0.08); top:40vh; left:20vw; animation-delay:-12s; }
+    
+    @keyframes nebulaFloat { 
+      0% { transform:translate(0,0) scale(1); } 
+      100% { transform:translate(-25px,45px) scale(1.08); } 
+    }
+
+    .black-hole-container { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none; }
+    .black-hole-core { 
+      position:absolute; left:88%; top:20%; transform:translate(-50%,-50%); width:80px; height:80px; background:#000000; border-radius:50%; z-index:20;
+      transition:width 0.35s cubic-bezier(.22,.61,.36,1), height 0.35s cubic-bezier(.22,.61,.36,1);
+      box-shadow:0 0 28px 8px rgba(180,210,255,0.55), 0 0 60px 16px rgba(157,139,255,0.35), inset 0 0 10px 2px rgba(255,255,255,0.3); 
+    }
+    .spacetime-canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+
+    .step-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(138,180,255,0.2) 0%, rgba(157,139,255,0.2) 100%);
+      border: 1px solid rgba(138,180,255,0.4);
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 0 15px rgba(138,180,255,0.25);
+      flex-shrink: 0;
+    }
+
+    /* Live Mockup Styles */
+    .mockup-window {
+      background: #090f26;
+      border: 1px solid rgba(138, 180, 255, 0.25);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .mockup-header {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mockup-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .mockup-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    /* Radar animation */
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .radar-sweep {
+      animation: radarSweep 4s linear infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.92); }
+    }
+    .live-pulse {
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace, monospace;
+    }
+
+    .sticky-cta {
+      position: sticky;
+      bottom: 16px;
+      z-index: 40;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <canvas id="starfield"></canvas>
+  <div class="nebula nebula-blue"></div>
+  <div class="nebula nebula-purple"></div>
+  <div class="nebula nebula-turquoise"></div>
+  <div id="bh-system" class="black-hole-container">
+    <canvas id="spacetime-canvas" class="spacetime-canvas"></canvas>
+    <div class="black-hole-core"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 p-2 sm:p-4">
+    <div class="max-w-6xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2.5 font-space font-bold text-base sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
+        <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20 shadow-md">
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="#steps" class="hidden sm:inline-flex glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-4 !text-xs sm:!text-sm">מדריך השיגור 🧭</a>
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap">כניסה לדשבורד הורים 🚀</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-24 space-y-12">
+
+    <!-- Hero Section -->
+    <header class="text-center space-y-5">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel" style="color:var(--accent-turquoise); border-color:rgba(94,234,212,0.35);">
+        <span class="text-base">👨‍🚀</span>
+        <span class="text-xs sm:text-sm font-bold tracking-wide">קבוצת פיילוט הורים ראשונית · חשבונאוטיקה</span>
+      </div>
+
+      <h1 class="font-space text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
+        למידת חשבון במסלול אחר:<br>
+        <span class="text-gradient">אסטרונאוט במשימה, לא שיעורי בית</span>
+      </h1>
+
+      <p class="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
+        מדריך צעד-אחר-צעד להורים בפיילוט: איך להתחבר, לשגר את הילד למשימה, לעקוב בשקט נפשי ולקבל ליווי אישי עד שהכל עובד חלק.
+      </p>
+
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-sm sm:text-base !py-3 !px-7">
+          כניסה מיידית לדשבורד ההורים 🚀
+        </a>
+        <a href="#steps" class="glass-btn text-sm sm:text-base !py-3 !px-6">
+          קראו את שלבי ההצטרפות 👇
+        </a>
+      </div>
+    </header>
+
+    <!-- Natanel's Personal Letter Card -->
+    <section class="glass-panel p-6 sm:p-10 space-y-6 text-right relative overflow-hidden">
+      <div class="absolute -top-12 -left-12 w-44 h-44 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-center gap-4 pb-4 border-b border-white/10">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-blue-400/40 flex items-center justify-center text-2xl shadow-inner shrink-0">
+          ✍️
+        </div>
+        <div>
+          <h2 class="font-space text-xl sm:text-2xl font-bold text-white">שלום לכולם, שמי נתנאל</h2>
+          <p class="text-xs sm:text-sm font-medium" style="color:var(--accent-blue);">מייסד ומפתח מערכת חשבונאוטיקה</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-sm sm:text-base leading-relaxed" style="color:rgba(234,240,250,0.92);">
+        <p>
+          אני כותב לכם כאן הסבר מכל הלב על המערכת שבניתי, הייעוד שלה, ואיך נוכל יחד איתכם לייצר מערך שיעזור לכל ילדי ישראל ללמוד חשבון בקלות, בסקרנות ובצורה חוויתית באמת.
+        </p>
+        <p>
+          המערכת מכילה <strong class="text-white font-bold underline decoration-indigo-400/60 decoration-2 underline-offset-4">10 סוגי תבניות חידתיות ייחודיות</strong> בחשבון, המאפשרות לילדים (בדגש על כיתות ד׳–ו׳ וגם כיתות היסוד א׳–ג׳) לתרגל חשבון בצורה ויזואלית שבה הם רואים ומרגישים את המתמטיקה זזה — במקום דפי עבודה משעממים.
+        </p>
+
+        <div class="p-4 sm:p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/25 space-y-2.5 my-4">
+          <p class="font-bold text-white flex items-center gap-2">
+            <span>🪐</span><span>החזון שמוביל אותנו:</span>
+          </p>
+          <ul class="space-y-2 text-xs sm:text-sm pr-2 text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>שלווה ונחת להורים:</strong> פתרון אמיתי לבעיית "הילד שלא רוצה ללמוד" בלי ויכוחים ומאבקים כל ערב.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>למידה אינטראקטיבית מעצימה:</strong> אתגר מחשבתי בקצב האישי של הילד, עם חוויית משחק מלאת ביטחון.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pilot nature transparency alert -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2 my-4">
+          <p class="font-bold text-amber-300 flex items-center gap-2 text-sm sm:text-base">
+            <span>⚠️</span><span>הבהרה חשובה על אופי הפיילוט הראשוני:</span>
+          </p>
+          <p class="text-xs sm:text-sm leading-relaxed text-amber-100/90">
+            מטרת הפיילוט היא לבדוק את חוויית הלמידה ואת אופן השימוש בפועל על ידי ילדים והורים. <strong>לכן יש מצב שלא הכל יעבוד חלק לגמרי בתחילת הדרך</strong>. 
+            אנחנו מלווים אתכם מקרוב, והסבלנות, הדיווחים והמשובים שלכם הם הכוח שמסייע לנו לדייק ולשפר את המערכת יחד איתכם!
+          </p>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-400">
+          לפניכם פירוט מלא של שלבי ההתחברות, כיצד להכין את הילד למשימה ומה תראו בכל מסך.
+        </p>
+      </div>
+    </section>
+
+    <!-- Step-by-Step Interactive Guide -->
+    <section id="steps" class="space-y-8 scroll-mt-24">
+      
+      <div class="text-center space-y-2">
+        <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:6px 14px;">
+          <span>🗺️</span><span>מסלול השיגור צעד-אחר-צעד</span>
+        </div>
+        <h2 class="font-space text-2xl sm:text-3xl font-bold">איך מצטרפים ומשגרים משימה?</h2>
+        <p class="text-xs sm:text-sm" style="color:var(--text-muted);">תהליך פשוט, מהיר ושקוף שלוקח פחות מ-2 דקות</p>
+      </div>
+
+      <!-- Step 1 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">1</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">התחברות עצמאית לדשבורד ההורים</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              נכנסים לדשבורד ההורים באמצעות חשבון Google שלכם בלחיצה אחת. אין צורך לזכור שמות משתמש או סיסמאות מורכבות.
+            </p>
+          </div>
+        </div>
+
+        <!-- UI Mockup 1: Sign in -->
+        <div class="mockup-window">
+          <div class="mockup-header">
+            <span class="text-xs font-mono text-slate-400">parent.aritmetica.app/login</span>
+            <div class="mockup-dots">
+              <div class="mockup-dot bg-rose-500/80"></div>
+              <div class="mockup-dot bg-amber-500/80"></div>
+              <div class="mockup-dot bg-emerald-500/80"></div>
+            </div>
+          </div>
+          <div class="p-6 text-center space-y-4">
+            <div class="w-12 h-12 mx-auto rounded-full bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-xl">
+              🛡️
+            </div>
+            <div>
+              <p class="text-base font-bold text-white">כניסה למרכז בקרת הורים</p>
+              <p class="text-xs text-slate-400">התחברו כדי לצפות בהתקדמות ולקבוע יעדים</p>
+            </div>
+            <div class="max-w-xs mx-auto">
+              <div class="p-3 rounded-xl bg-white text-slate-900 font-bold text-xs flex items-center justify-center gap-2.5 shadow-md">
+                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                <span>המשך באמצעות Google</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">2</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">הזנת טלפון וליווי אישי ב-WhatsApp</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              בשלב הבא תתבקשו להזין את שמכם ומספר הטלפון שלכם. הסוכן החכם שלנו ב-WhatsApp ישלח לכם הודעה לאחר כמה דקות וילווה אתכם לאורך כל הדרך.
+            </p>
+          </div>
+        </div>
+
+        <!-- UI Mockup 2: Phone & WhatsApp bubble -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="mockup-window p-5 space-y-3">
+            <p class="text-xs font-bold text-slate-300">פרטי התקשרות וליווי</p>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 flex justify-between">
+                <span>שם ההורה:</span>
+                <span class="font-bold text-white">נתנאל</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 flex justify-between">
+                <span>טלפון נייד:</span>
+                <span class="font-bold text-white font-mono">050-XXXXXXX</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+              <span>🔒</span><span>משמש ליצירת קשר וליווי בלבד</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0b141a] border border-[#1f2c34] text-right space-y-2 shadow-lg">
+            <div class="flex items-center gap-2 pb-2 border-b border-[#1f2c34]">
+              <div class="w-7 h-7 rounded-full bg-emerald-600 flex items-center justify-center text-xs text-white">🤖</div>
+              <div>
+                <p class="text-xs font-bold text-white">סוכן הליווי · חשבונאוטיקה</p>
+                <p class="text-[10px] text-emerald-400 font-medium">מחובר כעת בוואטסאפ</p>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-[#005c4b] text-white text-xs leading-relaxed max-w-[90%] mr-auto rounded-tr-none shadow">
+              היי נתנאל! 🚀 ראיתי שהתחברת לחשבונאוטיקה. אני כאן כדי לוודא שהשיגור של האסטרונאוט שלכם עובר חלק. צריכים עזרה בכל שלב? אני זמין כאן!
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">3</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">טקס יצירת אסטרונאוט ("הכן אסטרונאוט למשימה")</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              המטרה היא לייצר מתהליך ההתחברות <strong class="text-white">טקס מעצים עבור הילד</strong> שירגיש שהוא מקבל פרס ומשימה חשובה — ולא שיעורי בית. הוא אסטרונאוט במשימה, לא תלמיד בבית ספר!
+            </p>
+            <div class="inline-flex items-center gap-2 px-3 py-1 mt-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+              <span>🛡️</span>
+              <span>פרטיות מוחלטת: מזינים שם פרטי וכיתה בלבד (ללא איסוף שום פרט אישי נוסף).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- UI Mockup 3: Astronaut Card -->
+        <div class="mockup-window p-6 space-y-4">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-600/30 border border-indigo-400/40 flex items-center justify-center text-2xl">
+                👨‍🚀
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-white text-sm sm:text-base">הכן אסטרונאוט למשימה</p>
+                <p class="text-xs text-slate-400">הגדרת פרופיל חללי לקבלת קישור קסם</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+              שלב 2 מתוך 3
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-right">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">שם האסטרונאוט/ית:</label>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-indigo-500/30 text-sm text-white font-medium">
+                איתי 🚀
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">כיתה:</label>
+              <div class="grid grid-cols-3 gap-1.5">
+                <div class="p-2 text-center text-xs rounded-lg bg-indigo-600 text-white font-bold border border-indigo-400">כיתה ד׳</div>
+                <div class="p-2 text-center text-xs rounded-lg bg-white/5 text-slate-300 border border-white/10">כיתה ה׳</div>
+                <div class="p-2 text-center text-xs rounded-lg bg-white/5 text-slate-300 border border-white/10">כיתה ו׳</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">4</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">שיגור וקבלת "קישור קסם" ייעודי לילד</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              שיגרתם את הילד? מיד תקבלו <strong class="text-white">קישור קסם ייעודי</strong>. אם יש לו סמארטפון, טאבלט או מחשב — שולחים לו בוואטסאפ או פותחים ישירות. לחיצה אחת פותחת את המשחק מיידית ללא סיסמה.
+            </p>
+          </div>
+        </div>
+
+        <!-- UI Mockup 4: Magic Link -->
+        <div class="mockup-window p-5 space-y-4">
+          <div class="p-3.5 rounded-xl bg-indigo-950/60 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 text-right w-full sm:w-auto">
+              <span class="text-xl">✨</span>
+              <div>
+                <p class="text-xs font-bold text-white">קישור הקסם של איתי</p>
+                <p class="text-[11px] font-mono text-indigo-300 truncate max-w-[220px] sm:max-w-[300px]">https://aritmetica.nt-school.app/play?t=m_9f82...</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+              <button class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5">
+                <span>📲</span><span>שלח בוואטסאפ</span>
+              </button>
+              <button class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5">
+                <span>📋</span><span>העתק</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">5</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">בקרת שיגור והמראה: סנכרון התרגיל הראשון</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              ברגע שהילד פותח את המערכת ופותר את התרגיל הראשון שלו, המערכת מאמתת ומסנכרנת את הקשר בין מגרש המשחקים שלו לדשבורד שלכם — <strong class="text-white">בדיוק כמו חדר בקרה של נאס״א שמקבל אות מהחלל</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- UI Mockup 5: Mission Control Radar Handshake -->
+        <div class="mockup-window p-6 relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <!-- Radar circle -->
+              <div class="relative w-16 h-16 rounded-full border-2 border-emerald-500/40 bg-emerald-950/20 flex items-center justify-center shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 live-pulse"></div>
+                <div class="absolute inset-0 rounded-full border-t-2 border-emerald-400/80 radar-sweep"></div>
+              </div>
+              <div class="text-right space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <p class="font-bold text-white text-sm sm:text-base">בקרת שיגור: ממתין לפתרון תרגיל ראשון</p>
+                </div>
+                <p class="text-xs text-slate-400">איתי פתח את מגרש המשחקים · קליטת אות ראשונית מסונכרנת בזמן אמת</p>
+              </div>
+            </div>
+
+            <div class="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold text-center">
+              🛰️ מוכן להמראה למסלול!
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 6 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-6 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">6</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">דשבורד הניהול והלמידה שלכם</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              מיד לאחר פתרון התרגיל הראשון תעברו לדשבורד המלא. הנה מה שמחכה לכם שם:
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Progress Tab -->
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300">📊 לשונית התקדמות</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200">תמונת מצב</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              מציגה יכולות, דאטה בזמן אמת מתרגילי הילד, זיהוי נקודות שצריך לחזק ונקודות לשימור, ומדד מוטיבציה שבועי.
+            </p>
+            <!-- Mini Radar Preview -->
+            <div class="p-3 rounded-xl bg-black/30 border border-white/5 text-center text-xs space-y-2">
+              <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+                <span>כפל ולוח הכפל: 92%</span>
+                <span>שברים: 78%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full" style="width:85%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consistency Tab -->
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-300">🔥 לשונית התמדה וחוזה פרסים</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-200">מוטיבציה אישית</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              הגדרת יעד יומי (5-15 דק׳), מעקב רצף ימים (סטריק), וחוזה פרסים אופציונלי שבו אתם קובעים פרס משפחתי תמורת התמדה (התמדה ולא לחץ ביצועים!).
+            </p>
+            <!-- Mini Reward Card -->
+            <div class="p-3 rounded-xl bg-black/30 border border-white/5 text-right text-xs space-y-1">
+              <p class="font-bold text-amber-200">🎁 חוזה פעיל: 5 ימי תרגול</p>
+              <p class="text-[11px] text-slate-400">פרס נבחר: טיול גלידה משפחתי 🍦</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-slate-400 space-y-1">
+          <p class="font-bold text-slate-200">⚙️ בלשונית ההגדרות:</p>
+          <p>תוכלו לנהל עד 2 ילדים ששוגרו למשימה, לאשר התראות פוש, לצפות במדיניות פרטיות והצהרת נגישות ועוד.</p>
+        </div>
+      </article>
+
+      <!-- Step 7 -->
+      <article class="glass-panel p-6 sm:p-8 space-y-5 text-right">
+        <div class="flex items-start gap-4">
+          <div class="step-badge">7</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg sm:text-xl font-bold text-white">התקנה למסך הבית (PWA) וסיום ההגדרה</h3>
+            <p class="text-xs sm:text-sm leading-relaxed" style="color:var(--text-muted);">
+              סוכן ה-WhatsApp יוודא שאתם מסתדרים, וינחה אתכם להפעיל התראות ולהוסיף את המערכת למסך הבית שלכם ושל הילד — פעולה קצרה של 10 שניות שעוזרת להתמיד.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/25 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1 text-right">
+            <p class="font-bold text-white text-sm">✨ זהו! סיימתם להתחבר, להתקין ולאשר התראות</p>
+            <p class="text-xs text-slate-300">
+              מעכשיו אתם יכולים לשבת רגל על רגל ולראות את הילדים שלכם מתרגלים ומתקדמים בכיף. הסוכן בווטסאפ ישלח לכם סיכום שבועי או יתזכר אתכם כשצריך.
+            </p>
+          </div>
+          <div class="text-3xl shrink-0">🧘‍♀️</div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Pilot Superpower: Feedback Button -->
+    <section class="glass-panel p-6 sm:p-10 space-y-5 text-right border-amber-500/30 bg-gradient-to-br from-amber-950/20 via-transparent to-transparent">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 flex items-center justify-center text-xl font-bold">
+          ❗
+        </div>
+        <div>
+          <h2 class="font-space text-xl sm:text-2xl font-bold text-white">אתם קבוצת פיילוט — ויש לכם השפעה ישירה!</h2>
+          <p class="text-xs sm:text-sm text-amber-300/90 font-medium">כפתור המשוב הייעודי ❗ זמין עבורכם ועבור הילד</p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        בכל מסך במערכת מופיע כפתור <strong>❗</strong>. תוכלו לדווח על בעיות, תקלות, אתגרים שעלו במהלך התרגול ולהציע רעיונות חדשים. כל מסקנה ורעיון שתעזרו לנו לגבש יספקו לנו כלים לשפר את חווית הלמידה של הילד ואת חווית הבקרה שלכם.
+      </p>
+    </section>
+
+    <!-- Pricing & Commitment Fee -->
+    <section class="glass-panel p-6 sm:p-10 text-center space-y-5 border-indigo-500/30">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold">
+        <span>🔥</span>
+        <span>מחיר מיוחד לקבוצת הפיילוט הראשונית</span>
+      </div>
+
+      <h2 class="font-space text-3xl sm:text-4xl font-extrabold text-white">50 ₪ לחודש (עד 2 ילדים)</h2>
+      
+      <p class="text-xs sm:text-sm max-w-xl mx-auto leading-relaxed" style="color:var(--text-muted);">
+        במקום 100 ₪. למה 50 ש״ח? גם כדמי רצינות (כי בדרך כלל מה שבא בחינם קל יותר לא לקחת ברצינות), וגם כדי לסייע בכיסוי הוצאות התפעול, השרתים והפיתוח השוטף.
+      </p>
+
+      <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 max-w-md mx-auto text-xs text-indigo-200 flex items-center justify-center gap-2">
+        <span>🎁</span>
+        <span>14 ימי ניסיון מלאים ללא התחייבות + ליווי אישי בוואטסאפ</span>
+      </div>
+
+      <div class="pt-2">
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base !py-3.5 !px-8 shadow-xl">
+          הצטרפות לפיילוט וכניסה לדשבורד 🚀
+        </a>
+      </div>
+    </section>
+
+    <!-- Community & Mutual Support -->
+    <section class="glass-panel p-6 sm:p-8 text-center space-y-4">
+      <div class="text-2xl">🤝</div>
+      <h3 class="font-space text-lg sm:text-xl font-bold text-white">כוח משותף להורים</h3>
+      <p class="text-xs sm:text-sm max-w-xl mx-auto text-slate-300 leading-relaxed">
+        יש לכם כוח אדיר יחד כהורים לעזור אחד לשני, לשתף טיפים ורעיונות איך אתם מעודדים את הילדים לתרגל וללמוד בכיף.
+      </p>
+      <p class="text-sm font-bold text-emerald-400">
+        שיהיה לכולנו בהצלחה ומסע מופלא לעבר למידה במסלול אחר! 🌟
+      </p>
+    </section>
+
+    <!-- Final Direct CTA Sticky/Bottom Card -->
+    <div class="p-6 rounded-3xl bg-gradient-to-r from-blue-600/20 via-indigo-600/25 to-purple-600/20 border border-indigo-500/40 text-center space-y-4 shadow-2xl">
+      <h3 class="font-space text-xl sm:text-2xl font-bold text-white">מוכנים לצאת לדרך?</h3>
+      <p class="text-xs sm:text-sm text-slate-300">התחברו כעת והכינו את האסטרונאוט שלכם לשיגור ראשון:</p>
+      <div>
+        <a href="https://aritmetica.nt-school.app/parent" target="_blank" rel="noopener" class="glass-btn glass-btn-primary text-base font-bold !py-4 !px-10 shadow-indigo-500/50">
+          כניסה ישירה לדשבורד הורים (aritmetica.nt-school.app/parent) 🚀
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="py-8 px-5 text-center text-xs relative z-10 space-y-3" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+    <div class="flex flex-wrap justify-center items-center gap-3">
+      <a href="index.html" style="color:var(--text-muted); text-decoration:underline;">דף הבית</a>
+      <span>·</span>
+      <a href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+      <span>·</span>
+      <a href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+      <span>·</span>
+      <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+      <span>·</span>
+      <a href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    </div>
+    <p>© 2026 חשבונאוטיקה · כל הזכויות שמורות לנבחרת הפיילוט</p>
+  </footer>
+
+  <script src="assets/black-hole.js"></script>
+  <script src="assets/starfield.js"></script>
+  <script>
+    if (typeof initBlackHole === 'function') {
+      initBlackHole({ coreXRatio: 0.88, coreYRatio: 0.20, driftPerScrollPx: 0.1, growPerScrollPx: 0.04, maxGrowth: 50 });
+    }
+    if (typeof initStarfield === 'function') {
+      initStarfield();
+    }
+  </script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script>
+    if (typeof initAccessibilityWidget === 'function') initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'parent_pilot_view', { page: document.title });
+  </script>
+</body>
+</html>
