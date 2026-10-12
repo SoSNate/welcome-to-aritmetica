@@ -23,10 +23,57 @@ html { scroll-behavior: smooth; }
 
 html.a11y-large-text { font-size: 118%; }
 
+/* Navbar resilience when accessibility text is enlarged */
+nav .glass-panel {
+  min-height: 48px;
+}
+
+html.a11y-large-text nav .glass-panel {
+  padding-left: clamp(8px, 2vw, 20px) !important;
+  padding-right: clamp(8px, 2vw, 20px) !important;
+  gap: 8px !important;
+}
+
+html.a11y-large-text nav .glass-btn {
+  padding: 6px 12px !important;
+  font-size: 13px !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* Ensure mobile navbar never overflows regardless of text magnification */
+@media (max-width: 639px) {
+  nav .nav-secondary-btn {
+    display: none !important;
+  }
+  nav .glass-btn-primary {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  html.a11y-large-text nav .glass-btn-primary {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+  html.a11y-large-text nav a.font-space {
+    font-size: 14px !important;
+  }
+}
+
 html.a11y-high-contrast { --text-muted: rgba(255, 255, 255, 0.92); --border-panel: rgba(255, 255, 255, 0.35); }
 html.a11y-high-contrast body { background-color: #000000; }
 html.a11y-high-contrast .glass-panel { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.4); }
 html.a11y-high-contrast .glass-btn { border-color: rgba(255, 255, 255, 0.5); }
+html.a11y-high-contrast .glass-btn-primary {
+  background: #8AB4FF !important;
+  color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 800 !important;
+}
 
 body {
   background-color: var(--bg-deep);
