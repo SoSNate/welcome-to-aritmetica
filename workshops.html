@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סדנת הוראה מלאכותית | סדנאות AI מעשיות לצוותי חינוך והוראה</title>
+  <meta name="description" content="סדנאות בינה מלאכותית מעשיות לצוותי הוראה ובתי ספר יסודיים: חיסכון של שעות עבודה, בניית משחקי למידה אינטראקטיביים והפקת חומרי הוראה חיים לכיתה.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Assistant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Assistant', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          },
+          boxShadow: {
+            'subtle': '0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'card': '0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03)',
+            'card-hover': '0 20px 35px -5px rgba(2, 132, 199, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom print styles for the order confirmation modal */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printArea, #printArea * {
+        visibility: visible;
+      }
+      #printArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-sky-100 selection:text-sky-900 min-h-screen flex flex-col">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-sky-900 via-brand-800 to-indigo-950 text-white text-xs py-2 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span>ההרשמה פתוחה לסדנאות צוותי הוראה לשנת הלימודים תשפ״ז • מותאם לתקציבי גפ״ן ומוסדות</span>
+    <span class="hidden md:inline text-sky-300">|</span>
+    <a href="#order-section" class="hidden md:inline underline hover:text-sky-200 font-bold transition-colors">הפקת הצעת מחיר מיידית &larr;</a>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-40 transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-brand-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-extrabold text-slate-900 text-lg sm:text-xl tracking-tight block leading-tight">סדנת הוראה מלאכותית</span>
+          <span class="text-[11px] font-semibold text-sky-600 block">תוצרים מעשיים לחינוך והוראה</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <a href="#tracks" class="hover:text-sky-600 transition-colors">מסלולי הסדנאות</a>
+        <a href="#order-section" class="text-sky-700 bg-sky-50 hover:bg-sky-100 px-3.5 py-1.5 rounded-lg border border-sky-200/60 transition-all flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          הזמנת מפגש והצעת מחיר
+        </a>
+        <a href="#cheshbonautica" class="hover:text-amber-600 transition-colors">מיזם חשבונאוטיקה</a>
+        <a href="#faq" class="hover:text-sky-600 transition-colors">שאלות נפוצות</a>
+      </nav>
+
+      <!-- Contact Quick Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:0535303607" 
+           class="hidden lg:flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl transition-colors">
+          <svg class="w-3.5 h-3.5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <span>053-530-3607</span>
+        </a>
+        <a href="https://wa.me/972535303607?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C,%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%94%D7%95%D7%A8%D7%90%D7%94%20%D7%9E%D7%9C%D7%90%D7%9Java%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA%20%D7%A9%D7%9C%D7%A0%D7%95" 
+           target="_blank"
+           class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 sm:px-4 py-2 rounded-xl transition-all shadow-sm shadow-emerald-600/20 hover:scale-[1.02]">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.586 1.83.896 2.796.896 3.183 0 5.769-2.587 5.77-5.767 0-3.18-2.587-5.784-5.77-5.784zm7.969 5.766c-.001 4.397-3.578 7.973-7.97 7.973-1.378 0-2.673-.357-3.805-.98l-4.225 1.107 1.127-4.12c-.689-1.189-1.072-2.57-1.072-3.98 0-4.398 3.578-7.975 7.975-7.975 4.392 0 7.97 3.576 7.97 7.975z"/></svg>
+          <span>וואטסאפ לתיאום</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-14 pb-16 px-4 sm:px-6 max-w-5xl mx-auto text-center relative overflow-hidden">
+    <!-- Subtle Background Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+    <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-sky-100/80 border border-sky-200 text-sky-800 text-xs sm:text-sm font-bold mb-6 tracking-wide shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+      חינוך יסודי ועל-יסודי מעשי • ללא צורך ברקע טכנולוגי
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-[1.15] mb-6 tracking-tight">
+      מסמינר תיאורטי – <br class="hidden sm:inline">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-brand-600 to-indigo-600">לתוצרים פעילים בכיתה</span>
+    </h1>
+
+    <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed mb-8">
+      פתרונות בינה מלאכותית מותאמים אישית לצוותי הוראה: חיסכון של שעות עבודה שבועיות, בניית משחקי למידה אינטראקטיביים והפקת חומרי הוראה מרהיבים בקלות ובמהירות.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-12">
+      <a href="#order-section" 
+         class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-base shadow-lg shadow-sky-600/25 hover:shadow-sky-600/35 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span>הזמנת מפגש והצעת מחיר</span>
+      </a>
+      <a href="#tracks" 
+         class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold text-base border border-slate-300/80 shadow-sm transition-all flex items-center justify-center gap-2">
+        <span>סקירת מסלולי הסדנאות</span>
+        <svg class="w-4 h-4 text-slate-400 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Value Badges -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto pt-6 border-t border-slate-200/70 text-right">
+      <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-900">חיסכון משמעותי בזמן</h4>
+          <p class="text-[11px] text-slate-500">הכנת מערכי שיעור ומבדקים ברגע</p>
+        </div>
+      </div>
+
+      <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-900">תוצרים חיים לכיתה</h4>
+          <p class="text-[11px] text-slate-500">משחקים ודפי עבודה אינטראקטיביים</p>
+        </div>
+      </div>
+
+      <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-900">לכל תחומי הדעת</h4>
+          <p class="text-[11px] text-slate-500">שפה, חשבון, אנגלית, מדעים ותנ״ך</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tracks Grid -->
+  <section id="tracks" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 scroll-mt-20">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
+        3 מסלולים מובנים
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2">בחרו את המסלול המתאים ביותר לצוות שלכם</h2>
+      <p class="text-sm text-slate-500">כל סדנה מלווה בתרגול מעשי והפקת תוצרים שהמורים לוקחים ישירות לכיתות</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+
+      <!-- Track 1: NotebookLM -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 flex flex-col justify-between shadow-card hover:shadow-card-hover transition-all duration-200 group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-extrabold text-slate-400 group-hover:text-sky-600 transition-colors">מסלול 01</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full">מפגש ממוקד</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-1">יסודות ממוקדים: NotebookLM</h3>
+          <p class="text-xs text-slate-500 mb-4 font-medium">מפגש ממוקד אחד (כשעתיים אקדמיות)</p>
+          
+          <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+            היכרות מעשית עם כלי העבודה המדויק <strong>NotebookLM</strong> להפקת תוצרי הוראה איכותיים ישירות מתוך ספרי לימוד וטקסטים קיימים – ללא הזיות מידע.
+          </p>
+
+          <ul class="text-xs space-y-3 text-slate-600 mb-6 border-t border-slate-100 pt-5">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>הפיכת מערכי שיעור קיימים לכרטיסיות תרגול וחזרה</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>יצירת שאלונים אמריקאיים ודפי מבדק מבוססי מקור</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>דיפרנציאציה: סיכומים מותאמים לרמות קריאה שונות</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>הסבר פשוט, קל ונגיש לכל מורה</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-5 border-t border-slate-100 flex items-center justify-between">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">השקעה</span>
+            <span class="text-xl font-extrabold text-slate-800">150 ₪ <span class="text-xs font-normal text-slate-500">/ משתתף</span></span>
+          </div>
+          <button onclick="selectTrackAndScroll('יסודות ממוקדים - NotebookLM', 150)" 
+                  class="text-xs font-bold text-sky-700 hover:text-white bg-sky-50 hover:bg-sky-600 border border-sky-200/80 hover:border-transparent px-3.5 py-2 rounded-xl transition-all shadow-sm">
+            הזמן מסלול זה &larr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 2: Gemini Workshop (Featured / Recommended) -->
+      <div class="bg-white rounded-2xl border-2 border-sky-500 p-6 sm:p-7 flex flex-col justify-between shadow-card-hover relative md:-translate-y-2 ring-4 ring-sky-50">
+        <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-sky-600 to-brand-600 text-white text-[11px] font-extrabold px-3.5 py-1 rounded-full tracking-wide shadow-md flex items-center gap-1">
+          <span>⭐ המסלול הנבחר והמומלץ</span>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-3 mt-1">
+            <span class="text-xs font-extrabold text-sky-600">מסלול 02</span>
+            <span class="text-[11px] font-bold bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded-full">סדרה שלמה</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-1">סדנת פיתוח מעשית עם Gemini</h3>
+          <p class="text-xs text-sky-700 mb-4 font-semibold">סדרה מעשית (2-3 מפגשים מונחים)</p>
+          
+          <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+            תהליך שלם מהרעיון הפדגוגי ועד למוצר אינטראקטיבי מוגמר. בניית דפי למידה עצמאיים, משחקי תרגול חיים ומאגר בית-ספרי משותף.
+          </p>
+
+          <ul class="text-xs space-y-3 text-slate-600 mb-6 border-t border-slate-100 pt-5">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-sky-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>בניית דפי תרגול ומשחקי HTML מקומיים</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-sky-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>שילוב משוב מיידי לתלמיד ושמירת נתונים מקומית</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-sky-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>הפצה ישירה ופשוטה ברשת (Netlify) לשימוש התלמידים</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-sky-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>עבודה בצוותי מקצוע: שפה, אנגלית, מדעים, תנ״ך וחשבון</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-5 border-t border-slate-100 flex items-center justify-between">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">השקעה לכל הסדרה</span>
+            <span class="text-xl font-extrabold text-sky-900">450 ₪ <span class="text-xs font-normal text-slate-500">/ משתתף</span></span>
+          </div>
+          <button onclick="selectTrackAndScroll('סדנת פיתוח עם Gemini', 450)" 
+                  class="text-xs font-bold text-white bg-sky-600 hover:bg-sky-700 px-4 py-2 rounded-xl transition-all shadow-md shadow-sky-600/20 hover:scale-[1.02]">
+            הזמן סדרה מומלצת &larr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 3: Claude Masterclass -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 flex flex-col justify-between shadow-card hover:shadow-card-hover transition-all duration-200 group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-extrabold text-slate-400 group-hover:text-indigo-600 transition-colors">מסלול 03</span>
+            <span class="text-[11px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded-full">למתקדמים</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-1">מאסטרקלאס Claude</h3>
+          <p class="text-xs text-indigo-600 mb-4 font-semibold">סדנת עומק אינטנסיבית (כשלוש שעות)</p>
+          
+          <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+            עבודה עם מנוע החשיבה והקוד המתקדם של Claude לפיתוח אפליקציות למידה שלמות, מורכבות ומותאמות אישית לצרכים מוסדיים.
+          </p>
+
+          <ul class="text-xs space-y-3 text-slate-600 mb-6 border-t border-slate-100 pt-5">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>פיתוח מיני-אפליקציות וממשקים פדגוגיים מתקדמים</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>רמת דיוק גבוהה ביותר בטקסטים ובלוגיקה</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>התאמה אישית מלאה לתכנית הלימודים הבית-ספרית</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>אידיאלי למובילי חדשנות, רכזי תקשוב ומורים מנוסים</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-5 border-t border-slate-100 flex items-center justify-between">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">השקעה</span>
+            <span class="text-xl font-extrabold text-slate-800">250 ₪ <span class="text-xs font-normal text-slate-500">/ משתתף</span></span>
+          </div>
+          <button onclick="selectTrackAndScroll('מאסטרקלאס Claude', 250)" 
+                  class="text-xs font-bold text-indigo-700 hover:text-white bg-indigo-50 hover:bg-indigo-600 border border-indigo-200/80 hover:border-transparent px-3.5 py-2 rounded-xl transition-all shadow-sm">
+            הזמן מסלול זה &larr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Order Section (The Core Feature) -->
+  <section id="order-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-12 scroll-mt-20">
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+      
+      <!-- Section Header -->
+      <div class="bg-gradient-to-r from-slate-900 via-brand-900 to-sky-900 text-white p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="inline-block py-1 px-3 rounded-full bg-sky-500/20 text-sky-200 text-xs font-bold mb-2 border border-sky-400/30">
+              מערכת הזמנת מפגשים והצעות מחיר
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold">תכנון והזמנת סדנה לבית הספר</h2>
+            <p class="text-sm text-sky-200/80 mt-1">הזינו את כמות המשתתפים לקבלת הצעת מחיר מדויקת ושיבוץ מועד מפגש</p>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/10 shrink-0 text-center sm:text-right">
+            <span class="block text-[11px] text-sky-200 font-medium">ללא צורך בתשלום באתר</span>
+            <span class="text-xs font-bold text-white flex items-center justify-center sm:justify-start gap-1">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              הפקת הזמנה מוסדית רשמית
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <form id="workshopOrderForm" onsubmit="handleOrderSubmit(event)" class="p-6 sm:p-8 space-y-8">
+        
+        <!-- Step 1: Select Track -->
+        <div>
+          <label class="block text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 text-xs flex items-center justify-center font-extrabold">1</span>
+            בחירת מסלול הסדנה:
+          </label>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <!-- Radio 1 -->
+            <label class="relative flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all border-slate-200 hover:border-sky-300 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50/50">
+              <input type="radio" name="workshopTrack" value="יסודות ממוקדים - NotebookLM" data-price="150" class="sr-only" onchange="calculateOrderTotal()">
+              <span class="text-xs font-bold text-slate-400 block mb-1">מסלול 01</span>
+              <span class="text-sm font-extrabold text-slate-900 block">יסודות: NotebookLM</span>
+              <span class="text-xs text-slate-500 mt-1 block">מפגש ממוקד (כשעתיים)</span>
+              <span class="text-sm font-bold text-sky-700 mt-3 pt-2 border-t border-slate-100 block">150 ₪ <span class="text-[11px] font-normal text-slate-500">/ משתתף</span></span>
+            </label>
+
+            <!-- Radio 2 (Default Checked) -->
+            <label class="relative flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all border-sky-500 bg-sky-50/40 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50/70 shadow-sm">
+              <span class="absolute -top-2.5 right-3 bg-sky-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full">נבחר מומלץ</span>
+              <input type="radio" name="workshopTrack" value="סדנת פיתוח עם Gemini" data-price="450" class="sr-only" checked onchange="calculateOrderTotal()">
+              <span class="text-xs font-bold text-sky-600 block mb-1">מסלול 02</span>
+              <span class="text-sm font-extrabold text-slate-900 block">סדנת פיתוח Gemini</span>
+              <span class="text-xs text-slate-500 mt-1 block">סדרה מעשית (2-3 מפגשים)</span>
+              <span class="text-sm font-bold text-sky-700 mt-3 pt-2 border-t border-slate-100 block">450 ₪ <span class="text-[11px] font-normal text-slate-500">/ לכל הסדרה</span></span>
+            </label>
+
+            <!-- Radio 3 -->
+            <label class="relative flex flex-col p-4 rounded-xl border-2 cursor-pointer transition-all border-slate-200 hover:border-sky-300 has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50/50">
+              <input type="radio" name="workshopTrack" value="מאסטרקלאס Claude" data-price="250" class="sr-only" onchange="calculateOrderTotal()">
+              <span class="text-xs font-bold text-slate-400 block mb-1">מסלול 03</span>
+              <span class="text-sm font-extrabold text-slate-900 block">מאסטרקלאס Claude</span>
+              <span class="text-xs text-slate-500 mt-1 block">למתקדמים (3 שעות עומק)</span>
+              <span class="text-sm font-bold text-sky-700 mt-3 pt-2 border-t border-slate-100 block">250 ₪ <span class="text-[11px] font-normal text-slate-500">/ משתתף</span></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2: Participants Count & Live Calculator -->
+        <div>
+          <label class="block text-sm font-bold text-slate-800 mb-3 flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 text-xs flex items-center justify-center font-extrabold">2</span>
+              כמות משתתפים בצוות:
+            </span>
+            <span class="text-xs font-semibold text-slate-500">בחרו כמות אנשי הוראה שייקחו חלק בסדנה</span>
+          </label>
+
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <!-- Stepper Controls -->
+            <div class="flex items-center gap-3 w-full md:w-auto">
+              <button type="button" onclick="adjustParticipants(-1)" 
+                      class="w-11 h-11 rounded-xl bg-white border border-slate-200 text-slate-700 font-extrabold hover:bg-slate-100 flex items-center justify-center transition-colors text-lg shadow-sm">
+                -
+              </button>
+              
+              <div class="relative flex-1 md:w-32">
+                <input type="number" id="participantsCount" name="participantsCount" value="12" min="1" max="150" 
+                       class="w-full text-center text-xl font-extrabold text-slate-900 bg-white border border-slate-200 rounded-xl py-2 shadow-inner focus:outline-none focus:ring-2 focus:ring-sky-500" 
+                       oninput="calculateOrderTotal()">
+                <span class="text-[10px] text-slate-400 block text-center mt-1">אנשי צוות</span>
+              </div>
+
+              <button type="button" onclick="adjustParticipants(1)" 
+                      class="w-11 h-11 rounded-xl bg-white border border-slate-200 text-slate-700 font-extrabold hover:bg-slate-100 flex items-center justify-center transition-colors text-lg shadow-sm">
+                +
+              </button>
+            </div>
+
+            <!-- Preset Buttons -->
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs text-slate-400 font-medium ml-1">גדלי צוות נפוצים:</span>
+              <button type="button" onclick="setParticipants(6)" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-sky-500 text-slate-700 shadow-sm transition-colors">צוות מוביל (6)</button>
+              <button type="button" onclick="setParticipants(12)" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-sky-500 text-slate-700 shadow-sm transition-colors">צוות שכבה (12)</button>
+              <button type="button" onclick="setParticipants(25)" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-sky-500 text-slate-700 shadow-sm transition-colors">כלל המורים (25)</button>
+            </div>
+
+            <!-- Live Calculation Summary Box -->
+            <div class="bg-gradient-to-br from-sky-600 to-brand-700 text-white p-4 rounded-xl shadow-md w-full md:w-56 text-center">
+              <span class="text-[11px] font-semibold text-sky-100 block">סה״כ לתשלום משוער:</span>
+              <div class="text-2xl font-black mt-0.5" id="liveTotalPrice">5,400 ₪</div>
+              <span class="text-[10px] text-sky-200 mt-1 block" id="calculationBreakdown">12 משתתפים × 450 ₪</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 3: School & Contact Details -->
+        <div>
+          <label class="block text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-700 text-xs flex items-center justify-center font-extrabold">3</span>
+            פרטי המוסד החינוכי ואיש הקשר:
+          </label>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="institution" class="block text-xs font-bold text-slate-600 mb-1">שם בית הספר / המוסד: *</label>
+              <input type="text" id="institution" name="institution" required placeholder="לדוגמה: בי״ס אילנות, ירושלים" 
+                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-slate-50/50">
+            </div>
+
+            <div>
+              <label for="contactName" class="block text-xs font-bold text-slate-600 mb-1">שם איש / אשת הקשר: *</label>
+              <input type="text" id="contactName" name="contactName" required placeholder="שם פרטי ומשפחה" 
+                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-slate-50/50">
+            </div>
+
+            <div>
+              <label for="phone" class="block text-xs font-bold text-slate-600 mb-1">מספר טלפון נייד: *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="לדוגמה: 050-1234567" 
+                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-slate-50/50">
+            </div>
+
+            <div>
+              <label for="email" class="block text-xs font-bold text-slate-600 mb-1">כתובת דוא״ל: *</label>
+              <input type="email" id="email" name="email" required placeholder="למשל: teacher@school.org.il" 
+                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-slate-50/50">
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="notes" class="block text-xs font-bold text-slate-600 mb-1">מועד מבוקש / הערות ובקשות מיוחדות:</label>
+              <textarea id="notes" name="notes" rows="2" placeholder="למשל: נרצה לקיים את המפגש ביום היערכות בתחילת החודש, דגש על מורי שפה וחשבון..." 
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-slate-50/50"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button & Disclaimer -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-slate-500 text-center sm:text-right">
+            <span>🔒 הפרטים ישמשו אך ורק ליצירת קשר לתיאום הסדנה.</span>
+            <span class="block text-[11px] text-slate-400 mt-0.5">לאחר לחיצה תופק הזמנה רשמית וניצור קשר לשיבוץ מועד.</span>
+          </div>
+
+          <button type="submit" id="submitOrderBtn" 
+                  class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-sky-600 to-brand-700 hover:from-sky-700 hover:to-brand-800 text-white font-extrabold text-base shadow-lg shadow-sky-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <span>הפקת הזמנה ושליחה לתיאום ✨</span>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Special Spotlight: Cheshbonautica -->
+  <section id="cheshbonautica" class="max-w-6xl mx-auto px-4 sm:px-6 py-10 scroll-mt-20">
+    <div class="bg-gradient-to-br from-amber-50 via-orange-50/60 to-amber-100/40 border border-amber-200 rounded-3xl p-6 sm:p-9 shadow-subtle flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
+      
+      <div class="space-y-3 text-center lg:text-right max-w-2xl">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-200/80 text-amber-900 text-xs font-extrabold">
+          <span>🚀</span>
+          <span>הזדמנות בלעדית למורי חשבון ומתמטיקה</span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">הצטרפות לצוות המוביל: מיזם ״חשבונאוטיקה״</h3>
+        <p class="text-sm text-slate-700 leading-relaxed font-normal">
+          מערכת ייעודית למשחקי למידה חשבוניים לילדים ולכיתות יסודי. אנו מגבשים קבוצה נבחרת של מורי מתמטיקה לקחת חלק בפיתוח, התנסות מעשית והובלת המיזם – במודל שיתופי ייחודי הכולל גישה מוקדמת וליווי אישי.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto">
+        <a href="https://wa.me/972535303607?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C,%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%95%D7%A8%D7%94%20%D7%9C%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A6%D7%98%D7%A8%D7%A4%D7%95%D7%AA%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA%20%D7%94%D7%9E%D7%95%D7%91%D7%99%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%90%D7%95%D7%98%D7%99%D7%A7%D7%94" 
+           target="_blank"
+           class="bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md shadow-amber-600/20 text-center flex items-center justify-center gap-2">
+          <span>תיאום והצטרפות אישית בוואטסאפ</span>
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://welcome-to-hesbonautika.nt-school.app" target="_blank" 
+           class="bg-white/80 hover:bg-white text-amber-900 border border-amber-300 font-bold text-xs px-4 py-2.5 rounded-xl transition-colors text-center">
+          צפייה באתר חשבונאוטיקה &larr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 py-12 scroll-mt-20">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">שאלות נפוצות של צוותי הוראה ומנהלים</h2>
+      <p class="text-sm text-slate-500">כל מה שחשוב לדעת לקראת תיאום הסדנה</p>
+    </div>
+
+    <div class="space-y-4">
+      <details class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm group" open>
+        <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+          <span>האם נדרש רקע טכנולוגי מוקדם מצד המורים?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          ממש לא. הסדנאות נבנו בדיוק מתוך ההבנה שעומס ההוראה רב. ההדרכה מועברת בגובה העיניים, בשפה ברורה ומתוך דוגמאות מוחשיות מעולם הכיתה. כל מורה מייצר תוצר כבר במהלך המפגש.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm group">
+        <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+          <span>כיצד מתבצע התשלום עבור בית הספר?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          התשלום מוסדר כהזמנת עבודה מוסדית רשמית עם חשבונית מס / קבלה כחוק. מתאים לתקציבי גפ״ן (גמישות פדגוגית ניהולית), סל רווחה ותרבות או תקציבי הדרכה בית-ספריים.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm group">
+        <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+          <span>האם הסדנה מתקיימת פיזית בבית הספר או באופן מקוון?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          ניתן לבחור בהתאם לנוחות הצוות: סדנה פרונטלית בחדר המחשבים בבית הספר או מפגש מקוון ואינטראקטיבי בזום עם הנחיה ותרגול מעשי צעד-אחר-צעד.
+        </p>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm group">
+        <summary class="font-bold text-slate-900 cursor-pointer flex items-center justify-between">
+          <span>איזה ציוד נדרש להשתתפות בסדנה?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+          מחשב (נייד או נייח) עם חיבור לאינטרנט ודפדפן Google Chrome מעודכן. כל הכלים שנלמדים פועלים ישירות מהדפדפן ללא צורך בהתקנת תוכנות כבדות.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Printable / Confirmation Modal -->
+  <div id="orderModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
+      
+      <!-- Printable Order Voucher -->
+      <div id="printArea" class="p-6 sm:p-8">
+        
+        <div class="text-center pb-5 border-b border-slate-200">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3 shadow-inner">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-extrabold rounded-full mb-1">
+            ההזמנה נקלטה בהצלחה!
+          </span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">טופס הזמנת סדנת הוראה מלאכותית</h3>
+          <p class="text-xs text-slate-500 mt-1">מספר הזמנה רשמי: <strong id="modalOrderId" class="text-sky-700 font-mono text-sm">ORD-202610-0000</strong></p>
+        </div>
+
+        <div class="py-5 space-y-3 text-sm">
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">מוסד חינוכי:</span>
+            <span id="modalInstitution" class="font-bold text-slate-800">בי״ס</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">איש קשר:</span>
+            <span id="modalContact" class="font-bold text-slate-800">שם</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">טלפון ליצירת קשר:</span>
+            <span id="modalPhone" class="font-bold text-slate-800" dir="ltr">050-0000000</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">דוא״ל:</span>
+            <span id="modalEmail" class="font-medium text-slate-800" dir="ltr">email@example.com</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">מסלול סדנה:</span>
+            <span id="modalTrack" class="font-bold text-sky-700">סדנת פיתוח עם Gemini</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500 font-medium">כמות משתתפים:</span>
+            <span id="modalParticipants" class="font-bold text-slate-800">12 אנשי צוות</span>
+          </div>
+          <div class="flex justify-between py-2.5 bg-sky-50 px-3 rounded-xl border border-sky-100">
+            <span class="text-sky-900 font-bold">סה״כ לתשלום משוער:</span>
+            <span id="modalTotal" class="font-black text-sky-700 text-base">5,400 ₪</span>
+          </div>
+        </div>
+
+        <div class="text-[11px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-100 leading-relaxed text-center">
+          נציגנו (נתנאל) ייצור עמכם קשר בהקדם לתיאום מועד סופי והעברת סילבוס מפורט.
+          <br>
+          לשאלות ישירות: <strong>053-530-3607</strong> | <strong>12natanel@gmail.com</strong>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons (no-print) -->
+      <div class="p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-3 no-print">
+        <a id="modalWhatsAppBtn" href="#" target="_blank" 
+           class="w-full sm:flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs text-center flex items-center justify-center gap-1.5 transition-colors shadow-sm">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.586 1.83.896 2.796.896 3.183 0 5.769-2.587 5.77-5.767 0-3.18-2.587-5.784-5.77-5.784zm7.969 5.766c-.001 4.397-3.578 7.973-7.97 7.973-1.378 0-2.673-.357-3.805-.98l-4.225 1.107 1.127-4.12c-.689-1.189-1.072-2.57-1.072-3.98 0-4.398 3.578-7.975 7.975-7.975 4.392 0 7.97 3.576 7.97 7.975z"/></svg>
+          <span>שליחת ההזמנה בוואטסאפ לנתנאל</span>
+        </a>
+
+        <button onclick="window.print()" 
+                class="w-full sm:w-auto py-3 px-4 rounded-xl bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm">
+          <svg class="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>הדפסה / שמירה כ-PDF</span>
+        </button>
+
+        <button onclick="closeModal()" 
+                class="w-full sm:w-auto py-3 px-4 rounded-xl text-slate-500 hover:text-slate-800 text-xs font-semibold">
+          סגור
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-12 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="text-center md:text-right">
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+          <span class="w-3 h-3 rounded-full bg-sky-500"></span>
+          <span class="font-extrabold text-slate-900 text-lg">סדנת הוראה מלאכותית</span>
+        </div>
+        <p class="text-xs text-slate-500 max-w-md leading-relaxed">
+          פיתוח מיומנויות בינה מלאכותית מעשיות לצוותי חינוך והוראה. יצירת תוצרים חיים לכיתה בהתאמה אישית לתכנית הלימודים.
+        </p>
+        <p class="text-[11px] text-slate-400 mt-2">
+          מופעל תחת רשת החינוך והיוזמות <strong>nt-school.app</strong>
+        </p>
+      </div>
+
+      <!-- Contact Info Card -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2 text-center md:text-right w-full sm:w-auto">
+        <div class="font-bold text-slate-800 text-sm mb-1">יצירת קשר ישירה:</div>
+        
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="text-slate-400">👤 איש קשר:</span>
+          <span class="font-bold text-slate-800">נתנאל</span>
+        </div>
+
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="text-slate-400">📱 טלפון / וואטסאפ:</span>
+          <a href="tel:0535303607" class="font-bold text-sky-700 hover:underline" dir="ltr">053-530-3607</a>
+        </div>
+
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="text-slate-400">✉️ דוא״ל:</span>
+          <a href="mailto:12natanel@gmail.com" class="font-bold text-sky-700 hover:underline" dir="ltr">12natanel@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-3 text-center sm:text-right">
+      <p>© סדנת הוראה מלאכותית • כל הזכויות שמורות • פותח לטובת קידום החינוך וההוראה בישראל</p>
+      <div class="flex items-center gap-4">
+        <a href="https://welcome-to-hesbonautika.nt-school.app" target="_blank" class="hover:text-slate-600 transition-colors">מיזם חשבונאוטיקה</a>
+        <a href="#order-section" class="hover:text-slate-600 transition-colors">הפקת הזמנה</a>
+        <a href="tel:0535303607" class="hover:text-slate-600 transition-colors">053-530-3607</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Live calculation logic
+    function getSelectedTrackData() {
+      const selectedRadio = document.querySelector('input[name="workshopTrack"]:checked');
+      if (!selectedRadio) {
+        return { name: 'סדנת פיתוח עם Gemini', price: 450 };
+      }
+      return {
+        name: selectedRadio.value,
+        price: parseFloat(selectedRadio.dataset.price || 0)
+      };
+    }
+
+    function calculateOrderTotal() {
+      const track = getSelectedTrackData();
+      const countInput = document.getElementById('participantsCount');
+      let count = parseInt(countInput.value, 10);
+      if (isNaN(count) || count < 1) count = 1;
+
+      const total = count * track.price;
+      
+      document.getElementById('liveTotalPrice').textContent = total.toLocaleString('he-IL') + ' ₪';
+      document.getElementById('calculationBreakdown').textContent = `${count} משתתפים × ${track.price} ₪`;
+      
+      return { track, count, total };
+    }
+
+    function adjustParticipants(delta) {
+      const input = document.getElementById('participantsCount');
+      let current = parseInt(input.value, 10) || 1;
+      current = Math.max(1, Math.min(150, current + delta));
+      input.value = current;
+      calculateOrderTotal();
+    }
+
+    function setParticipants(value) {
+      const input = document.getElementById('participantsCount');
+      input.value = value;
+      calculateOrderTotal();
+    }
+
+    function selectTrackAndScroll(trackName, price) {
+      const radios = document.querySelectorAll('input[name="workshopTrack"]');
+      radios.forEach(radio => {
+        if (radio.value.includes(trackName) || trackName.includes(radio.value)) {
+          radio.checked = true;
+        }
+      });
+      calculateOrderTotal();
+      const orderSec = document.getElementById('order-section');
+      if (orderSec) {
+        orderSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Modal controls
+    function closeModal() {
+      document.getElementById('orderModal').classList.add('hidden');
+    }
+
+    // Submit handler
+    async function handleOrderSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitOrderBtn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>מעבד ומפיק הזמנה...</span>`;
+
+      const calculation = calculateOrderTotal();
+      const institution = document.getElementById('institution').value.trim();
+      const contactName = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      const orderPayload = {
+        institution: institution,
+        contactName: contactName,
+        phone: phone,
+        email: email,
+        track: calculation.track.name,
+        participants: calculation.count,
+        pricePerParticipant: calculation.track.price,
+        totalEstimated: calculation.total,
+        notes: notes
+      };
+
+      try {
+        // Submit to our local order API on welcome-to-hesbonautika.nt-school.app/api/workshop-order
+        const response = await fetch('/api/workshop-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderPayload)
+        });
+
+        const resData = await response.json();
+        const orderId = resData.orderId || ('ORD-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000));
+
+        // Populate Modal
+        document.getElementById('modalOrderId').textContent = orderId;
+        document.getElementById('modalInstitution').textContent = institution;
+        document.getElementById('modalContact').textContent = contactName;
+        document.getElementById('modalPhone').textContent = phone;
+        document.getElementById('modalEmail').textContent = email;
+        document.getElementById('modalTrack').textContent = calculation.track.name;
+        document.getElementById('modalParticipants').textContent = `${calculation.count} אנשי צוות`;
+        document.getElementById('modalTotal').textContent = calculation.total.toLocaleString('he-IL') + ' ₪';
+
+        // Prepare direct WhatsApp button link
+        const cleanPhone = phone.replace(/[^0-9]/g, '');
+        const waMsg = encodeURIComponent(
+          `היי נתנאל,\nהפקתי הזמנה לסדנת הוראה מלאכותית באתר:\n` +
+          `מספר הזמנה: ${orderId}\n` +
+          `מוסד: ${institution}\n` +
+          `איש קשר: ${contactName} (${phone})\n` +
+          `מסלול: ${calculation.track.name}\n` +
+          `כמות משתתפים: ${calculation.count}\n` +
+          `סה״כ משוער: ${calculation.total} ₪\n` +
+          (notes ? `הערות: ${notes}\n` : '') +
+          `אשמח לתיאום מועד!`
+        );
+        document.getElementById('modalWhatsAppBtn').href = `https://wa.me/972535303607?text=${waMsg}`;
+
+        // Show Modal
+        document.getElementById('orderModal').classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Submission error:', err);
+        // Fallback: still show modal with generated client-side orderId
+        const fallbackId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('modalOrderId').textContent = fallbackId;
+        document.getElementById('modalInstitution').textContent = institution;
+        document.getElementById('modalContact').textContent = contactName;
+        document.getElementById('modalPhone').textContent = phone;
+        document.getElementById('modalEmail').textContent = email;
+        document.getElementById('modalTrack').textContent = calculation.track.name;
+        document.getElementById('modalParticipants').textContent = `${calculation.count} אנשי צוות`;
+        document.getElementById('modalTotal').textContent = calculation.total.toLocaleString('he-IL') + ' ₪';
+
+        const waMsg = encodeURIComponent(
+          `היי נתנאל, הפקתי הזמנה לסדנת הוראה מלאכותית:\n` +
+          `מספר הזמנה: ${fallbackId}\n` +
+          `מוסד: ${institution} | איש קשר: ${contactName} (${phone})\n` +
+          `מסלול: ${calculation.track.name} (${calculation.count} משתתפים - ${calculation.total} ₪)`
+        );
+        document.getElementById('modalWhatsAppBtn').href = `https://wa.me/972535303607?text=${waMsg}`;
+        document.getElementById('orderModal').classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateOrderTotal();
+    });
+  </script>
+</body>
+</html>
