@@ -513,7 +513,15 @@
         <div>
           <div class="flex items-center justify-between mb-3.5">
             <span class="glass-pill text-xs sm:text-sm font-bold text-palette-800 px-3.5 py-1">מסלול 01</span>
-            <span class="glass-pill text-xs sm:text-sm font-extrabold bg-palette-100 text-palette-950 px-3.5 py-1">מפגש ממוקד</span>
+            <div class="flex items-center gap-1.5">
+              <span class="glass-pill text-xs sm:text-sm font-extrabold bg-palette-100 text-palette-950 px-2.5 py-1">מפגש ממוקד</span>
+              <button onclick="openSyllabusModal('notebooklm')" 
+                      class="glass-pill px-2.5 py-1 text-xs font-black text-palette-950 hover:border-cyanGlow-500 hover:text-cyanGlow-600 transition-all flex items-center gap-1"
+                      title="לצפייה בסילבוס המפגש ודוגמאות תוצרים">
+                <span class="text-sm">ℹ️</span>
+                <span>סילבוס</span>
+              </button>
+            </div>
           </div>
 
           <h3 class="text-2xl sm:text-3xl font-extrabold text-palette-950 mb-2">יסודות ממוקדים: NotebookLM</h3>
@@ -541,6 +549,14 @@
               <span>הסבר פשוט, קל ונגיש לכל מורה בצוות</span>
             </li>
           </ul>
+
+          <div class="mb-4">
+            <button onclick="openSyllabusModal('notebooklm')" 
+                    class="text-xs sm:text-sm font-bold text-palette-900 hover:text-cyanGlow-600 underline inline-flex items-center gap-1.5 transition-colors">
+              <span>ℹ️</span>
+              <span>פירוט מלא של סילבוס המפגש ודוגמאות לכיתה</span>
+            </button>
+          </div>
         </div>
 
         <div class="pt-5 border-t border-palette-200 flex items-center justify-between gap-3">
@@ -564,7 +580,15 @@
         <div>
           <div class="flex items-center justify-between mb-3.5 mt-1.5">
             <span class="glass-pill text-xs sm:text-sm font-bold text-palette-950 px-3.5 py-1">מסלול 02</span>
-            <span class="glass-pill text-xs sm:text-sm font-black bg-palette-200 text-palette-950 px-3.5 py-1">סדרה מונחית שלמה</span>
+            <div class="flex items-center gap-1.5">
+              <span class="glass-pill text-xs sm:text-sm font-black bg-palette-200 text-palette-950 px-2.5 py-1">סדרה מונחית שלמה</span>
+              <button onclick="openSyllabusModal('gemini')" 
+                      class="glass-pill px-2.5 py-1 text-xs font-black text-palette-950 hover:border-cyanGlow-500 hover:text-cyanGlow-600 transition-all flex items-center gap-1 bg-white/80"
+                      title="לצפייה בסילבוס הסדרה ודוגמאות תוצרים">
+                <span class="text-sm">ℹ️</span>
+                <span>סילבוס</span>
+              </button>
+            </div>
           </div>
 
           <h3 class="text-2xl sm:text-3xl font-extrabold text-palette-950 mb-2">סדנת פיתוח מעשית עם Gemini</h3>
@@ -592,6 +616,14 @@
               <span>עבודה בצוותי מקצוע: שפה, אנגלית, מדעים, תנ״ך וחשבון</span>
             </li>
           </ul>
+
+          <div class="mb-4">
+            <button onclick="openSyllabusModal('gemini')" 
+                    class="text-xs sm:text-sm font-bold text-palette-900 hover:text-cyanGlow-600 underline inline-flex items-center gap-1.5 transition-colors">
+              <span>ℹ️</span>
+              <span>פירוט 3 המפגשים ודוגמאות למשחקים ודפי תרגול</span>
+            </button>
+          </div>
         </div>
 
         <div class="pt-5 border-t border-palette-300 flex items-center justify-between gap-3">
@@ -611,7 +643,15 @@
         <div>
           <div class="flex items-center justify-between mb-3.5">
             <span class="glass-pill text-xs sm:text-sm font-bold text-palette-800 px-3.5 py-1">מסלול 03</span>
-            <span class="glass-pill text-xs sm:text-sm font-extrabold bg-palette-100 text-palette-950 px-3.5 py-1">למתקדמים ורכזים</span>
+            <div class="flex items-center gap-1.5">
+              <span class="glass-pill text-xs sm:text-sm font-extrabold bg-palette-100 text-palette-950 px-2.5 py-1">למתקדמים ורכזים</span>
+              <button onclick="openSyllabusModal('claude')" 
+                      class="glass-pill px-2.5 py-1 text-xs font-black text-palette-950 hover:border-cyanGlow-500 hover:text-cyanGlow-600 transition-all flex items-center gap-1"
+                      title="לצפייה בסילבוס המאסטרקלאס ודוגמאות תוצרים">
+                <span class="text-sm">ℹ️</span>
+                <span>סילבוס</span>
+              </button>
+            </div>
           </div>
 
           <h3 class="text-2xl sm:text-3xl font-extrabold text-palette-950 mb-2">מאסטרקלאס Claude</h3>
@@ -639,6 +679,14 @@
               <span>אידיאלי למובילי חדשנות, רכזי תקשוב ומורים מנוסים</span>
             </li>
           </ul>
+
+          <div class="mb-4">
+            <button onclick="openSyllabusModal('claude')" 
+                    class="text-xs sm:text-sm font-bold text-palette-900 hover:text-cyanGlow-600 underline inline-flex items-center gap-1.5 transition-colors">
+              <span>ℹ️</span>
+              <span>פירוט הסילבוס המלא: סימולציות, ארכיטקטורה ובוטים</span>
+            </button>
+          </div>
         </div>
 
         <div class="pt-5 border-t border-palette-200 flex items-center justify-between gap-3">
@@ -964,6 +1012,62 @@
     </div>
   </section>
 
+  <!-- Syllabus / Course Info Modal (High-End Glass Popup) -->
+  <div id="syllabusModal" class="fixed inset-0 bg-palette-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="glass-card-navy max-w-3xl w-full my-auto max-h-[92vh] flex flex-col overflow-hidden border-2 border-palette-300 shadow-2xl">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-palette-200 bg-white/80 flex items-start justify-between gap-4 shrink-0">
+        <div>
+          <span id="syllabusModalBadge" class="glass-pill-accent text-xs font-black px-3 py-1 inline-block mb-1.5"></span>
+          <h3 id="syllabusModalTitle" class="text-xl sm:text-2xl font-black text-palette-950 tracking-tight"></h3>
+        </div>
+        <button onclick="closeSyllabusModal()" 
+                class="w-9 h-9 rounded-full bg-palette-100 hover:bg-palette-200 text-palette-950 font-bold flex items-center justify-center text-lg shrink-0 transition-colors shadow-sm" 
+                aria-label="סגור">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable Content with Sessions & Real-World Examples) -->
+      <div class="p-5 sm:p-7 overflow-y-auto space-y-6 text-palette-950">
+        <!-- Pedagogical Overview -->
+        <div class="p-4 rounded-xl bg-palette-50/90 border border-palette-200">
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="text-cyanGlow-600 font-black text-base">🎯</span>
+            <h4 class="text-xs font-black text-palette-800 uppercase tracking-wider">תמצית הרציונל הפדגוגי</h4>
+          </div>
+          <p id="syllabusModalOverview" class="text-sm sm:text-base leading-relaxed text-palette-900 font-medium"></p>
+        </div>
+
+        <!-- Schedule / Hours Breakdown with Examples -->
+        <div>
+          <h4 class="text-xs font-black text-palette-800 uppercase tracking-wider mb-3.5 flex items-center gap-2">
+            <span>📚</span>
+            <span>מבנה המפגשים ותוצרי הכיתה (דוגמאות מוחשיות)</span>
+          </h4>
+          <div id="syllabusModalSchedule" class="space-y-4">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 sm:p-5 border-t border-palette-200 bg-palette-50/90 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <button onclick="selectSyllabusTrackAndOrder()" 
+                class="glass-btn-navy w-full sm:w-auto py-3 px-6 text-base font-extrabold flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] transition-transform">
+          <span>בחירת מסלול זה והפקת הזמנה</span>
+          <span id="syllabusModalPriceBadge" class="text-xs bg-cyanGlow-500/30 text-cyanGlow-100 px-2.5 py-0.5 rounded-full font-black"></span>
+        </button>
+        <button onclick="closeSyllabusModal()" 
+                class="w-full sm:w-auto py-2.5 px-4 text-sm font-bold text-palette-700 hover:text-palette-950 transition-colors">
+          חזרה למסלולים
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Printable / Confirmation Modal (High-End Glass Voucher) -->
   <div id="orderModal" class="fixed inset-0 bg-palette-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="glass-card-navy max-w-lg w-full overflow-hidden transform transition-all">
@@ -1120,6 +1224,221 @@
 
   <!-- Scripts -->
   <script>
+
+    // Syllabus Data with Concrete Classroom Examples
+    const syllabusData = {
+      notebooklm: {
+        badge: 'מסלול 01 • מפגש ממוקד (שעתיים אקדמיות)',
+        title: 'יסודות ממוקדים: תוצרי הוראה עם NotebookLM ו-Gemini',
+        price: 180,
+        trackName: 'יסודות ממוקדים - NotebookLM',
+        overview: 'מעבר מבינה מלאכותית גנרית המייצרת תוכן מומצא (הזיות) לבינה מלאכותית מעוגנת מקורות (Grounded AI). כל התוצרים נשענים אך ורק על ספרי הלימוד ומערכי השיעור הקיימים שלכם, בדיוק של 100% וללא צורך ברקע טכנולוגי.',
+        hours: [
+          {
+            title: "שעה ראשונה (45 דקות) – התחברות, ממשק ויסודות הפיתוח",
+            items: [
+              {
+                topic: 'התחברות וסיור בממשק NotebookLM',
+                desc: 'העלאת ספרי לימוד ב-PDF, מערכי שיעור ב-Docs וקישורי תוכן למחברת חכמה.',
+                example: 'העלאת פרק מספר לימוד בהיסטוריה או מדעים וסריקת נקודות המפתח תוך שניות.'
+              },
+              {
+                topic: 'ארבעת כלי היסוד של הסטודיו (Studio Tools)',
+                desc: 'הפקת מדריך למידה (Study Guide), תקציר מנהלים מהיר ושאלות נפוצות.',
+                example: 'יצירת כרטיסיות מושגים (Flashcards) ושאלון אמריקאי בן 5 שאלות מדורגות רמת חשיבה.'
+              },
+              {
+                topic: 'פרומפטינג פדגוגי בעזרת Gemini',
+                desc: 'ניסוח הנחיות מובנות להפקת משימות למידה ללא שפה מתורגמת.',
+                example: 'פרומפט מובנה להפקת שאלות חקר עם מראי מקום מדויקים לעמודי הספר.'
+              },
+              {
+                topic: 'תרגול מעשי משותף',
+                desc: 'כל מורה מייצר תוצר ראשון מחומר לימוד אישי שהביא איתו מהבית.',
+                example: 'דף מבדק הבנה ראשון מוכן להדפסה או לשיתוף ישיר עם התלמידים.'
+              }
+            ]
+          },
+          {
+            title: "שעה שנייה (45 דקות) – שילוב Gemini, תבניות מתקדמות ובקרה פדגוגית",
+            items: [
+              {
+                topic: 'גשר הסינרגיה Gemini + NotebookLM',
+                desc: 'חלוקת תפקידים מדויקת: ג\'מיני מתכנן ומפרק, נוטבוק מייצר מתוך הטקסט ללא סטיות.',
+                example: 'פירוק נושא מורכב בגיאוגרפיה ל-3 רמות קושי (בסיס, יישום, אתגר) והזנתו כמקור.'
+              },
+              {
+                topic: 'בניית תבניות קבועות (Templates)',
+                desc: 'ליין מצגות שיעור מובנות (6 שקפים) ותסריטי מיקרו-וידאו ואודיו.',
+                example: 'הפקת מתווה למצגת שיעור הכוללת שאלת פתיחה מסקרנת, 3 שקפי מושגים ודילמה לדיון בזוגות.'
+              },
+              {
+                topic: 'מיקרו-וידאו וסיכומי אודיו (Audio Overview)',
+                desc: 'הפקת פודקאסטים קצרים לחזרה למבחן ותסריטי סרטוני הסבר מהירים.',
+                example: 'שיחת מנחים קולית מסכמת בת 3 דקות להאזנה של התלמידים בדרך לבית הספר.'
+              },
+              {
+                topic: 'בקרת איכות ודיוק פדגוגי',
+                desc: 'בדיקת תוצרים בעין המורה, התאמת משלב לשוני ומניעת מושגים מבלבלים.',
+                example: 'התאמת שאלון הבנת הנקרא לתלמידים עם קשיי שפה או עולים חדשים.'
+              }
+            ]
+          }
+        ]
+      },
+      gemini: {
+        badge: 'מסלול 02 • סדרה מונחית שלמה (2-3 מפגשים)',
+        title: 'סדנת פיתוח מעשית עם Gemini: תוצרים אינטראקטיביים חיים',
+        price: 490,
+        trackName: 'סדנת פיתוח עם Gemini',
+        overview: 'תהליך פיתוח שלם מרעיון פדגוגי ועד למוצר אינטראקטיבי מוגמר (HTML) שפועל בכל סמארטפון ומחשב ללא תלות במתכנתים. כל מורה מייצר משחקי למידה, דפי תרגול חיים עם ניקוד ומשוב מיידי.',
+        hours: [
+          {
+            title: 'מפגש 1 (שעה וחצי) – מאפיון פדגוגי לקוד HTML אינטראקטיבי',
+            items: [
+              {
+                topic: 'עקרונות הנחיה ב-Gemini לפיתוח למידה',
+                desc: 'הפיכת מערך שיעור רגיל למשחק תרגול חי.',
+                example: 'משחק גרירה והתאמה של חלקי דיבר בלשון או תרגול עובדות כפל עם משוב צליל מיידי.'
+              },
+              {
+                topic: 'התאמה עיצובית ופדגוגית',
+                desc: 'שימוש בעברית תקינה, כיווניות RTL ופונטים נגישים.',
+                example: 'דף פעילות אינטראקטיבי עם כפתורים נוחים לטאבלטים ומחשבים.'
+              }
+            ]
+          },
+          {
+            title: 'מפגש 2 (שעה וחצי) – שמירת תוצאות, ניקוד ודשבורד מורה',
+            items: [
+              {
+                topic: 'הטמעת מנגנוני הערכה וניקוד',
+                desc: 'שמירת תשובות מקומית בדפדפן (Local Storage) ללא צורך בהתקנת שרת.',
+                example: 'מבחן דיגיטלי שמפיק לתלמיד תעודת הצלחה אישית ולמורה ריכוז שגיאות נפוצות.'
+              },
+              {
+                topic: 'מנגנוני רמזים ודיפרנציאציה',
+                desc: 'התאמת רמת הקושי על פי ביצועי התלמיד בזמן אמת.',
+                example: 'הצגת רמז אוטומטי אם התלמיד טועה פעמיים באותה שאלה.'
+              }
+            ]
+          },
+          {
+            title: 'מפגש 3 (שעה וחצי) – פריסה ברשת ומאגר בית-ספרי משותף',
+            items: [
+              {
+                topic: 'העלאה לרשת (Netlify / GitHub Pages)',
+                desc: 'בלחיצת כפתור אחת, הפצת קישור מאובטח בוואטסאפ הכיתתי.',
+                example: 'קישור ייעודי שכל תלמיד פותח בנייד ללא צורך בהתחברות או התקנה.'
+              },
+              {
+                topic: 'בניית מאגר בית-ספרי משותף',
+                desc: 'ריכוז תוצרי כל המורים בפורטל משותף לשכבה.',
+                example: 'ספריית משחקים שכבתית לחזרה לקראת מבחני אמצע שנה.'
+              }
+            ]
+          }
+        ]
+      },
+      claude: {
+        badge: 'מסלול 03 • למתקדמים ורכזים (3 שעות אינטנסיביות)',
+        title: 'מאסטרקלאס Claude: ארכיטקטורה פדגוגית ויישומי למידה מורכבים',
+        price: 290,
+        trackName: 'מאסטרקלאס Claude',
+        overview: 'עבודה עם מנוע החשיבה והקוד של Claude לפיתוח כלי למידה מורכבים, סימולטורים חינוכיים ובוטים דיאלוגיים למורים מנוסים, רכזי מקצוע ומובילי חדשנות.',
+        hours: [
+          {
+            title: 'חלק 1 (שעה) – חשיבה מורכבת ו-Artifacts',
+            items: [
+              {
+                topic: 'ארכיטקטורת הנחיות מתקדמת (System Prompts)',
+                desc: 'הגדרת פרסונות פדגוגיות ומניעת תשובות שטחיות.',
+                example: '"בוט סוקרטי" למתמטיקה או מדעים שמנחה תלמיד לפתרון באמצעות שאלות הכוונה מבלי לגלות את התשובה.'
+              }
+            ]
+          },
+          {
+            title: 'חלק 2 (שעה) – סימולציות חינוכיות וממשקים מרובי-שלבים',
+            items: [
+              {
+                topic: 'פיתוח יישומי למידה מורכבים',
+                desc: 'שימוש ביכולות הקוד של Claude לפיתוח סימולציות מדעיות ומשחקי תפקידים היסטוריים.',
+                example: 'סימולטור אינטראקטיבי לניסויי מעבדה בכימיה שבו תלמידים משנים ריכוז חומרים ורואים תוצאה גרפית.'
+              }
+            ]
+          },
+          {
+            title: 'חלק 3 (שעה) – אינטגרציה מוסדית וליווי רכזים',
+            items: [
+              {
+                topic: 'גיבוש סטנדרט בית-ספרי ומחווני הערכה',
+                desc: 'הדרכת רכזי מקצוע כיצד לבנות מחווני בדיקה אחידים ולהנחות את צוות המורים.',
+                example: 'מאגר תבניות בית-ספרי אחיד להערכה חלופית ומטלות ביצוע.'
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    let activeSyllabusKey = null;
+
+    function openSyllabusModal(key) {
+      const data = syllabusData[key];
+      if (!data) return;
+      activeSyllabusKey = key;
+
+      document.getElementById('syllabusModalBadge').textContent = data.badge;
+      document.getElementById('syllabusModalTitle').textContent = data.title;
+      document.getElementById('syllabusModalOverview').textContent = data.overview;
+      document.getElementById('syllabusModalPriceBadge').textContent = data.price + ' ₪ / משתתף';
+
+      const scheduleContainer = document.getElementById('syllabusModalSchedule');
+      scheduleContainer.innerHTML = '';
+
+      data.hours.forEach(hour => {
+        const hourCard = document.createElement('div');
+        hourCard.className = 'p-4 sm:p-5 rounded-xl border border-palette-300 bg-white shadow-sm space-y-3';
+        
+        let itemsHtml = '';
+        hour.items.forEach(item => {
+          itemsHtml += '<div class="border-r-2 border-cyanGlow-500 pr-3 py-1 space-y-1">' +
+            '<div class="font-extrabold text-palette-950 text-sm sm:text-base">' + item.topic + '</div>' +
+            '<div class="text-xs sm:text-sm text-palette-800 leading-relaxed font-medium">' + item.desc + '</div>' +
+            '<div class="mt-1 text-xs bg-palette-100 text-palette-950 px-2.5 py-1 rounded-md font-bold inline-flex items-center gap-1.5 border border-palette-200">' +
+              '<span class="text-cyanGlow-600">💡 דוגמה לכיתה:</span>' +
+              '<span>' + item.example + '</span>' +
+            '</div>' +
+          '</div>';
+        });
+
+        hourCard.innerHTML = '<div class="font-black text-palette-950 text-base sm:text-lg border-b border-palette-200 pb-2 flex items-center gap-2">' +
+          '<span class="w-2 h-2 rounded-full bg-cyanGlow-500"></span>' +
+          '<span>' + hour.title + '</span>' +
+        '</div>' +
+        '<div class="space-y-3.5 pt-1">' +
+          itemsHtml +
+        '</div>';
+        
+        scheduleContainer.appendChild(hourCard);
+      });
+
+      document.getElementById('syllabusModal').classList.remove('hidden');
+    }
+
+    function closeSyllabusModal() {
+      document.getElementById('syllabusModal').classList.add('hidden');
+    }
+
+    function selectSyllabusTrackAndOrder() {
+      if (!activeSyllabusKey) return;
+      const data = syllabusData[activeSyllabusKey];
+      if (!data) return;
+
+      closeSyllabusModal();
+      selectTrackAndScroll(data.trackName, data.price);
+    }
+
     // Live calculation logic with Tiered Volume Discount
     // Rule:
     // After 10 participants: for every 5 participants above 10, discount of 20 ₪ per participant.
