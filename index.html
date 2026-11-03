@@ -33,7 +33,23 @@
     .grade-chips { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
     .grade-chips button { min-width:56px; padding:10px 16px; border-radius:999px; border:1px solid var(--border-panel); background:rgba(255,255,255,.05); color:var(--text-primary); font-weight:800; font-size:16px; cursor:pointer; font-family:inherit; }
     .grade-chips button.active { background:linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 100%); color:var(--bg-deep); border-color:transparent; }
-    .topic-card svg { display:block; width:100%; aspect-ratio:1/1; max-height:170px; background:radial-gradient(circle at 50% 40%, rgba(138,180,255,.10), transparent 70%); padding:10px; }
+    .topic-card { overflow:hidden; min-width:0; }
+    .topic-card .viz { position:relative; height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:10px 8px 6px; background:radial-gradient(circle at 50% 40%, rgba(138,180,255,.10), transparent 70%); }
+    .topic-card .viz svg { width:100%; height:112px; overflow:visible; }
+    .topic-card .viz svg text { direction:ltr; unicode-bidi:embed; }
+    .viz-label { min-height:30px; display:flex; align-items:center; justify-content:center; gap:6px; font-weight:800; font-size:15px; color:var(--text-primary); }
+    .viz-label .eq { color:var(--text-muted); font-size:14px; }
+    .fr { display:inline-flex; flex-direction:column; align-items:center; line-height:1.05; font-weight:900; font-size:15px; }
+    .fr span:first-child { border-bottom:2px solid currentColor; padding:0 4px 1px; }
+    .fr span:last-child { padding-top:1px; }
+    .viz-expr { flex:1; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:900; color:var(--text-primary); }
+    .viz-expr mark { background:rgba(157,139,255,.28); color:#fff; border-radius:6px; padding:0 4px; }
+    .viz-expr b { color:var(--accent-turquoise); font-size:30px; }
+    .viz-word p { margin:0; }
+    .viz-word { flex:1; display:flex; align-items:center; font-size:13px; line-height:1.55; color:var(--text-muted); text-align:right; padding:0 4px; }
+    .viz-word .rn { color:var(--accent-flame); font-size:15px; display:inline-block; min-width:1.2em; text-align:center; }
+    .pop { animation:vizpop .45s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes vizpop { 0% { transform:scale(.7); opacity:.2; } 100% { transform:scale(1); opacity:1; } }
     .wa-chat { background:#0B141A; border:1px solid var(--border-panel); border-radius:22px; padding:16px; display:flex; flex-direction:column; gap:10px; box-shadow:0 20px 50px rgba(0,0,0,.4); }
     .wa-head { display:flex; align-items:center; gap:10px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
     .wa-head img { width:38px; height:38px; border-radius:50%; }
@@ -234,6 +250,7 @@
   <script src="assets/accessibility.js"></script>
   <script src="assets/consent-analytics.js"></script>
   <script src="assets/contact-bubble.js"></script>
+  <script src="assets/grade-topics.js"></script>
   <script>
     initAccessibilityWidget();
 
@@ -244,79 +261,7 @@
     }
     initStarfield();
 
-    // Grade topics. Each tile is drawn in SVG, in the visual language of the
-    // game that teaches it. Topics follow the grade catalog (covered skills only).
-    (function () {
-      var C = { t: '#5EEAD4', b: '#8AB4FF', v: '#9D8BFF', f: '#FF6B4A', dim: 'rgba(255,255,255,.12)', ink: '#EAF0FA' };
-      function pie(n, d) {
-        var s = '';
-        for (var k = 0; k < d; k++) {
-          var a0 = k / d * 6.2832 - 1.5708, a1 = (k + 1) / d * 6.2832 - 1.5708;
-          s += '<path d="M50 50 L' + (50 + 34 * Math.cos(a0)) + ' ' + (50 + 34 * Math.sin(a0)) + ' A34 34 0 0 1 ' + (50 + 34 * Math.cos(a1)) + ' ' + (50 + 34 * Math.sin(a1)) + 'Z" fill="' + (k < n ? C.t : C.dim) + '" stroke="#070C20" stroke-width="2"/>';
-        }
-        return s + '<text x="50" y="96" text-anchor="middle" fill="' + C.ink + '" font-size="13" font-weight="700">' + n + '/' + d + '</text>';
-      }
-      function array(r, c) {
-        var s = '', w = 70 / Math.max(r, c);
-        for (var i = 0; i < r; i++) for (var j = 0; j < c; j++) s += '<circle cx="' + (15 + j * w + w / 2) + '" cy="' + (12 + i * w + w / 2) + '" r="' + (w * .32) + '" fill="' + C.b + '"/>';
-        return s + '<text x="50" y="96" text-anchor="middle" fill="' + C.ink + '" font-size="13" font-weight="700" direction="ltr">' + r + ' × ' + c + ' = ' + (r * c) + '</text>';
-      }
-      function balance(l, r) {
-        return '<line x1="50" y1="20" x2="50" y2="78" stroke="' + C.ink + '" stroke-width="3"/><path d="M38 82 H62 L50 74Z" fill="' + C.ink + '"/>' +
-          '<line x1="14" y1="30" x2="86" y2="30" stroke="' + C.v + '" stroke-width="4" stroke-linecap="round"/>' +
-          '<rect x="6" y="36" width="30" height="20" rx="5" fill="' + C.dim + '" stroke="' + C.v + '"/><text x="21" y="50" text-anchor="middle" fill="' + C.ink + '" font-size="11" font-weight="700" direction="ltr">' + l + '</text>' +
-          '<rect x="64" y="36" width="30" height="20" rx="5" fill="' + C.dim + '" stroke="' + C.v + '"/><text x="79" y="50" text-anchor="middle" fill="' + C.ink + '" font-size="11" font-weight="700" direction="ltr">' + r + '</text>';
-      }
-      function line(v) {
-        var s = '<line x1="8" y1="55" x2="92" y2="55" stroke="' + C.ink + '" stroke-width="2"/>';
-        for (var k = 0; k <= 10; k++) s += '<line x1="' + (8 + k * 8.4) + '" y1="' + (k % 5 ? 51 : 47) + '" x2="' + (8 + k * 8.4) + '" y2="' + (k % 5 ? 59 : 63) + '" stroke="' + C.ink + '" stroke-width="1.5"/>';
-        var x = 8 + v * 84;
-        return s + '<text x="8" y="76" fill="' + C.ink + '" font-size="10" text-anchor="middle">0</text><text x="92" y="76" fill="' + C.ink + '" font-size="10" text-anchor="middle">1</text>' +
-          '<circle cx="' + x + '" cy="55" r="6" fill="' + C.f + '"/><text x="' + x + '" y="38" text-anchor="middle" fill="' + C.f + '" font-size="13" font-weight="700">' + v + '</text>';
-      }
-      function area(w, h) {
-        var s = '', u = 8, x0 = 50 - w * u / 2, y0 = 45 - h * u / 2;
-        for (var i = 0; i < h; i++) for (var j = 0; j < w; j++) s += '<rect x="' + (x0 + j * u) + '" y="' + (y0 + i * u) + '" width="' + u + '" height="' + u + '" fill="' + C.t + '" fill-opacity=".35" stroke="' + C.t + '" stroke-width=".8"/>';
-        return s + '<text x="50" y="96" text-anchor="middle" fill="' + C.ink + '" font-size="13" font-weight="700" direction="ltr">' + w + ' × ' + h + ' = ' + (w * h) + '</text>';
-      }
-      function tank(p) {
-        var h = 60 * p / 100;
-        return '<rect x="32" y="14" width="36" height="60" rx="6" fill="none" stroke="' + C.ink + '" stroke-width="2"/>' +
-          '<rect x="34" y="' + (72 - h) + '" width="32" height="' + h + '" rx="4" fill="' + C.b + '" fill-opacity=".8"/>' +
-          '<text x="50" y="94" text-anchor="middle" fill="' + C.ink + '" font-size="13" font-weight="700">' + p + '%</text>';
-      }
-      function expr(t) {
-        return '<rect x="6" y="30" width="88" height="30" rx="8" fill="' + C.dim + '" stroke="' + C.v + '"/><text x="50" y="50" text-anchor="middle" fill="' + C.ink + '" font-size="12" font-weight="700" direction="ltr">' + t + '</text>';
-      }
-      function word() {
-        return '<rect x="14" y="16" width="72" height="56" rx="8" fill="' + C.dim + '" stroke="' + C.b + '"/>' +
-          [28, 38, 48].map(function (y, i) { return '<rect x="22" y="' + y + '" width="' + [56, 48, 36][i] + '" height="4" rx="2" fill="' + C.ink + '" fill-opacity=".55"/>'; }).join('') +
-          '<rect x="22" y="58" width="22" height="8" rx="3" fill="' + C.t + '"/>';
-      }
-      var G = {
-        3: [['לוח הכפל', 'אלוף הכפל', array(3, 4)], ['שבר יחידה', 'מעבדת השברים', pie(1, 4)], ['שטח והיקף בריצוף', 'מהנדסי הצורות', area(4, 3)], ['בעיות בפעולה אחת', 'שאלות מילוליות', word()]],
-        4: [['סדר פעולות', 'כאן בונים בכיף', expr('3 + 4 × 2 = 11')], ['חוק הפילוג', 'תבניות הקסם', expr('3 × (4+2) = 12+6')], ['שבר מכמות', 'חצי הכוס המלאה', tank(25)], ['שטח מלבן', 'מהנדסי הצורות', area(6, 4)]],
-        5: [['שברים: הרחבה וצמצום', 'מעבדת השברים', pie(3, 6)], ['שברים עשרוניים', 'תפוס את הנקודה', line(0.7)], ['שטחים', 'מהנדסי הצורות', area(7, 3)], ['בעיות מילוליות', 'שאלות מילוליות', word()]],
-        6: [['אחוזים', 'מעבדת אחוזים', tank(60)], ['עשרוניים', 'תפוס את הנקודה', line(0.35)], ['פעולות בשברים', 'מעבדת השברים', pie(5, 8)], ['בעיות דו-שלביות', 'שאלות מילוליות', word()]],
-        7: [['משוואות', 'שומרים על איזון', balance('2x + 3', '11')], ['מספרים מכוונים', 'תבניות הקסם', expr('(−4) + 7 = 3')], ['אחוזים ויחס', 'מעבדת אחוזים', tank(40)], ['בעיות מילוליות', 'שאלות מילוליות', word()]]
-      };
-      var box = document.getElementById('gradeTopics');
-      function show(g) {
-        box.innerHTML = G[g].map(function (t) {
-          return '<div class="glass-panel topic-card"><svg viewBox="0 0 100 100" aria-hidden="true">' + t[2] + '</svg>' +
-            '<div class="p-3 sm:p-4 text-right"><h3 class="font-bold">' + t[0] + '</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">במשחק "' + t[1] + '"</p></div></div>';
-        }).join('');
-      }
-      document.querySelectorAll('.grade-chips button').forEach(function (b) {
-        b.addEventListener('click', function () {
-          document.querySelectorAll('.grade-chips button').forEach(function (x) { x.classList.remove('active'); });
-          b.classList.add('active');
-          show(b.dataset.g);
-          if (window.gtag) window.gtag('event', 'grade_select', { grade: b.dataset.g });
-        });
-      });
-      show(5);
-    })();
+    initGradeTopics('gradeTopics', 5);
 
     // Demo loads only on tap, so the page stays light in WhatsApp/Facebook browsers.
     document.getElementById('demoPlay').addEventListener('click', function () {
