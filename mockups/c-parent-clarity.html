@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex">
+  <title>מוקאפ C · בהירות להורה</title>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #F7F7F4; --ink: #101418; --muted: #5B6470; --line: #E3E3DD; --accent: #3D35C9; --accent-soft: #ECEBFF; --wa-bg: #E9E2D6; --wa-in: #FFFFFF; --wa-green: #1FAF55; --night: #0B1026; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Assistant', 'Heebo', system-ui, sans-serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3 { margin: 0; line-height: 1.1; font-weight: 800; }
+    p { margin: 0; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+    .logo i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; font-size: 17px; font-family: inherit; }
+    .btn-a { background: var(--accent); color: #fff; }
+    .btn-g { color: var(--ink); border: 1.5px solid var(--line); background: #fff; }
+
+    .hero { display: grid; gap: 50px; padding: 70px 0; align-items: center; }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1.1fr .9fr; } }
+    .kicker { color: var(--accent); font-weight: 800; font-size: 15px; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(40px, 6.4vw, 70px); letter-spacing: -1px; }
+    .hero p { color: var(--muted); font-size: 20px; margin: 22px 0 30px; max-width: 520px; }
+    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .fine { color: var(--muted); font-size: 15px; margin-top: 14px; }
+
+    /* WhatsApp chat, typed live */
+    .chat { background: var(--wa-bg); border-radius: 22px; padding: 18px; min-height: 420px; box-shadow: 0 20px 50px rgba(16, 20, 24, .12); display: flex; flex-direction: column; }
+    .chat-head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid rgba(0, 0, 0, .08); margin-bottom: 14px; }
+    .chat-head i { width: 38px; height: 38px; border-radius: 50%; background: var(--night); display: inline-block; position: relative; }
+    .chat-head i::after { content: ''; position: absolute; inset: 30%; border-radius: 50%; background: #8AB4FF; box-shadow: 0 0 10px #8AB4FF; }
+    .chat-head b { display: block; } .chat-head small { color: var(--muted); }
+    .msgs { display: flex; flex-direction: column; gap: 10px; }
+    .msg { background: var(--wa-in); border-radius: 12px 12px 12px 2px; padding: 10px 14px; max-width: 85%; align-self: flex-start; font-size: 16px; box-shadow: 0 1px 1px rgba(0, 0, 0, .08); opacity: 0; transform: translateY(8px); transition: .35s; }
+    .msg.show { opacity: 1; transform: none; }
+    .msg time { display: block; text-align: left; font-size: 12px; color: var(--muted); }
+    .typing { align-self: flex-start; background: #fff; border-radius: 12px; padding: 12px 16px; display: none; }
+    .typing span { display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: #9AA; animation: dot 1s infinite; }
+    .typing span:nth-child(2) { animation-delay: .15s; } .typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes dot { 50% { transform: translateY(-4px); opacity: .5; } }
+    .bars { display: flex; gap: 6px; align-items: flex-end; height: 60px; margin: 8px 0 4px; }
+    .bars div { flex: 1; background: var(--accent); border-radius: 4px 4px 0 0; height: 0; transition: height .8s ease; }
+    .bars div.off { background: #D7D6E8; }
+    .note { font-size: 13px; color: var(--muted); text-align: center; margin-top: auto; padding-top: 10px; }
+
+    section.block { padding: 80px 0; border-top: 1px solid var(--line); }
+    .h2 { font-size: clamp(30px, 4.4vw, 46px); margin-bottom: 36px; }
+    .compare { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+    @media (min-width: 800px) { .compare { grid-template-columns: 1fr 1fr; } }
+    .compare > div { padding: 30px; }
+    .compare .old { background: #FBFBF9; color: var(--muted); }
+    .compare .new { border-inline-start: 1px solid var(--line); }
+    .compare h3 { font-size: 22px; margin-bottom: 14px; }
+    .compare .new h3 { color: var(--accent); }
+    .compare ul { margin: 0; padding: 0 20px 0 0; display: grid; gap: 10px; }
+
+    .price-row { display: grid; gap: 30px; align-items: center; }
+    @media (min-width: 800px) { .price-row { grid-template-columns: 1fr 1fr; } }
+    .price-row .big { font-size: 80px; font-weight: 800; letter-spacing: -2px; }
+    .price-row s { color: var(--muted); font-size: 22px; }
+    .price-row ul { padding: 0 20px 0 0; margin: 0 0 24px; display: grid; gap: 8px; color: var(--muted); }
+    .upsell { color: var(--muted); font-size: 16px; margin-top: 28px; }
+    .upsell a { color: var(--accent); font-weight: 800; }
+    footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav><div class="logo"><i></i>חשבונאוטיקה</div><a class="btn btn-g" href="#">כניסה</a></nav>
+
+    <div class="hero">
+      <div>
+        <div class="kicker">להורים לילדים בכיתות ב'–ז'</div>
+        <h1>אתם לא צריכים לשבת לידו בשביל לדעת איך הוא בחשבון.</h1>
+        <p>הילד משחק עשר דקות ביום במשחקי חשיבה שמורה למתמטיקה בנה. אתם מקבלים הודעה קצרה. זה הכול.</p>
+        <div class="ctas"><a class="btn btn-a" href="#">▶ תנו לו לנסות משחק</a><a class="btn btn-g" href="#">14 ימים חינם</a></div>
+        <p class="fine">בלי כרטיס אשראי · בלי חידוש אוטומטי · בלי התקנה</p>
+      </div>
+
+      <div class="chat" aria-label="הדגמה של עדכון בוואטסאפ">
+        <div class="chat-head"><i></i><div><b>חשבונאוטיקה</b><small>עדכון להורים</small></div></div>
+        <div class="msgs" id="msgs"></div>
+        <div class="typing" id="typing"><span></span><span></span><span></span></div>
+        <p class="note">הדגמה. התוכן מבוסס על הנתונים שהמערכת אוספת.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="block"><div class="wrap">
+    <h2 class="h2">ההבדל, בשתי עמודות</h2>
+    <div class="compare">
+      <div class="old"><h3>דף עבודה</h3><ul><li>ויכוח כל ערב</li><li>טעות = מחיקה ותסכול</li><li>אתם מגלים שיש בעיה במבחן</li></ul></div>
+      <div class="new"><h3>חשבונאוטיקה</h3><ul><li>הילד מבקש לשחק</li><li>טעות = עוד ניסיון, בלי שמישהו מסתכל</li><li>אתם יודעים איפה הוא נתקע עכשיו</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="price-row">
+      <div><h2 class="h2" style="margin-bottom:10px;">מחיר פשוט</h2><p style="color:var(--muted);">מחיר פיילוט עד ינואר. עד 2 ילדים.</p></div>
+      <div>
+        <div><span class="big">₪50</span> <s>₪100</s> לחודש</div>
+        <ul><li>כל המשחקים וכל הרמות</li><li>יעד יומי, רצף ימים ופרס שאתם קובעים</li><li>14 ימים חינם, ליווי אישי בוואטסאפ</li></ul>
+        <a class="btn btn-a" href="#">התחילו 14 ימים חינם</a>
+      </div>
+    </div>
+    <p class="upsell">צריכים גם עזרה אישית? שיעור פרטי ₪150, בזום או בבית התלמיד · <a href="#">דברו איתי</a></p>
+  </div></section>
+  <footer>מוקאפ C · בהירות להורה</footer>
+
+  <script>
+    // WhatsApp-style updates, typed in one after another, then a weekly bar chart.
+    (function () {
+      var msgs = document.getElementById('msgs'), typing = document.getElementById('typing');
+      var script = [
+        { t: 'נועה עוד לא תרגלה היום. 10 דקות לפני ארוחת ערב? 🚀', time: '17:30' },
+        { t: 'כל הכבוד! נועה סיימה 12 דקות ועלתה לרמה 4 בשברים.', time: '18:05' },
+        { t: 'השבוע של נועה: 5 ימי תרגול מתוך 7', time: 'שישי', bars: [8, 12, 0, 10, 14, 0, 11] }
+      ];
+      var i = 0;
+      function next() {
+        if (i >= script.length) { setTimeout(function () { msgs.innerHTML = ''; i = 0; next(); }, 4000); return; }
+        typing.style.display = 'block';
+        setTimeout(function () {
+          typing.style.display = 'none';
+          var m = script[i++], el = document.createElement('div');
+          el.className = 'msg';
+          el.innerHTML = m.t + (m.bars ? '<div class="bars">' + m.bars.map(function (v) { return '<div class="' + (v ? '' : 'off') + '" data-h="' + (v ? v * 4 : 6) + '"></div>'; }).join('') + '</div>' : '') + '<time>' + m.time + '</time>';
+          msgs.appendChild(el);
+          requestAnimationFrame(function () { el.classList.add('show');
+            el.querySelectorAll('.bars div').forEach(function (b) { setTimeout(function () { b.style.height = b.dataset.h + 'px'; }, 200); }); });
+          setTimeout(next, 1800);
+        }, 1100);
+      }
+      next();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex">
+  <title>מוקאפ A · חלל עמוק</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050817; --panel: #0E1533; --panel-2: #141D45; --line: #26306B;
+      --ink: #F1F4FF; --muted: #B8C1E0; --blue: #8AB4FF; --violet: #A78BFA; --teal: #5EEAD4; --flame: #FF8A5B;
+    }
+    * { box-sizing: border-box; }
+    html { overflow-x: clip; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Heebo', system-ui, sans-serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Rubik', 'Heebo', sans-serif; margin: 0; line-height: 1.15; }
+    p { margin: 0; }
+    #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 20px; }
+    .logo span { color: var(--blue); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-family: inherit; font-size: 16px; }
+    .btn-main { background: linear-gradient(135deg, var(--teal), var(--blue)); color: #050817; box-shadow: 0 0 30px rgba(94, 234, 212, .35); }
+    .btn-line { color: var(--ink); border: 1.5px solid var(--line); background: rgba(14, 21, 51, .6); }
+
+    .hero { display: grid; gap: 40px; align-items: center; padding: 40px 0 80px; }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1fr; min-height: 80vh; } }
+    .tag { display: inline-block; color: var(--teal); font-weight: 700; font-size: 14px; letter-spacing: .5px; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 800; }
+    .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--blue), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { color: var(--muted); font-size: 19px; margin: 18px 0 28px; max-width: 520px; }
+    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Space scene: black hole + ringed planet behind the phone */
+    .scene { position: relative; height: 560px; display: flex; align-items: center; justify-content: center; }
+    .hole { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, #000 0 30%, transparent 31%), conic-gradient(from 0deg, transparent, rgba(255, 138, 91, .55), rgba(167, 139, 250, .5), transparent 60%, rgba(138, 180, 255, .45), transparent); filter: blur(6px); animation: spin 18s linear infinite; opacity: .85; }
+    .hole::after { content: ''; position: absolute; inset: 35%; border-radius: 50%; box-shadow: 0 0 60px 20px rgba(255, 138, 91, .35); }
+    .planet { position: absolute; top: 20px; inset-inline-start: 4%; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFD9A8, #E07A3F 55%, #6B2A12); box-shadow: inset -14px -10px 30px rgba(0, 0, 0, .5); animation: float 7s ease-in-out infinite; }
+    .planet::before { content: ''; position: absolute; inset: 42% -40%; border: 3px solid rgba(255, 217, 168, .55); border-radius: 50%; transform: rotate(-18deg); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float { 50% { transform: translateY(-14px); } }
+
+    .phone { position: relative; width: 270px; height: 540px; border-radius: 40px; background: #0A0F26; padding: 12px; box-shadow: 0 0 0 2px var(--line), 0 30px 80px rgba(0, 0, 0, .6); }
+    .screen { height: 100%; border-radius: 30px; background: linear-gradient(180deg, #151E4A, #0A0F26); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center; padding: 20px; }
+    .screen small { color: var(--muted); }
+    .q { font-family: 'Rubik', sans-serif; font-size: 30px; font-weight: 800; }
+    #pie { width: 170px; height: 170px; }
+    .play { background: var(--teal); color: #050817; border-radius: 999px; padding: 10px 20px; font-weight: 800; font-size: 15px; }
+
+    section.block { padding: 80px 0; }
+    .h2 { font-size: clamp(28px, 4vw, 40px); text-align: center; margin-bottom: 40px; }
+    .missions { display: grid; gap: 18px; }
+    @media (min-width: 800px) { .missions { grid-template-columns: repeat(3, 1fr); } }
+    .mission { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 28px; }
+    .mission b { display: block; color: var(--teal); font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+    .mission h3 { font-size: 22px; margin-bottom: 8px; }
+    .mission p { color: var(--muted); }
+
+    .price { max-width: 520px; margin: 0 auto; background: var(--panel-2); border: 1.5px solid var(--blue); border-radius: 26px; padding: 34px; text-align: center; box-shadow: 0 0 60px rgba(138, 180, 255, .15); }
+    .price .big { font-family: 'Rubik', sans-serif; font-size: 58px; font-weight: 800; }
+    .price s { color: var(--muted); font-size: 20px; }
+    .price ul { list-style: none; padding: 0; margin: 20px 0 26px; color: var(--muted); display: grid; gap: 8px; }
+    .price li::before { content: '✦ '; color: var(--teal); }
+    .upsell { text-align: center; color: var(--muted); font-size: 15px; margin-top: 20px; }
+    .upsell a { color: var(--blue); }
+    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 14px; position: relative; z-index: 1; }
+    @media (max-width: 899px) { .scene { height: 500px; } .hole { width: 340px; height: 340px; } }
+    @media (prefers-reduced-motion: reduce) { .hole, .planet { animation: none; } }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="wrap">
+    <nav><div class="logo"><span>חשבונ</span>אוטיקה</div><a class="btn btn-line" href="#">כניסה</a></nav>
+
+    <div class="hero">
+      <div>
+        <span class="tag">משחקי חשבון · כיתות ב'–ז' · בדפדפן</span>
+        <h1>10 דקות חשבון ביום.<br><em>בלי ויכוח.</em></h1>
+        <p>מערכת משחקי חשיבה שמורה למתמטיקה בנה לתלמידים שלו. הילד משחק לבד ומתקדם מרמה לרמה, ואתם מקבלים עדכון בוואטסאפ.</p>
+        <div class="ctas"><a class="btn btn-main" href="#">▶ נסו משחק עכשיו</a><a class="btn btn-line" href="#">14 ימים חינם</a></div>
+      </div>
+      <div class="scene">
+        <div class="hole"></div>
+        <div class="planet"></div>
+        <div class="phone"><div class="screen">
+          <small>מעבדת השברים · רמה 3</small>
+          <svg id="pie" viewBox="-1 -1 2 2"></svg>
+          <div class="q" id="frac">3/4</div>
+          <span class="play">▶ לחצו לשחק</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="block"><div class="wrap">
+    <h2 class="h2">שלוש משימות. זהו.</h2>
+    <div class="missions">
+      <div class="mission"><b>משימה 01</b><h3>שולחים קישור</h3><p>הילד נכנס בלחיצה, בלי סיסמה. טלפון, טאבלט או מחשב.</p></div>
+      <div class="mission"><b>משימה 02</b><h3>הוא משחק לבד</h3><p>עשר דקות של חידות: שברים, כפל, אחוזים, משוואות. יעד יומי ורצף ימים.</p></div>
+      <div class="mission"><b>משימה 03</b><h3>אתם בתמונה</h3><p>תזכורת בוואטסאפ כשהוא לא תרגל, ודוח שמראה איפה הוא נתקע.</p></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="price">
+      <h3>מנוי חשבונאוטיקה</h3>
+      <div><span class="big">₪50</span> <s>₪100</s> לחודש</div>
+      <ul><li>עד 2 ילדים, כל המשחקים</li><li>14 ימים חינם, בלי כרטיס אשראי</li><li>בלי חידוש אוטומטי</li></ul>
+      <a class="btn btn-main" href="#">התחילו 14 ימים חינם</a>
+    </div>
+    <p class="upsell">צריכים גם עזרה אישית? שיעור פרטי ₪150, בזום או בבית התלמיד · <a href="#">דברו איתי</a></p>
+  </div></section>
+  <footer>מוקאפ A · חלל עמוק</footer>
+
+  <script>
+    // Starfield: light, pauses when the tab is hidden, static under reduced motion.
+    (function () {
+      var c = document.getElementById('stars'), x = c.getContext('2d'), stars = [];
+      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function size() { c.width = innerWidth; c.height = innerHeight; stars = [];
+        for (var i = 0; i < Math.min(160, innerWidth / 6); i++) stars.push({ x: Math.random() * c.width, y: Math.random() * c.height, r: Math.random() * 1.4 + .2, s: Math.random() * .25 + .05 }); }
+      function draw() { x.clearRect(0, 0, c.width, c.height);
+        stars.forEach(function (s) { x.globalAlpha = .4 + s.r / 2.5; x.fillStyle = '#fff'; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 7); x.fill();
+          if (!still) { s.y += s.s; if (s.y > c.height) s.y = 0; } });
+        if (!still && !document.hidden) requestAnimationFrame(draw); }
+      size(); draw(); addEventListener('resize', size);
+      document.addEventListener('visibilitychange', function () { if (!document.hidden && !still) draw(); });
+    })();
+
+    // Live fraction pie in the phone: cycles through fractions, slice by slice.
+    (function () {
+      var svg = document.getElementById('pie'), label = document.getElementById('frac');
+      var list = [[3, 4], [2, 3], [5, 8], [1, 2]], i = 0;
+      function render(n, d, shown) {
+        var out = '';
+        for (var k = 0; k < d; k++) {
+          var a0 = k / d * 2 * Math.PI - Math.PI / 2, a1 = (k + 1) / d * 2 * Math.PI - Math.PI / 2;
+          var big = (a1 - a0) > Math.PI ? 1 : 0;
+          var fill = k < shown ? (k < n ? '#5EEAD4' : '#1D2760') : '#1D2760';
+          out += '<path d="M0 0 L' + Math.cos(a0) + ' ' + Math.sin(a0) + ' A1 1 0 ' + big + ' 1 ' + Math.cos(a1) + ' ' + Math.sin(a1) + 'Z" fill="' + fill + '" stroke="#0A0F26" stroke-width=".04"/>';
+        }
+        svg.innerHTML = out; label.textContent = n + '/' + d;
+      }
+      function next() {
+        var f = list[i++ % list.length], k = 0;
+        render(f[0], f[1], 0);
+        var t = setInterval(function () { render(f[0], f[1], ++k); if (k >= f[0]) { clearInterval(t); setTimeout(next, 1600); } }, 380);
+      }
+      next();
+    })();
+  </script>
+</body>
+</html>
