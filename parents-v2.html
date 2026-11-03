@@ -162,13 +162,12 @@
     @media (max-width: 799px) { div:has(> #a11yToggle) { bottom: calc(84px + env(safe-area-inset-bottom)) !important; } }
     header .btn.btn-primary { padding: 8px 16px; font-size: 15px; box-shadow: none; }
 
-    .price-grid { display: grid; gap: 20px; margin-top: 36px; align-items: start; }
-    @media (min-width: 860px) { .price-grid { grid-template-columns: 1.1fr .9fr; } }
+    .price-grid { max-width: 560px; margin: 36px auto 0; }
+    .upsell { text-align: center; margin-top: 22px; font-size: 15px; color: var(--ink-muted); }
+    .upsell a { color: var(--brand); font-weight: 700; }
     .price-grid .price-card { margin: 0; max-width: none; position: relative; }
-    .price-card.secondary { border-color: var(--line); }
     .price s { color: var(--ink-muted); font-size: 18px; }
     .badge { position: absolute; top: -14px; inset-inline-start: 24px; background: var(--brand); color: #fff; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
-    .price-card .btn-ghost { width: 100%; }
         .btn-primary { background: var(--brand); box-shadow: 0 8px 20px rgba(59, 75, 200, .28); }
     .btn-primary:hover { background: #2F3DA6; }
     .btn-ghost svg { color: var(--wa); }
@@ -297,18 +296,8 @@
             <a class="btn btn-primary" href="https://aritmetica.nt-school.app/pricing" target="_blank" rel="noopener" data-cta="price_trial">התחילו 14 ימים חינם</a>
           </div>
 
-          <div class="price-card secondary">
-            <h3>רוצים גם מורה?</h3>
-            <div class="price"><strong>₪150</strong><span>לשיעור</span></div>
-            <p class="per">שיעור פרטי של שעה, בזום או בבית התלמיד</p>
-            <ul class="checks">
-              <li><svg><use href="#i-check"/></svg>המורה שבנה את המערכת</li>
-              <li><svg><use href="#i-check"/></svg>השיעור מתחיל מהנקודה שבה הילד נתקע במשחקים</li>
-              <li><svg><use href="#i-check"/></svg>גישה למערכת כלולה</li>
-            </ul>
-            <a class="btn btn-ghost" data-wa data-cta="price_lesson" href="#"><svg><use href="#i-wa"/></svg>לתיאום בוואטסאפ</a>
-          </div>
         </div>
+        <p class="upsell">צריכים גם עזרה אישית? שיעור פרטי ₪150, בזום או בבית התלמיד · <a href="#" data-wa data-cta="upsell_lesson">דברו איתי</a></p>
       </div>
     </section>
 
