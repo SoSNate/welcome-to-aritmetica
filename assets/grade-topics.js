@@ -35,7 +35,8 @@
   // Cycles through `count` states: each one holds, then transitions to the next.
   function phase(t, count, hold, trans) {
     var per = hold + trans, k = Math.floor(t / per) % count, local = t % per;
-    return { i: k, next: (k + 1) % count, p: local < hold ? 0 : ease((local - hold) / trans) };
+    var r = local < hold ? 0 : (local - hold) / trans;
+    return { i: k, next: (k + 1) % count, p: ease(r), r: r };
   }
 
   // ── scenes ─────────────────────────────────────────────────────────────────
@@ -80,47 +81,98 @@
     };
   }
 
-  // Number line from −1 to 1. The red point slides, hops over zero into the
-  // negatives and back, then wiggles. The value above it is always live.
+  // Number line. The AXIS travels: the window slides from 0–1 to 1–2 and back
+  // to −1–0 while the ticks and labels glide past. The red dot only moves
+  // left and right (never up): it springs to a new spot, overshoots, settles.
+  // The number above it always reads the value currently under the dot.
   function numberLine(start) {
-    var path = [
-      { to: 0, dur: 1.2, type: 'slide' }, { to: -0.4, dur: .8, type: 'hop' }, { to: -0.4, dur: .5, type: 'hold' },
-      { to: 0, dur: .8, type: 'hop' }, { to: start, dur: 1.2, type: 'slide' }, { to: start, dur: 1.1, type: 'wiggle' }, { to: start, dur: .5, type: 'hold' }
+    var STEP = 1.7, PAN = 1.2, U = 42, N = 8;
+    // c = centre of the visible window, dx = where the dot sits relative to it.
+    var steps = [
+      { c: .5, dx: start - .5 }, { c: .5, dx: -.3 }, { c: .5, dx: .4 },
+      { c: 1.5, dx: -.2 }, { c: 1.5, dx: .3 },
+      { c: -.5, dx: .1 }, { c: -.5, dx: -.3 },
+      { c: .5, dx: start - .5 }
     ];
-    var total = path.reduce(function (s, p) { return s + p.dur; }, 0);
     return function (viz) {
-      var s = svg(viz), lab = label(viz), y = 44;
-      function X(v) { return 50 + v * 42; }
-      el('line', { x1: 6, y1: y, x2: 94, y2: y, stroke: C.ink, 'stroke-width': 1.4 }, s);
-      for (var k = -10; k <= 10; k++) {
-        var big = k % 5 === 0;
-        el('line', { x1: X(k / 10), y1: y - (big ? 5 : 3), x2: X(k / 10), y2: y + (big ? 5 : 3), stroke: C.ink, 'stroke-width': big ? 1.4 : .8, 'stroke-opacity': big ? 1 : .6 }, s);
-      }
-      [[-1, '−1'], [0, '0'], [1, '1']].forEach(function (m) { el('text', { x: X(m[0]), y: y + 15, 'text-anchor': 'middle', fill: C.ink, 'font-size': 7 }, s).textContent = m[1]; });
-      var neg = el('rect', { x: X(-1), y: y - 1.2, width: 42, height: 2.4, fill: C.blue, opacity: 0 }, s);
-      var dot = el('circle', { r: 4.2, fill: C.flame }, s);
-      var val = el('text', { 'text-anchor': 'middle', fill: C.flame, 'font-size': 9, 'font-weight': 700, direction: 'ltr' }, s);
+      var s = svg(viz), lab = label(viz), y = 36;
       lab.innerHTML = 'איפה הנקודה?';
+      var clip = 'nl' + Math.random().toString(36).slice(2, 7);
+      el('rect', { x: 6, y: 0, width: 88, height: 70 }, el('clipPath', { id: clip }, el('defs', {}, s)));
+      var g = el('g', { 'clip-path': 'url(#' + clip + ')' }, s);
+      var neg = el('rect', { x: 6, y: y - 1.6, width: 0, height: 3.2, fill: C.blue, opacity: 0 }, g);
+      el('line', { x1: 6, y1: y, x2: 94, y2: y, stroke: C.ink, 'stroke-width': 1.4 }, g);
+      var ticks = [], labels = [];
+      for (var k = -30; k <= 40; k++) ticks.push({ k: k, e: el('line', { stroke: k === 0 ? C.teal : C.ink, 'stroke-width': k === 0 ? 2 : (k % 5 ? .8 : 1.4) }, g) });
+      for (var q = -3; q <= 4; q++) labels.push({ q: q, e: el('text', { 'text-anchor': 'middle', fill: q === 0 ? C.teal : C.ink, 'font-size': 7.5, 'font-weight': q === 0 ? 700 : 400 }, g) });
+      labels.forEach(function (l) { l.e.textContent = (l.q < 0 ? '−' : '') + Math.abs(l.q); });
+      var dot = el('ellipse', { cy: y, rx: 4.4, ry: 4.4, fill: C.flame }, s);
+      var val = el('text', { 'text-anchor': 'middle', fill: C.flame, 'font-size': 9.5, 'font-weight': 700, y: y - 12 }, s);
+      function fade(x) { return Math.max(0, Math.min(1, Math.min(x - 6, 94 - x) / 12)); }
+      function state(t) {
+        t = t % (steps.length * STEP);
+        var idx = Math.floor(t / STEP), local = t - idx * STEP, a = steps[(idx - 1 + N) % N], b = steps[idx];
+        var c = a.c === b.c ? b.c : lerp(a.c, b.c, ease(Math.min(1, local / PAN)));
+        var dx = b.dx + (a.dx - b.dx) * Math.exp(-5 * local) * Math.cos(13 * local);
+        return { c: c, dx: dx };
+      }
       return { update: function (t) {
-        t = t % total;
-        var v = start, lift = 0, squash = 1, from = start;
-        for (var i = 0; i < path.length; i++) {
-          var seg = path[i];
-          if (t <= seg.dur) {
-            var p = t / seg.dur;
-            if (seg.type === 'slide') v = lerp(from, seg.to, ease(p));
-            else if (seg.type === 'hop') { v = lerp(from, seg.to, p); lift = Math.sin(Math.PI * p) * 18; squash = p > .9 ? 1 - (1 - p) * 3 : 1; }
-            else if (seg.type === 'wiggle') v = seg.to + Math.sin(p * Math.PI * 6) * .06 * (1 - p);
-            else v = seg.to;
-            break;
-          }
-          t -= seg.dur; from = seg.to;
+        var st = state(t), prev = state(Math.max(0, t - .016)), c = st.c;
+        ticks.forEach(function (tk) {
+          var x = 50 + (tk.k / 10 - c) * U, big = tk.k % 10 === 0 ? 6 : (tk.k % 5 === 0 ? 4.5 : 3);
+          tk.e.setAttribute('x1', x); tk.e.setAttribute('x2', x);
+          tk.e.setAttribute('y1', y - big); tk.e.setAttribute('y2', y + big);
+          tk.e.setAttribute('opacity', fade(x) * (tk.k % 5 ? .65 : 1));
+        });
+        labels.forEach(function (l) {
+          var x = 50 + (l.q - c) * U;
+          l.e.setAttribute('x', x); l.e.setAttribute('y', y + 17); l.e.setAttribute('opacity', fade(x));
+        });
+        var x0 = 50 + (0 - c) * U;
+        neg.setAttribute('width', Math.max(0, Math.min(94, x0) - 6)); neg.setAttribute('opacity', x0 > 6 ? .5 : 0);
+        var x = 50 + st.dx * U, speed = Math.abs(st.dx - prev.dx) * 60, stretch = 1 + Math.min(.55, speed * .12);
+        dot.setAttribute('cx', x); dot.setAttribute('rx', 4.4 * stretch); dot.setAttribute('ry', 4.4 / Math.sqrt(stretch));
+        val.setAttribute('x', x);
+        var v = Math.round((c + st.dx) * 10) / 10;
+        val.textContent = (v < 0 ? '−' : '') + Math.abs(v).toFixed(1).replace(/\.0$/, '');
+      } };
+    };
+  }
+
+  // Elevator / parking garage: the car rides above and below ground level,
+  // bounces when it arrives, and the equation under it shows the signed result.
+  function elevator(stops) {
+    function sn(v) { return (v < 0 ? '−' : '') + Math.abs(v); }
+    function back(x) { var c1 = 1.1, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); }
+    return function (viz) {
+      var s = svg(viz), lab = label(viz), top = 3, y0 = 3, gap = 9;
+      lab.dir = 'ltr';
+      function Y(f) { return y0 + (top - f) * gap; }
+      el('rect', { x: 34, y: Y(0) + gap, width: 34, height: gap * 3, fill: C.ink, 'fill-opacity': .09 }, s);
+      el('text', { x: 78, y: Y(-2) + 6, fill: C.ink, 'fill-opacity': .6, 'font-size': 6, 'text-anchor': 'start' }, s).textContent = 'חניון';
+      for (var f = 3; f >= -3; f--) {
+        el('line', { x1: 34, y1: Y(f) + gap, x2: 68, y2: Y(f) + gap, stroke: C.ink, 'stroke-opacity': f === 0 ? .9 : .25, 'stroke-width': f === 0 ? 1.6 : .7 }, s);
+        el('text', { x: 30, y: Y(f) + gap - 2.2, 'text-anchor': 'end', fill: f === 0 ? C.teal : C.ink, 'font-size': 6.5, 'font-weight': 700 }, s).textContent = sn(f);
+      }
+      el('line', { x1: 34, y1: y0, x2: 34, y2: Y(-3) + gap, stroke: C.ink, 'stroke-opacity': .5 }, s);
+      el('line', { x1: 68, y1: y0, x2: 68, y2: Y(-3) + gap, stroke: C.ink, 'stroke-opacity': .5 }, s);
+      var car = el('g', {}, s);
+      el('rect', { x: 40, y: 0.8, width: 22, height: gap - 1.6, rx: 1.5, fill: C.teal }, car);
+      el('line', { x1: 51, y1: 1.2, x2: 51, y2: gap - 1.2, stroke: '#070C20', 'stroke-width': .9 }, car);
+      var arrow = el('text', { x: 73, 'font-size': 7.5, 'font-weight': 700, 'text-anchor': 'start' }, s);
+      var shown = -1;
+      return { update: function (t) {
+        var ph = phase(t, stops.length, 1.3, 1.5), a = stops[ph.i], b = stops[ph.next], d = b - a;
+        var yy = lerp(Y(a), Y(b), back(ph.r));
+        car.setAttribute('transform', 'translate(0,' + yy + ')');
+        arrow.setAttribute('y', yy + gap / 2 + 2.5); arrow.setAttribute('fill', d < 0 ? C.flame : C.teal);
+        arrow.textContent = (d < 0 ? '▼ ' : '▲ ') + Math.abs(d);
+        var key = ph.i * 2 + (ph.r > .55 ? 1 : 0);
+        if (key !== shown) {
+          shown = key;
+          lab.innerHTML = '<span dir="ltr">' + sn(a) + (d < 0 ? ' − ' : ' + ') + Math.abs(d) + ' = <b style="color:' + C.teal + '">' + (ph.r > .55 ? sn(b) : '?') + '</b></span>';
+          pop(lab);
         }
-        dot.setAttribute('cx', X(v)); dot.setAttribute('cy', y - lift);
-        dot.setAttribute('r', 4.2 * (squash < 1 ? 1.15 : 1));
-        val.setAttribute('x', X(v)); val.setAttribute('y', y - lift - 8);
-        val.textContent = num(Math.round(v * 10) / 10);
-        neg.setAttribute('opacity', v < -0.01 ? .45 : 0);
       } };
     };
   }
@@ -282,7 +334,7 @@
   var GRADES = {
     3: [['לוח הכפל', 'אלוף הכפל', dotArray([[3, 4], [4, 4], [5, 3], [6, 2]])],
         ['שבר יחידה', 'מעבדת השברים', fraction([[1, 2], [1, 3], [1, 4], [1, 6]])],
-        ['שטח בריצוף', 'מהנדסי הצורות', areaGrid([[[4, 3]], [[5, 3]], [[5, 4]], [[3, 4]]])],
+        ['מספרים שליליים בחניון', 'מעלית ומדרגות', elevator([2, -3, 1, -2, 3])],
         ['בעיה בפעולה אחת', 'שאלות מילוליות', wordProblem(words.oneStep)]],
     4: [['סדר פעולות', 'כאן בונים בכיף', expression(['3 + <mark>4 × 2</mark>', '<mark>3 + 8</mark>', '<b>11</b>'])],
         ['חוק הפילוג', 'מהנדסי הצורות', areaGrid([[[6, 4]], [[4, 4], [2, 4]], [[6, 3]], [[3, 3], [3, 3]]])],
@@ -292,14 +344,14 @@
         ['שברים עשרוניים', 'תפוס את הנקודה', numberLine(0.7)],
         ['שטחים', 'מהנדסי הצורות', areaGrid([[[7, 3]], [[5, 3], [2, 3]], [[7, 4]], [[4, 4], [3, 4]]])],
         ['בעיות דו-שלביות', 'שאלות מילוליות', wordProblem(words.twoStep)]],
-    6: [['אחוזים', 'מעבדת אחוזים', tank([25, 60, 40, 75, 10], 'pct')],
-        ['עשרוניים', 'תפוס את הנקודה', numberLine(0.35)],
+    6: [['עשרוניים', 'תפוס את הנקודה', numberLine(0.4)],
         ['חיבור שברים', 'מעבדת השברים', fraction([[1, 4], [2, 4], [3, 4], [6, 8]])],
+        ['שטח והיקף', 'מהנדסי הצורות', areaGrid([[[8, 4]], [[5, 4], [3, 4]], [[8, 5]], [[4, 5], [4, 5]]])],
         ['אחוזים בחיים', 'שאלות מילוליות', wordProblem(words.percent)]],
     7: [['משוואות', 'שומרים על איזון', balance([['2x + 3', '11', '2x + 3 = 11'], ['2x', '8', '−3 משני הצדדים'], ['x', '4', '÷2 משני הצדדים'], ['x', '4', 'x = 4 ✓']])],
-        ['מספרים מכוונים', 'תבניות הקסם', expression(['(−4) + 7', '7 <mark>− 4</mark>', '<b>3</b>'])],
-        ['אחוזים ויחס', 'מעבדת אחוזים', tank([40, 15, 90, 55], 'pct')],
-        ['שאלות אחוזים', 'שאלות מילוליות', wordProblem(words.percent)]]
+        ['נעלם בשני הצדדים', 'שומרים על איזון', balance([['3x', 'x + 6', '3x = x + 6'], ['2x', '6', '−x משני הצדדים'], ['x', '3', '÷2 משני הצדדים'], ['x', '3', 'x = 3 ✓']])],
+        ['שטח והיקף', 'מהנדסי הצורות', areaGrid([[[8, 5]], [[5, 5], [3, 5]], [[8, 4]], [[4, 4], [4, 4]]])],
+        ['אחוזים בחיים', 'שאלות מילוליות', wordProblem(words.percent)]]
   };
 
   // ── runtime ────────────────────────────────────────────────────────────────
