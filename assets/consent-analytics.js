@@ -82,15 +82,63 @@
    * Every link into the app is a funnel exit worth counting. Delegated rather
    * than wired per-link, so new CTAs are covered without touching each page.
    */
+  /**
+   * Campaign attribution. UTM params from the landing URL are kept for the
+   * session and carried onto every link into the app, so a signup there can be
+   * traced back to the Facebook/WhatsApp post that brought the visitor.
+   * Storage is optional: without it, only the current page's params are used.
+   */
+  var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+
+  function getUtm() {
+    var found = {};
+    try {
+      var params = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) { if (params.get(k)) found[k] = params.get(k); });
+      if (Object.keys(found).length) {
+        sessionStorage.setItem('nt_utm', JSON.stringify(found));
+        return found;
+      }
+      return JSON.parse(sessionStorage.getItem('nt_utm') || '{}');
+    } catch (e) {
+      return found;
+    }
+  }
+
+  function withUtm(href, utm) {
+    try {
+      var url = new URL(href);
+      Object.keys(utm).forEach(function (k) {
+        if (!url.searchParams.has(k)) url.searchParams.set(k, utm[k]);
+      });
+      return url.toString();
+    } catch (e) {
+      return href;
+    }
+  }
+
   function trackAppLinks() {
+    var utm = getUtm();
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-      if (!a || !window.gtag) return;
-      if (a.href.indexOf('aritmetica.nt-school.app') === -1) return;
-      window.gtag('event', 'cta_to_app', {
-        page: document.title,
-        target: a.getAttribute('href')
-      });
+      if (!a) return;
+      var where = a.getAttribute('data-cta') || '';
+
+      if (a.href.indexOf('aritmetica.nt-school.app') !== -1) {
+        if (Object.keys(utm).length) a.href = withUtm(a.href, utm);
+        if (window.gtag) window.gtag('event', 'cta_to_app', {
+          page: document.title,
+          target: a.getAttribute('href'),
+          location: where
+        });
+        return;
+      }
+      if (!window.gtag) return;
+      if (a.href.indexOf('wa.me/') !== -1) {
+        window.gtag('event', 'whatsapp_click', { page: document.title, location: where });
+      } else if (a.href.indexOf('tel:') === 0) {
+        window.gtag('event', 'phone_click', { page: document.title, location: where });
+      }
     });
   }
 
