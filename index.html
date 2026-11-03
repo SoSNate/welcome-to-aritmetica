@@ -3,153 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>חשבונאוטיקה | למידה במסלול אחר לגמרי</title>
+  <title>חשבונאוטיקה | כיתה ה', פותר תרגילים של כיתה ז'</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="חשבונאוטיקה | למידה במסלול אחר לגמרי">
-  <meta property="og:description" content="סביבת חידות ללימוד חשבון, כדי שהילדים ירגישו את המספרים זזים ויראו את המתמטיקה חיה - עם דוחות ברורים למורה או להורה.">
+  <meta property="og:title" content="אחי הקטן בכיתה ה'. פותר תרגילים של כיתה ז'.">
+  <meta property="og:description" content="לפני שנה הוא לא עשה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה, 10–15 דקות כל יום. נסו משחק בחינם, בלי הרשמה.">
   <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
-  <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
-  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="חשבונאוטיקה | למידה במסלול אחר לגמרי">
-  <meta name="twitter:description" content="סביבת חידות ללימוד חשבון, כדי שהילדים ירגישו את המספרים זזים ויראו את המתמטיקה חיה.">
-  <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
-
-  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
-       against this site's own stream (G-4X19P4M4PX). -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
   <style>
     #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
-    .role-switch { position:relative; display:inline-flex; padding:4px; border-radius:999px; gap:4px; }
-    .role-switch button { position:relative; z-index:2; border:none; background:none; padding:10px 28px; border-radius:999px; font-weight:800; font-size:14px; cursor:pointer; color:var(--text-muted); transition:color 0.25s ease; }
-    .role-switch button.active { color:var(--bg-deep); }
-    .role-switch .role-thumb { position:absolute; top:4px; bottom:4px; left:4px; width:calc(50% - 4px); border-radius:999px; background:linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 100%); transition:transform 0.3s cubic-bezier(.4,0,.2,1); z-index:1; }
-    .role-switch[data-role="teacher"] .role-thumb { transform:translateX(100%); }
-    .role-switch[data-role="parent"] .role-thumb { transform:translateX(0); }
+    /* Brighter secondary text than the original 70%: easier to read on the starfield. */
+    :root { --text-muted: rgba(234, 240, 250, 0.84); }
+    .story-line { display:block; }
+    .hero-h1 { font-family:'Heebo', sans-serif; font-weight:900; }
+    .phone { position:relative; width:min(300px, 80vw); aspect-ratio:9/18.5; margin:0 auto; border-radius:40px; padding:11px; background:#070C20; box-shadow:0 0 0 2px rgba(138,180,255,.25), 0 30px 70px rgba(0,0,0,.55), 0 0 60px rgba(94,234,212,.12); }
+    .phone-screen { position:relative; width:100%; height:100%; border-radius:30px; overflow:hidden; background:radial-gradient(circle at 30% 20%, #1E2A66 0%, #070C20 65%); }
+    .phone-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .phone-poster { position:absolute; inset:0; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; text-align:center; background:none; border:0; color:var(--text-primary); cursor:pointer; font-family:inherit; }
+    .phone-poster img { width:92px; height:92px; border-radius:50%; box-shadow:0 0 40px rgba(138,180,255,.45); }
+    .play-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); color:var(--bg-deep); font-weight:900; padding:12px 22px; border-radius:999px; box-shadow:0 0 24px rgba(94,234,212,.35); }
+    .step-num { width:40px; height:40px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:900; color:var(--bg-deep); background:linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 100%); }
+    .game-card img { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; display:block; }
+    .wa-chat { background:#0B141A; border:1px solid var(--border-panel); border-radius:22px; padding:16px; display:flex; flex-direction:column; gap:10px; box-shadow:0 20px 50px rgba(0,0,0,.4); }
+    .wa-head { display:flex; align-items:center; gap:10px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .wa-head img { width:38px; height:38px; border-radius:50%; }
+    .wa-head small { display:block; color:var(--text-muted); font-size:12px; }
+    .wa-msg { align-self:flex-start; max-width:88%; background:#202C33; color:#E9EDEF; padding:10px 14px; border-radius:12px 12px 12px 3px; font-size:15px; line-height:1.5; }
+    .wa-msg time { display:block; text-align:left; font-size:11px; color:#8696A0; margin-top:2px; }
+    .wa-note { text-align:center; font-size:12px; color:var(--text-muted); margin:4px 0 0; }
+    .faq details { border-bottom:1px solid var(--border-panel); }
+    .faq summary { cursor:pointer; list-style:none; padding:16px 4px; font-weight:700; display:flex; justify-content:space-between; gap:12px; }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary::after { content:'+'; color:var(--accent-blue); font-size:20px; }
+    .faq details[open] summary::after { content:'−'; }
+    .faq details p { padding:0 4px 16px; color:var(--text-muted); }
   </style>
 </head>
 <body class="antialiased">
 
   <canvas id="starfield"></canvas>
 
-  <!-- Navbar -->
+  <!-- Navbar: one primary action for a new visitor (the demo). Login is secondary. -->
   <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4">
     <div class="max-w-6xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
       <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
         <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20 shadow-md">
         <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
       </a>
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <a href="#roleSwitch" class="hidden sm:inline-flex nav-secondary-btn glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap">מורה או הורה?</a>
-        <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap shrink-0">כניסה למערכת</a>
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="text-xs sm:text-sm font-semibold whitespace-nowrap" style="color:var(--text-muted);" data-cta="nav_login">כניסה</a>
+        <a href="#demo" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap" data-cta="nav_demo">▶ נסו בחינם</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <main class="relative z-10 max-w-5xl mx-auto px-5 pt-32 sm:pt-40 pb-20">
-    <section class="text-center space-y-7">
-      <div class="space-y-2">
-        <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:8px 16px;">
-          <span>✨</span><span>פיילוט פעיל · 14 ימי ניסיון חינם</span>
-        </div>
-        <p class="text-xs sm:text-sm font-semibold" style="color:var(--text-muted);">ליווי אישי בוואטסאפ במהלך 14 הימים, עד שהכול עובד.</p>
+  <main class="relative z-10 max-w-5xl mx-auto px-5 pt-28 sm:pt-36 pb-16">
+
+    <!-- 1. Hook: one real, specific story -->
+    <section class="text-center space-y-6">
+      <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-turquoise); padding:8px 16px;">
+        <span>סיפור אמיתי</span>
       </div>
-      <h1 class="font-space text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-        למידה במסלול <br>
-        <span class="text-gradient">אחר לגמרי.</span>
+      <h1 class="hero-h1 text-4xl sm:text-5xl lg:text-6xl leading-tight">
+        <span class="story-line">אחי הקטן בכיתה ה'.</span>
+        <span class="story-line text-gradient">פותר תרגילים של כיתה ז'.</span>
       </h1>
-      <p id="roleSupportingText" class="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
-        משחקים וחידות שהופכים תרגול חשבון למשהו שהילד עושה מעצמו - ומאחורי הקלעים, כל צעד שלו נאסף לתמונה ברורה של ההתקדמות, היכולות והמוטיבציה.
+      <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
+        לפני שנה הוא לא עשה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה ומתרגל 10–15 דקות כל יום.
+        <strong style="color:var(--text-primary);">בלי ויכוחים.</strong>
       </p>
-      <div class="flex flex-col items-center gap-3">
-        <p class="text-base sm:text-lg font-bold" style="color:var(--text-primary);">עזבו שטויות, בואו תנסו 👇</p>
-        <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" class="glass-btn" style="display:inline-flex; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); box-shadow:0 0 20px rgba(94,234,212,0.3);">🎮 לדמו חינמי, בלי הרשמה</a>
+      <p class="text-sm" style="color:var(--text-muted);">נתנאל, מורה למתמטיקה ומפתח חשבונאוטיקה</p>
+      <div class="flex flex-col items-center gap-3 pt-2">
+        <a href="#demo" class="glass-btn" data-cta="hero_demo" style="display:inline-flex; font-size:18px; padding:16px 34px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900; box-shadow:0 0 28px rgba(94,234,212,0.35);">▶ תנו לילד שלכם לנסות</a>
+        <p class="text-sm" style="color:var(--text-muted);">משחק אמיתי · בלי הרשמה · בדפדפן · כיתות ב'–ז'</p>
       </div>
     </section>
 
-    <!-- Vision -->
-    <section class="mt-24 glass-panel p-6 sm:p-10 space-y-4 text-right">
-      <h2 class="font-space text-2xl sm:text-3xl font-bold">מה זו חשבונאוטיקה?</h2>
-      <p class="leading-relaxed" style="color:var(--text-muted);">
-        <span style="color:var(--accent-blue); font-weight:700;">במקום עוד דף עבודה - חידה.</span> הילד מזיז, מנסה וטועה, ומגלה את המספרים מחדש. זו לא למידה שצריך לשכנע אותה, זו סקרנות שעובדת לבד.
-      </p>
-      <p class="leading-relaxed" style="color:var(--text-muted);">
-        <span style="color:var(--accent-blue); font-weight:700;">בכל מקום, בלי התקנה.</span> נפתח מהדפדפן ומרגיש כמו אפליקציה - בנסיעות, בחופשות או לפעמים גם בממ"ד.
-      </p>
-      <p class="leading-relaxed" style="color:var(--text-muted);">
-        <span style="color:var(--accent-blue); font-weight:700;">וזה מה שאתם מקבלים:</span> לא תחושת בטן, אלא נתונים. איפה הוא חזק, איפה נתקע, ומה באמת השתפר.
-      </p>
-    </section>
-
-    <!-- Gallery -->
-    <section class="mt-24 space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="font-space text-2xl sm:text-3xl font-bold">רואים את זה בעיניים</h2>
-        <p style="color:var(--text-muted);">מסכים אמיתיים מהדשבורד ומהמשחקים</p>
-      </div>
-      <div id="gallerySection"></div>
-    </section>
-
-    <!-- Role picker -->
-    <section class="mt-24 text-center space-y-4">
-      <div class="space-y-2 mb-6">
-        <h2 class="font-space text-2xl sm:text-3xl font-bold">מי אתם?</h2>
-        <p style="color:var(--text-muted);">בחרו כדי לראות בדיוק מה המערכת נותנת לכם</p>
-      </div>
-      <div class="flex flex-col items-center gap-4">
-        <div class="role-switch glass-panel" id="roleSwitch" data-role="teacher">
-          <div class="role-thumb"></div>
-          <button type="button" data-role="teacher" class="active">👩‍🏫 מורה</button>
-          <button type="button" data-role="parent">👨‍👩‍👧 הורה</button>
+    <!-- 2. Demo: the system itself, not screenshots -->
+    <section id="demo" class="mt-20 scroll-mt-24">
+      <div class="grid gap-10 sm:grid-cols-2 items-center">
+        <div class="text-right space-y-4 order-2 sm:order-1">
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">נסו בעצמכם. עכשיו.</h2>
+          <p class="leading-relaxed" style="color:var(--text-muted);">זה לא סרטון. זה המשחק עצמו, אותו משחק שאחי משחק בו כל יום. תנו לילד דקה אחת איתו ותראו מה קורה.</p>
+          <p class="text-sm" style="color:var(--text-muted);">לא נפתח כאן? <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;" data-cta="demo_fullscreen">פתחו את הדמו במסך מלא</a></p>
         </div>
-        <a id="roleCta" href="teacher.html" class="glass-btn glass-btn-primary">מה מקבלים המורים? 🚀</a>
-      </div>
-    </section>
-
-    <!-- Institutions -->
-    <section id="tracks" class="mt-24 scroll-mt-24">
-      <div class="glass-panel p-8 flex flex-col sm:flex-row sm:items-center gap-5 justify-between" id="institution-panel">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl">🏫</div>
-          <div>
-            <h3 class="font-space text-xl font-bold mb-1">מוסדות ובתי ספר</h3>
-            <p style="color:var(--text-muted);" class="text-sm leading-relaxed">מנהלים צוות מורים או מוסד חינוכי? השאירו פרטים ונחזור אליכם עם הצעה מותאמת.</p>
+        <div class="order-1 sm:order-2">
+          <div class="phone">
+            <div class="phone-screen" id="demoScreen">
+              <button type="button" class="phone-poster" id="demoPlay" aria-label="פתיחת משחק לדוגמה">
+                <img src="assets/logo.jpg" alt="">
+                <strong style="font-size:20px;">שברים, כפל, משוואות</strong>
+                <span style="color:var(--text-muted); font-size:15px;">משחק אמיתי מהמערכת</span>
+                <span class="play-pill">▶ לחצו לשחק</span>
+              </button>
+            </div>
           </div>
         </div>
-        <button id="institution-open-btn" class="glass-btn whitespace-nowrap">השאירו פרטים</button>
       </div>
     </section>
-  </main>
 
-  <!-- Institution contact modal -->
-  <div id="institution-modal" class="hidden fixed inset-0 z-[999] items-center justify-center p-4" style="background:rgba(6,10,26,0.9);">
-    <div class="glass-panel p-6 sm:p-8 max-w-md w-full text-right relative">
-      <button id="institution-close-btn" style="position:absolute; top:16px; inset-inline-start:16px; background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
-      <h3 class="font-space text-xl font-bold mb-4">פנייה ממוסד/בית ספר</h3>
-      <form id="institutionForm" data-prefix="inst" class="space-y-3">
-        <div id="inst-error-message" class="hidden p-3 rounded-xl text-xs font-semibold" style="background:rgba(255,107,74,0.12); color:var(--accent-flame);"></div>
-        <input id="inst-name" placeholder="שם מלא ותפקיד" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
-        <input id="inst-phone" type="tel" placeholder="050-0000000" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
-        <input id="inst-email" type="email" placeholder="אימייל" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
-        <label class="flex items-start gap-2 text-xs leading-relaxed" style="color:var(--text-muted);">
-          <input type="checkbox" id="inst-consent" required style="margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--accent-blue);">
-          <span>אני מאשר/ת שתחזרו אליי בטלפון או במייל, ואת <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:700;">מדיניות הפרטיות</a>.</span>
-        </label>
-        <button type="submit" class="glass-btn glass-btn-primary w-full justify-center">שליחה</button>
-      </form>
-      <div id="institution-success" class="hidden text-center py-4">
-        <p style="color:var(--accent-turquoise);">קיבלנו את הפנייה, נחזור אליכם בקרוב!</p>
+    <!-- Games: what is actually inside -->
+    <section id="games" class="mt-24 scroll-mt-24 space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="font-space text-2xl sm:text-3xl font-bold">10 משחקים. כל אחד מלמד משהו אחר.</h2>
+        <p style="color:var(--text-muted);">לכל משחק 9–16 רמות, מצב תרגול רגוע ומצב אתגר עם שעון.</p>
       </div>
-    </div>
-  </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="glass-panel overflow-hidden game-card"><img src="111.jpeg" alt="מעבדת השברים" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">מעבדת השברים</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">רואים שבר, מחלקים, משווים</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="115.jpeg" alt="אלוף הכפל" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">אלוף הכפל</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">מהבנה ויזואלית לשליפה מהירה</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="112.jpeg" alt="שומרים על איזון" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">שומרים על איזון</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">מאזניים שמלמדים משוואות</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="114.jpeg" alt="כאן בונים בכיף" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">כאן בונים בכיף</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">בונים ופותרים משוואות</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="113.jpeg" alt="חצי הכוס המלאה" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">חצי הכוס המלאה</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">עשרוניים ואחוזים במילוי מכלים</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="116.jpeg" alt="מהנדסי הצורות" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">מהנדסי הצורות</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">שטח והיקף על רשת</p></div></div>
+        <div class="glass-panel overflow-hidden game-card"><img src="117.jpeg" alt="תבניות הקסם" loading="lazy"><div class="p-3 sm:p-4 text-right"><h3 class="font-bold">תבניות הקסם</h3><p class="text-xs sm:text-sm" style="color:var(--text-muted);">מזהים חוקיות וסדרות</p></div></div>
+        <div class="glass-panel p-4 text-right flex flex-col justify-center gap-2">
+          <h3 class="font-bold" style="color:var(--accent-blue);">ועוד:</h3>
+          <p class="text-sm" style="color:var(--text-muted);">תפוס את הנקודה (עשרוניים), מעבדת אחוזים, שאלות מילוליות</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Why it works: three short points, no feature list -->
+    <section class="mt-24 space-y-6">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold text-center">למה הוא חוזר כל יום</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="glass-panel p-6 text-right space-y-2">
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">חידה, לא דף עבודה</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">מזיזים, מנסים, טועים בלי שמישהו מסתכל, ומגלים את התשובה לבד.</p>
+        </div>
+        <div class="glass-panel p-6 text-right space-y-2">
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">מתקדם בקצב שלו</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">רמה אחרי רמה. ילד שמוכן לרוץ קדימה, רץ. ילד שצריך עוד זמן, מקבל אותו.</p>
+        </div>
+        <div class="glass-panel p-6 text-right space-y-2">
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">רצף ימים</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">יעד יומי קצר, רצף שלא רוצים לשבור, ופרס שאתם בוחרים. ככה נבנה הרגל.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp bot -->
+    <section class="mt-24 grid gap-8 sm:grid-cols-2 items-center">
+      <div class="text-right space-y-4">
+        <span class="label-tag" style="display:inline-flex; color:var(--accent-turquoise);">סוכן וואטסאפ</span>
+        <h2 class="font-space text-2xl sm:text-3xl font-bold">ההתמדה לא תלויה בכם.</h2>
+        <p class="leading-relaxed" style="color:var(--text-muted);">הסוכן שלנו בוואטסאפ, יחד עם התראות פוש, מזכיר לילד לתרגל כל יום ומעדכן אתכם אם הוא לא תרגל יומיים. אתם לא צריכים לזכור, לבדוק או להציק.</p>
+        <ul class="space-y-2 text-sm" style="color:var(--text-muted);">
+          <li>✦ תזכורת יומית לילד לתרגל</li>
+          <li>✦ עדכון אליכם כשיש הפסקה בתרגול</li>
+          <li>✦ בלי להתקין אפליקציה ובלי להיכנס לשום מערכת</li>
+        </ul>
+      </div>
+      <div class="wa-chat" aria-label="הדגמה של הודעות הסוכן בוואטסאפ">
+        <div class="wa-head"><img src="assets/logo.jpg" alt=""><div><b>חשבונאוטיקה</b><small>סוכן וואטסאפ</small></div></div>
+        <div class="wa-msg">היי נועה! 🚀 עוד לא שיחקת היום. 10 דקות ואת שומרת על הרצף 🔥<time>17:30</time></div>
+        <div class="wa-msg">היי, נועה לא תרגלה יומיים. אולי תזכורת קטנה בערב? 🙂<time>19:00</time></div>
+        <p class="wa-note">הדגמה של סוג ההודעות</p>
+      </div>
+    </section>
+
+    <!-- 4. How to start -->
+    <section class="mt-24 glass-panel p-6 sm:p-10 space-y-6">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold text-center">איך מתחילים</h2>
+      <div class="grid gap-6 sm:grid-cols-3 text-right">
+        <div class="space-y-2"><span class="step-num">1</span><h3 class="font-bold text-lg">נרשמים עם Google</h3><p class="text-sm" style="color:var(--text-muted);">דקה אחת. 14 ימים חינם, בלי כרטיס אשראי.</p></div>
+        <div class="space-y-2"><span class="step-num">2</span><h3 class="font-bold text-lg">שולחים לילד קישור</h3><p class="text-sm" style="color:var(--text-muted);">לחיצה אחת, בלי סיסמה. טלפון, טאבלט או מחשב.</p></div>
+        <div class="space-y-2"><span class="step-num">3</span><h3 class="font-bold text-lg">הוא משחק, אתם רואים</h3><p class="text-sm" style="color:var(--text-muted);">תזכורת בוואטסאפ כשהוא לא תרגל, ודוח שמראה איפה הוא נתקע.</p></div>
+      </div>
+    </section>
+
+    <!-- 5. Price -->
+    <section id="price" class="mt-24 scroll-mt-24 space-y-5">
+      <div class="glass-panel p-8 max-w-lg mx-auto text-center space-y-4" style="border-color:rgba(138,180,255,.45);">
+        <span class="label-tag" style="display:inline-flex; color:var(--accent-flame);">מחיר פיילוט, עד ינואר</span>
+        <h2 class="font-space text-xl font-bold">מנוי חשבונאוטיקה</h2>
+        <div><span class="font-space text-5xl font-bold">₪50</span> <span style="color:var(--text-muted);">לחודש · <s>₪100</s></span></div>
+        <ul class="text-sm space-y-1.5" style="color:var(--text-muted);">
+          <li>עד 2 ילדים · כל המשחקים וכל הרמות</li>
+          <li>14 ימים חינם · בלי חידוש אוטומטי</li>
+          <li>ליווי אישי בוואטסאפ בהתחלה</li>
+        </ul>
+        <a href="https://aritmetica.nt-school.app/pricing" target="_blank" rel="noopener" class="glass-btn glass-btn-primary w-full justify-center" data-cta="price_trial">התחילו 14 ימים חינם</a>
+      </div>
+      <p class="text-center text-sm" style="color:var(--text-muted);">צריכים גם עזרה אישית? שיעור פרטי ₪150, בזום או בבית התלמיד · <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700;" data-cta="upsell_lesson">דברו איתי</a></p>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="mt-24 max-w-2xl mx-auto text-right faq">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold text-center mb-4">שאלות שהורים שואלים</h2>
+      <details><summary>לאיזה גילאים?</summary><p>כיתות ב' עד ז'. מלוח הכפל, דרך שברים ואחוזים, ועד משוואות.</p></details>
+      <details><summary>אני צריך לשבת לידו?</summary><p>לא. המשחקים בנויים כך שהילד משחק לבד. אתם קובעים יעד יומי ומקבלים תזכורת אם הוא לא תרגל.</p></details>
+      <details><summary>צריך להתקין משהו?</summary><p>לא. הכול בדפדפן. הילד נכנס מקישור אישי, בלי סיסמה.</p></details>
+      <details><summary>מה קורה אחרי 14 הימים?</summary><p>אין חיוב אוטומטי. רוצים להמשיך? מצטרפים. לא? פשוט לא ממשיכים.</p></details>
+    </section>
+
+    <!-- 7. Final CTA -->
+    <section class="mt-24 text-center space-y-4">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">לפני שנה גם הוא לא רצה.</h2>
+      <p style="color:var(--text-muted);">דקה אחת עם המשחק, וזה מתחיל.</p>
+      <a href="#demo" class="glass-btn" data-cta="final_demo" style="display:inline-flex; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900;">▶ תנו לילד שלכם לנסות</a>
+    </section>
+
+    <!-- 8. Other audiences: one line each, out of the parent's way -->
+    <section class="mt-20 text-center text-sm space-y-2" style="color:var(--text-muted);">
+      <p>מורה פרטי? <a href="teacher.html" style="color:var(--accent-blue); font-weight:700;">ככה חשבונאוטיקה עובדת עם התלמידים שלך ←</a></p>
+      <p>בית ספר או מוסד? <a href="pricing.html" style="color:var(--accent-blue); font-weight:700;">השאירו פרטים ←</a></p>
+    </section>
+  </main>
 
   <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
     <a href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
@@ -166,14 +233,11 @@
 
   <script src="assets/solar-system.js"></script>
   <script src="assets/starfield.js"></script>
-  <script src="assets/gallery.js"></script>
-  <script src="assets/lead-form.js"></script>
   <script src="assets/accessibility.js"></script>
   <script src="assets/consent-analytics.js"></script>
   <script src="assets/contact-bubble.js"></script>
   <script>
     initAccessibilityWidget();
-    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
 
     if (window.innerWidth < 640) {
       initSolarSystem({ top: '-8%', left: '-30%', scale: 0.55, rotateOffset: 0, parallaxYFactor: 0.25, parallaxXFactor: 0 });
@@ -182,73 +246,14 @@
     }
     initStarfield();
 
-    // Role switch - swaps hero supporting text + CTA target in place.
-    (function () {
-      const roleCopy = {
-        teacher: {
-          text: 'משחקים וחידות שהתלמיד ממשיך לתרגל בהם גם בין השיעורים - ואתם מקבלים תמונה ברורה של ההתקדמות, היכולות והמוטיבציה שלו, בלי לנחש.',
-          ctaText: 'מה מקבלים המורים? 🚀',
-          ctaHref: 'teacher.html'
-        },
-        parent: {
-          text: 'משחקים וחידות שהילד עושה מעצמו, בלי ויכוחים - ואתם מקבלים תמונה ברורה של ההתקדמות, היכולות והמוטיבציה שלו, בלי לנחש.',
-          ctaText: 'מה מקבלים ההורים? 🚀',
-          ctaHref: 'parent.html'
-        }
-      };
-      const roleSwitch = document.getElementById('roleSwitch');
-      const roleText = document.getElementById('roleSupportingText');
-      const roleCta = document.getElementById('roleCta');
-      roleSwitch.querySelectorAll('button').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const role = btn.getAttribute('data-role');
-          roleSwitch.setAttribute('data-role', role);
-          roleSwitch.querySelectorAll('button').forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          if (window.gtag) window.gtag('event', 'role_switch', { role: role });
-          roleText.textContent = roleCopy[role].text;
-          roleCta.textContent = roleCopy[role].ctaText;
-          roleCta.href = roleCopy[role].ctaHref;
-        });
-      });
-    })();
-
-    const albumData = [
-      { src: 'דשבורד 1 .gif', label: 'ממשק מורה: מעקב פעילות שבועי, כוכבים וזמן תרגול' },
-      { src: 'דשבורד 2.gif', label: 'ממשק מורה: ניתוח שגיאות ואבחון קשיים לתלמיד' },
-      { src: 'דשבורד 3.gif', label: 'ממשק מורה: בניית רצף תרגול אישי לכל תלמיד' },
-      { src: 'כפל 1 .gif', label: 'גיימפליי: תרגול כפל ויזואלי המשלב הבנה ומשחק מאתגר' },
-      { src: 'כפל 2.gif', label: 'גיימפליי: משחק לוח הכפל לחיזוק ושליפה מהירה' },
-      { src: 'משוואות .gif', label: 'גיימפליי: פתרון משוואות בדרך חווייתית' },
-      { src: 'צורות .gif', label: 'גיימפליי: מהנדסי צורות - הבנת שטח והיקף' },
-      { src: '111.jpeg', label: 'FractionLab - מעבדת שברים אינטראקטיבית' },
-      { src: '112.jpeg', label: 'Balance - מאזניים אלגבריים ואיזון משוואות' },
-      { src: '113.jpeg', label: 'Tank - שברים עשרוניים ואחוזים באמצעות מילוי מכלים' },
-      { src: '114.jpeg', label: 'Equations - ייצוג חזותי ופתרון משוואות' },
-      { src: '115.jpeg', label: 'MultiplicationChamp - ראייה מרחבית ולוח הכפל' },
-      { src: '116.jpeg', label: 'JuniorGrid - גאומטריה, שטחים וכפל מבוסס רשת' },
-      { src: '117.jpeg', label: 'Magic Patterns - זיהוי חוקיות וסדרות מספריות' }
-    ];
-    initGallery('gallerySection', albumData, { autoAdvanceMs: 4000 });
-
-    const instOpenBtn = document.getElementById('institution-open-btn');
-    const instModal = document.getElementById('institution-modal');
-    const instCloseBtn = document.getElementById('institution-close-btn');
-    instOpenBtn.addEventListener('click', function () {
-      if (window.gtag) window.gtag('event', 'lead_form_open', { role: 'institution' });
-      instModal.classList.remove('hidden');
-      instModal.style.display = 'flex';
-    });
-    instCloseBtn.addEventListener('click', function () {
-      instModal.classList.add('hidden');
-      instModal.style.display = 'none';
-    });
-    document.getElementById('institutionForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const ok = submitLeadForm(this, 'institution', function () {
-        document.getElementById('institutionForm').classList.add('hidden');
-        document.getElementById('institution-success').classList.remove('hidden');
-      });
+    // Demo loads only on tap, so the page stays light in WhatsApp/Facebook browsers.
+    document.getElementById('demoPlay').addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://aritmetica.nt-school.app/demo';
+      f.title = 'משחק לדוגמה מחשבונאוטיקה';
+      f.allow = 'fullscreen';
+      document.getElementById('demoScreen').replaceChildren(f);
+      if (window.gtag) window.gtag('event', 'demo_play_start', { page: 'home' });
     });
   </script>
 </body>

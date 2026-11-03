@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>חשבונאוטיקה למורים פרטיים | אבחון, שיגור משימות ומעקב אישי</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="חשבונאוטיקה למורים פרטיים">
+  <meta property="og:description" content="כלי אבחון, שיגור משימות ומעקב אחר תלמידים - שממשיך לעבוד גם כשהתלמיד לא מולכם.">
+  <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+  <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="חשבונאוטיקה למורים פרטיים">
+  <meta name="twitter:description" content="כלי אבחון, שיגור משימות ומעקב אחר תלמידים - שממשיך לעבוד גם כשהתלמיד לא מולכם.">
+  <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
+
+  <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
+       against this site's own stream (G-4X19P4M4PX). -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    #stars-canvas { position:fixed; inset:0; z-index:-3; pointer-events:none; opacity:0.6; }
+
+    .nebula { position:fixed; border-radius:50%; filter:blur(120px); z-index:-2; pointer-events:none; }
+    .nebula-gold { width:600px; height:600px; background:rgba(212,163,115,0.10); top:10%; left:0%; }
+    .nebula-blue { width:500px; height:500px; background:rgba(138,180,255,0.10); bottom:-10%; right:-10%; }
+
+    #saturn-system { position:fixed; top:20%; left:78%; transform:translate(-50%,-50%) rotate(-15deg) scale(0.8); width:600px; height:600px; z-index:-1; pointer-events:none; opacity:0.65; transition:transform 0.35s cubic-bezier(.22,.61,.36,1), opacity 0.35s ease-out; will-change:transform, opacity; }
+    @media (max-width:768px) { #saturn-system { top:13%; left:66%; transform:translate(-50%,-50%) rotate(-15deg) scale(0.55); opacity:0.55; } }
+
+    .saturn-globe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:200px; height:200px; border-radius:50%;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0) 22%),
+        linear-gradient(160deg, #f3e3c8 0%, #e0c9a0 10%, #cfe0ff 22%, #9fb8e8 38%, #b98ee0 52%, #6d84b8 68%, #3d4a72 84%, #12172a 100%);
+      box-shadow:inset -30px -30px 50px rgba(0,0,0,0.85), inset 10px 10px 25px rgba(255,255,255,0.15), 0 0 30px rgba(212,163,115,0.18);
+      z-index:2; }
+    .ring-wrapper { position:absolute; top:50%; left:50%; width:600px; height:600px; transform-style:preserve-3d; }
+    .ring-back { transform:translate(-50%,-50%) rotateX(72deg); z-index:1; clip-path:polygon(0 0, 100% 0, 100% 50%, 0 50%); }
+    .ring-front { transform:translate(-50%,-50%) rotateX(72deg); z-index:3; clip-path:polygon(0 50%, 100% 50%, 100% 100%, 0 100%); }
+    .saturn-ring-spin { position:absolute; top:80px; left:80px; right:80px; bottom:80px; border-radius:50%;
+      border:28px solid rgba(138,180,255,0.25);
+      border-left-color:rgba(212,163,115,0.4);
+      border-right-color:rgba(157,139,255,0.1);
+      box-shadow:0 0 0 12px rgba(138,180,255,0.12), 0 0 0 28px rgba(212,163,115,0.07), inset 0 0 0 8px rgba(90,110,160,0.3);
+      backdrop-filter:blur(2px); animation:ring-orbit 25s linear infinite; }
+    @keyframes ring-orbit { 0% { transform:rotateZ(0deg); } 100% { transform:rotateZ(360deg); } }
+    .moon-orbit { position:absolute; top:50%; left:50%; width:550px; height:550px; transform:translate(-50%,-50%) rotateX(72deg); border-radius:50%; animation:saturn-orbit 40s linear infinite; z-index:4; pointer-events:none; }
+    .moon { position:absolute; top:0; left:50%; width:8px; height:8px; background:#fff; border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 0 15px 3px rgba(212,163,115,0.8); }
+    @keyframes saturn-orbit { 0% { transform:translate(-50%,-50%) rotateX(72deg) rotateZ(0deg); } 100% { transform:translate(-50%,-50%) rotateX(72deg) rotateZ(360deg); } }
+  </style>
+</head>
+<body class="antialiased">
+
+  <canvas id="stars-canvas"></canvas>
+  <div class="nebula nebula-gold"></div>
+  <div class="nebula nebula-blue"></div>
+  <div id="saturn-system">
+    <div class="ring-wrapper ring-back"><div class="saturn-ring-spin"></div></div>
+    <div class="saturn-globe"></div>
+    <div class="ring-wrapper ring-front"><div class="saturn-ring-spin"></div></div>
+    <div class="moon-orbit"><div class="moon"></div></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4">
+    <div class="max-w-6xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
+        <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20 shadow-md">
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
+      </a>
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <a href="index.html" class="hidden sm:inline-flex nav-secondary-btn glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap">בחירת מסלול</a>
+        <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap shrink-0">כניסה למערכת</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-4xl mx-auto px-5 pt-32 sm:pt-40 pb-20">
+    <section class="text-center space-y-5 mb-16">
+      <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:8px 16px;">
+        <span>👩‍🏫</span><span>מסלול מורים פרטיים</span>
+      </div>
+      <h1 class="font-space text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">הקף את התלמיד<br><span class="text-gradient">בטבעות של הצלחה</span></h1>
+      <p class="text-base sm:text-lg leading-relaxed max-w-xl mx-auto" style="color:var(--text-muted);">כלי תרגול ומעקב שממשיך לעבוד גם כשהתלמיד לא מולכם.</p>
+    </section>
+
+    <!-- What you get -->
+    <section class="glass-panel p-6 sm:p-10 space-y-5 text-right mb-10">
+      <h2 class="font-space text-xl sm:text-2xl font-bold mb-1">מה אתם מקבלים</h2>
+
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">🎮 10 משחקי חשיבה מתמטית</span> - במקום תרגול במחברת: שברים, אחוזים, משוואות ואלגברה, שטחים, כפל ולוח הכפל, שאלות מילוליות ועוד, כל אחד עם 9–16 רמות פנימיות ומדריך פדגוגי לכל רמה (איך לעזור לתלמיד שנתקע בדיוק בה).</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">🎯 שיעורי בית מדויקים</span> - אתם בוחרים לכל תלמיד בדיוק איזה משחק ואיזו רמה לתרגל. אפשר גם לבנות רצף של כמה שלבים, שהתלמיד יעבור אחד אחרי השני.</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">🧭 אבחון אמיתי, לא ניחוש</span> - לכל תלמיד מפת כישורים על פני 8 תחומים (אריתמטיקה, שברים, אחוזים, שטחים ועוד), שמראה במבט אחד איפה הוא חזק ואיפה צריך חיזוק.</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">💡 מדד מוטיבציה וזיהוי תסכול</span> - רואים אם התלמיד מאתגר את עצמו או נתקע באותה רמה, והמערכת מסמנת אוטומטית רצף כישלונות שמעיד שהוא צריך עזרה בדיוק שם.</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">🚩 התראה על תלמידים בסיכון</span> - המערכת מסמנת אוטומטית תלמיד שלא תרגל שבוע, לא שיחק כלל השבוע, או שאחוז ההצלחה שלו נמוך - עם כפתור תזכורת שמגיע ישירות למכשיר ההורה.</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">📊 דף עומק לכל תלמיד</span> - כל התלמידים שלכם במקום אחד, ולכל אחד מהם דף אישי עם כל הנתונים שלו.</p>
+      </div>
+      <div>
+        <p class="leading-relaxed"><span style="color:var(--accent-blue); font-weight:700;">💬 דיווח להורים בלחיצה</span> - שולחים סיכום שבועי מוכן לוואטסאפ (תרגילים שנפתרו, אחוז דיוק, המשחקים המובילים), או קישור מעקב קבוע שההורה יכול לפתוח בכל רגע בלי צורך בהתחברות.</p>
+      </div>
+    </section>
+
+    <!-- Unified Gift & Pricing CTA Card -->
+    <section class="glass-panel p-6 sm:p-8 mb-10 text-center space-y-4 relative overflow-hidden border-2 border-amber-400/30" style="background: radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 80%);">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold">
+        <span>🎁</span><span>בונוס בלעדי למורים</span>
+      </div>
+      <h2 class="font-space text-2xl sm:text-3xl font-bold text-amber-300">מערכת ניהול שיעורים מקומית במתנה!</h2>
+      <p class="text-sm sm:text-base leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
+        השאירו פרטים בטופס למטה וקבלו מיד במתנה <strong class="text-white">מערכת עצמאית מקומית לניהול יומן שיעורים, תשלומים, מעקב תלמידים וחישובי הכנסות</strong> (ללא צורך בהרשמה לחשבונאוטיקה או בתשלום, פועלת ישירות במחשב שלכם ושומרת נתונים מקומית!).
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a href="#signup" class="glass-btn !py-3 !px-7 !text-sm font-bold shadow-lg" style="background:linear-gradient(135deg, rgba(245,158,11,0.2) 0%, rgba(245,158,11,0.35) 100%); border-color:rgba(245,158,11,0.5); color:#fde68a;">
+          🎁 לקבלת המתנה בהשארת פרטים ←
+        </a>
+        <a href="https://aritmetica.nt-school.app/pricing/teacher" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-3 !px-7 !text-sm font-bold">
+          💳 למסלולי המורים והמחירון ←
+        </a>
+      </div>
+      <p style="color:var(--text-muted);" class="text-xs">🔥 מחיר פיילוט: 50% הנחה, זמין עד ינואר. ₪50 לחודש במקום ₪100, עד 2 תלמידים.</p>
+    </section>
+
+    <!-- Signup -->
+    <section id="signup" class="scroll-mt-24 max-w-xl mx-auto w-full mb-10 space-y-5">
+      <div class="text-center space-y-1">
+        <h2 class="font-space text-xl sm:text-2xl font-bold">איך תעדיפו להתחיל?</h2>
+        <p class="text-sm" style="color:var(--text-muted);">שתי דרכים להצטרף - תבחרו את מה שנוח לכם</p>
+      </div>
+
+      <div id="form-card" class="glass-panel p-6 sm:p-8 space-y-4">
+        <div class="text-center space-y-1 mb-2">
+          <h3 class="font-space text-lg font-bold">🎁 השארת פרטים וקבלת המתנה</h3>
+          <p class="text-sm" style="color:var(--text-muted);">השאירו פרטים לקבלת מערכת ניהול השיעורים במתנה מידית, וליצירת קשר לליווי והתאמת מסלול.</p>
+        </div>
+        <form id="teacherForm" data-prefix="f" class="space-y-4">
+          <div id="f-error-message" class="hidden p-3 rounded-xl text-xs font-semibold" style="background:rgba(255,107,74,0.12); color:var(--accent-flame);"></div>
+          <input id="f-name" placeholder="שם מלא" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <input id="f-phone" type="tel" placeholder="050-0000000" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <input id="f-email" type="email" placeholder="אימייל" required class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <select id="f-count" class="form-select w-full px-4 py-3 rounded-xl text-sm" style="background-color:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white; padding-left:36px;">
+            <option value="תלמיד אחד">תלמיד אחד</option>
+            <option value="2 תלמידים">2 תלמידים</option>
+            <option value="3 תלמידים">3 תלמידים</option>
+            <option value="4 תלמידים ומעלה">4 תלמידים ומעלה</option>
+          </select>
+          <label class="flex items-start gap-2 text-xs leading-relaxed" style="color:var(--text-muted);">
+            <input type="checkbox" id="f-consent" required style="margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--accent-blue);">
+            <span>אני מאשר/ת שתחזרו אליי בטלפון או במייל, ואת <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:700;">מדיניות הפרטיות</a>.</span>
+          </label>
+          <button type="submit" data-mode="info" class="glass-btn glass-btn-primary w-full justify-center">השאירו פרטים וקבלו את המתנה 🎁</button>
+          <p class="text-center text-xs" style="color:var(--text-muted);">🔒 הפרטים נשמרים ומשמשים אותנו ליצירת קשר בלבד.</p>
+        </form>
+      </div>
+      <div id="success-card" class="hidden glass-panel p-6 sm:p-8 text-center space-y-4 border border-amber-400/40">
+        <div class="w-12 h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto text-2xl">🎁</div>
+        <p style="color:var(--accent-turquoise); font-weight:700;" class="text-lg">תודה! הפרטים התקבלו בהצלחה</p>
+        <p style="color:var(--text-muted);" class="text-sm">הנה המתנה שלכם: מערכת ניהול שיעורים, לו״ז ותלמידים מקומית</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <a href="https://aritmetica.nt-school.app/tutor-schedule.html" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-2.5 !px-5 text-sm font-bold">
+            🚀 פתיחת מערכת ניהול השיעורים בדפדפן
+          </a>
+          <a href="https://drive.google.com/uc?export=download&id=1nh9ivYBTDF6t9zdpOFXCfurNQ1LDhrLa" target="_blank" rel="noopener" class="glass-btn !py-2.5 !px-5 text-sm font-bold">
+            📥 הורדת קובץ למחשב
+          </a>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-2 justify-center">
+          <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn !py-2 !px-4 text-xs">
+            כניסה לחשבונאוטיקה 🚀
+          </a>
+          <a href="#guide" class="glass-btn !py-2 !px-4 text-xs">
+            למדריך ההפעלה
+          </a>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <span class="text-xs" style="color:var(--text-muted);">- או -</span>
+      </div>
+
+      <div class="glass-panel p-6 sm:p-8 text-center space-y-3">
+        <h3 class="font-space text-lg font-bold">🧭 בא לכם להתחבר לבד?</h3>
+        <p class="text-sm" style="color:var(--text-muted);">אם אתם מעדיפים להבין את המערכת בעצמכם ולא צריכים ליווי - קפצו ישר למדריך הפעלה עצמאי.</p>
+        <button type="button" id="reveal-guide-btn" class="glass-btn justify-center" style="background:linear-gradient(135deg, rgba(94,234,212,0.18) 0%, rgba(138,180,255,0.18) 100%); border-color:rgba(94,234,212,0.35); color:var(--accent-turquoise);">למדריך העצמאי</button>
+      </div>
+    </section>
+
+    <!-- Practical guide -->
+    <section id="guide" class="hidden scroll-mt-24 space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="font-space text-2xl sm:text-3xl font-bold">מדריך והוראות הפעלה למורה</h2>
+        <p style="color:var(--text-muted);" class="text-sm">הנחיות עבודה מפורטות לשילוב המערכת בשיעורים</p>
+      </div>
+
+      <div class="glass-panel p-6 sm:p-8 space-y-8 text-right">
+        <div class="flex items-start gap-4">
+          <div class="font-space font-bold" style="width:40px; height:40px; border-radius:12px; background:rgba(138,180,255,0.1); border:1px solid rgba(138,180,255,0.3); color:var(--accent-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg font-bold">גישה לדשבורד האישי שלכם</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--text-muted);">
+              נכנסים למערכת עם חשבון Google - בלי סיסמה, וגישה מיידית מרגע ההרשמה.
+            </p>
+            <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn !py-2 !px-5 !text-sm mt-2" style="display:inline-flex;">כניסה למערכת</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="font-space font-bold" style="width:40px; height:40px; border-radius:12px; background:rgba(138,180,255,0.1); border:1px solid rgba(138,180,255,0.3); color:var(--accent-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg font-bold">הוספת תלמיד חדש</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--text-muted);">
+              במסך <span style="color:var(--text-primary); font-weight:700;">"לוח המורה"</span> לוחצים "הוסף תלמיד" ומזינים את שמו. המערכת מייצרת עבורו <span style="color:var(--text-primary); font-weight:700;">קוד כניסה</span> וקישור אישי - מעבירים לתלמיד או להורה בוואטסאפ, והוא נכנס בלחיצה בלי סיסמה. כל תרגול שיבצע בין השיעורים יופיע אצלכם אוטומטית. המסלול כולל עד 2 תלמידים.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="font-space font-bold" style="width:40px; height:40px; border-radius:12px; background:rgba(138,180,255,0.1); border:1px solid rgba(138,180,255,0.3); color:var(--accent-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg font-bold">שיעורי בית בין שיעור לשיעור</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--text-muted);">
+              נכנסים לתלמיד ובוחרים בלשונית <span style="color:var(--text-primary); font-weight:700;">📋 משימות</span>. בוחרים משחק ורמה מדויקת בדיוק בנושא שתרגלתם, או בונים רצף של כמה שלבים שהתלמיד יעבור אחד אחרי השני. המשימה תופיע מודגשת אצלו בכניסה למשחק, וכך התרגול בבית ממשיך את השיעור במקום להתפזר. באותה לשונית גם עוקבים אם המשימה בוצעה.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="font-space font-bold" style="width:40px; height:40px; border-radius:12px; background:rgba(138,180,255,0.1); border:1px solid rgba(138,180,255,0.3); color:var(--accent-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+          <div class="space-y-1">
+            <h3 class="font-space text-lg font-bold">הכנה לשיעור הבא ודיווח להורים</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--text-muted);">
+              לפני כל שיעור נכנסים ללשונית <span style="color:var(--text-primary); font-weight:700;">📊 נתונים</span> של התלמיד: שם רואים את הדיוק שלו (מחושב לפי כמות הניסיונות, לא רק הצלחה/כישלון), <span style="color:var(--text-primary); font-weight:700;">מפת המיומנויות</span>, ופעילות 7 הימים האחרונים - כדי לפתוח את השיעור בדיוק בנקודה הנכונה. לדיווח להורים: כפתור <span style="color:var(--text-primary); font-weight:700;">"קישורי הורים"</span> בראש הדשבורד מייצר להורה קישור מעקב קבוע, שנפתח אצלו בלי צורך בהתחברות.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-6" style="border-top:1px solid var(--border-panel);">
+          <h3 class="font-space text-lg font-bold mb-1">מה נמצא איפה - מפת המסכים</h3>
+          <p class="text-sm mb-4" style="color:var(--text-muted);">שמרו את הדף הזה, הוא שימושי גם אחרי הכניסה הראשונה.</p>
+          <div class="space-y-3">
+            <div class="p-4 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-panel);">
+              <p class="text-sm font-bold mb-1">🏠 לוח המורה (המסך הראשי)</p>
+              <p class="text-sm leading-relaxed" style="color:var(--text-muted);">רשימת כל התלמידים שלכם. מכאן מוסיפים תלמיד חדש, נכנסים לתלמיד קיים, ומגיעים לכפתור "קישורי הורים" ולסטטוס המנוי שלכם.</p>
+            </div>
+            <div class="p-4 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-panel);">
+              <p class="text-sm font-bold mb-1">📊 נתונים - בתוך דף תלמיד</p>
+              <p class="text-sm leading-relaxed" style="color:var(--text-muted);">ביצועים וניתוח: אחוז דיוק, רמה מקסימלית, פירוט לכל משחק, פעילות 7 ימים אחרונים ומפת מיומנויות. זו הלשונית שפותחים לפני שיעור.</p>
+            </div>
+            <div class="p-4 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-panel);">
+              <p class="text-sm font-bold mb-1">📋 משימות - בתוך דף תלמיד</p>
+              <p class="text-sm leading-relaxed" style="color:var(--text-muted);">שליחה ומעקב: בוחרים משחק ורמה, שולחים לתלמיד, ורואים אם ביצע. זו הלשונית שפותחים בסוף שיעור.</p>
+            </div>
+            <div class="p-4 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-panel);">
+              <p class="text-sm font-bold mb-1">⚙️ ניהול - בתוך דף תלמיד</p>
+              <p class="text-sm leading-relaxed" style="color:var(--text-muted);">קוד הכניסה והקישור האישי של התלמיד להעתקה מחדש, וכן מחיקת תלמיד.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-col items-center gap-3" style="border-top:1px solid var(--border-panel);">
+          <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn glass-btn-primary">כניסה ראשית לחשבונאוטיקה 🚀</a>
+          <a href="#signup" class="text-sm" style="color:var(--text-muted); text-decoration:underline;">חשבתי על זה שוב, אני מעדיף/ה ליווי</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+    <a href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    <span class="mx-2">·</span>
+    <a href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    <span class="mx-2">·</span>
+    <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    <span class="mx-2">·</span>
+    <a href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br class="sm:hidden">
+    <span class="mx-2 hidden sm:inline">·</span>
+    © 2026 חשבונאוטיקה. כל הזכויות שמורות.
+  </footer>
+
+  <script src="assets/saturn.js"></script>
+  <script src="assets/lead-form.js"></script>
+  <script>
+    initSaturnStars();
+    initSaturnParallax({ baseRotate: -15, baseScale: 0.8, baseOpacity: 0.65 });
+
+    function revealGuide() {
+      document.getElementById('guide').classList.remove('hidden');
+    }
+
+    document.getElementById('teacherForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const ok = submitLeadForm(this, 'teacher', function () {
+        document.getElementById('form-card').classList.add('hidden');
+        document.getElementById('success-card').classList.remove('hidden');
+        revealGuide();
+      });
+    });
+
+    document.getElementById('reveal-guide-btn').addEventListener('click', function () {
+      revealGuide();
+      document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script src="assets/contact-bubble.js"></script>
+  <script>
+    if (typeof initAccessibilityWidget === 'function') initAccessibilityWidget();
+    if (window.gtag) window.gtag('event', 'presale_view', { page: document.title });
+  </script>
+</body>
+</html>
