@@ -12,6 +12,7 @@
     const DISPLAY_PHONE = '055-2569496';
     const WA_MESSAGE = encodeURIComponent('היי נתנאל, הגעתי מדף הנחיתה של חשבונאוטיקה ואשמח לשמוע פרטים נוספים');
     const WA_URL = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
+    const START_URL = 'https://aritmetica.nt-school.app/';
     const TEL_URL = `tel:${DISPLAY_PHONE.replace(/-/g, '')}`;
 
     const styles = `
@@ -81,10 +82,29 @@
       .contact-btn-main:active {
         transform: scale(0.94);
       }
+      .contact-pill { position: relative; display: grid; width: min(270px, calc(100vw - 100px)); height: 56px; }
+      .contact-face {
+        grid-area: 1 / 1;
+        display: flex; align-items: center; gap: 10px;
+        padding: 0 18px 0 14px; border: none; border-radius: 999px;
+        color: #fff; font: 800 14px/1.25 'Heebo', system-ui, sans-serif; text-align: right; text-decoration: none;
+        cursor: pointer; direction: rtl; outline: none;
+        opacity: 0; pointer-events: none; transition: opacity .45s ease, transform .2s ease;
+      }
+      .contact-face.is-on { opacity: 1; pointer-events: auto; }
+      .contact-face:focus-visible { box-shadow: 0 0 0 3px #8AB4FF; }
+      .contact-face-wa { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45); }
+      .contact-face-go { background: linear-gradient(135deg, #5EEAD4 0%, #8AB4FF 100%); color: #0b1020; box-shadow: 0 6px 24px rgba(94, 234, 212, 0.4); }
+      .contact-face:hover { transform: translateY(-2px); }
+      .contact-face-ico { flex: none; width: 30px; height: 30px; display: grid; place-items: center; }
+      .contact-face-txt { flex: 1; transition: opacity .3s ease; }
+      .contact-face-txt.is-out { opacity: 0; }
+      .contact-play { display: block; width: 14px; height: 16px; background: #0b1020; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+      @media (prefers-reduced-motion: reduce) { .contact-face, .contact-face-txt, .contact-ripple-halo { transition: none !important; animation: none !important; } }
       .contact-ripple-halo {
         position: absolute;
         inset: -4px;
-        border-radius: 50%;
+        border-radius: 999px;
         border: 2px solid #25D366;
         animation: contact-halo 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
         pointer-events: none;
@@ -183,13 +203,19 @@
         </div>
       </div>
 
-      <button id="contactBtnMain" type="button" class="contact-btn-main" aria-label="פנייה מהירה בוואטסאפ או בטלפון">
-        <div class="contact-ripple-halo"></div>
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+      <div class="contact-pill" id="contactPill">
+        <button id="contactBtnMain" type="button" class="contact-face contact-face-wa is-on" aria-label="פנייה לנתנאל בוואטסאפ או בטלפון">
+          <span class="contact-face-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.711 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.486-8.414z"/>
-        </svg>
-        <span class="contact-badge-dot" id="contactBadge"></span>
-      </button>
+        </svg></span>
+          <span class="contact-face-txt" id="contactWaTxt">בואו לדבר איתי</span>
+          <span class="contact-badge-dot" id="contactBadge"></span>
+        </button>
+        <a id="contactStartLink" href="${START_URL}" target="_blank" rel="noopener" class="contact-face contact-face-go" tabindex="-1" aria-hidden="true" data-cta="bubble_start">
+          <span class="contact-face-ico"><span class="contact-play"></span></span>
+          <span class="contact-face-txt" id="contactGoTxt">אהבתם את הרעיון? בואו נתחיל</span>
+        </a>
+      </div>
     `;
 
     document.body.appendChild(wrap);
@@ -200,6 +226,38 @@
     const badge = wrap.querySelector('#contactBadge');
     const waLink = wrap.querySelector('#contactWaLink');
     const telLink = wrap.querySelector('#contactTelLink');
+
+    const goLink = wrap.querySelector('#contactStartLink');
+    const waTxt = wrap.querySelector('#contactWaTxt');
+    const goTxt = wrap.querySelector('#contactGoTxt');
+    const STEPS = [
+      { face: 'wa', text: 'בואו לדבר איתי' },
+      { face: 'go', text: 'אהבתם את הרעיון? בואו נתחיל' },
+      { face: 'wa', text: 'מתעניינים? רציניים? תפנו אליי בוואטסאפ' },
+      { face: 'go', text: 'נשמע לכם מעניין? בואו נתחיל' }
+    ];
+    let stepIdx = 0;
+    function showStep(i) {
+      const st = STEPS[i];
+      const onWa = st.face === 'wa';
+      const txt = onWa ? waTxt : goTxt;
+      txt.classList.add('is-out');
+      setTimeout(function () { txt.textContent = st.text; txt.classList.remove('is-out'); }, 250);
+      mainBtn.classList.toggle('is-on', onWa);
+      goLink.classList.toggle('is-on', !onWa);
+      goLink.setAttribute('aria-hidden', onWa ? 'true' : 'false');
+      goLink.tabIndex = onWa ? -1 : 0;
+      mainBtn.setAttribute('aria-hidden', onWa ? 'false' : 'true');
+      mainBtn.tabIndex = onWa ? 0 : -1;
+    }
+    setInterval(function () {
+      if (isOpen || document.hidden) return;
+      stepIdx = (stepIdx + 1) % STEPS.length;
+      showStep(stepIdx);
+    }, 4200);
+    goLink.addEventListener('click', function () {
+      if (window.gtag) window.gtag('event', 'contact_start_click', { method: 'floating_bubble' });
+    });
 
     let isOpen = false;
     let autoPopped = false;
@@ -259,25 +317,7 @@
       }
     })();
 
-    if (!isDismissed) {
-      // Auto-popup after 3.8s or upon user scrolling down 180px
-      const timer = setTimeout(function() {
-        if (!autoPopped && !isOpen) {
-          autoPopped = true;
-          openCard(true);
-        }
-      }, 3800);
-
-      function handleScroll() {
-        if (!autoPopped && !isOpen && window.scrollY > 180) {
-          autoPopped = true;
-          clearTimeout(timer);
-          openCard(true);
-          window.removeEventListener('scroll', handleScroll);
-        }
-      }
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    }
+    // No auto-popup: the rotating pill is the invitation, the card opens on tap.
   }
 
   // Expose globally
