@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <script src="assets/frame-guard.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>מחירון | חשבונאוטיקה</title>
+  <title>מחירים | חשבונאוטיקה</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="מחירון | חשבונאוטיקה">
-  <meta property="og:description" content="מחירים למורים פרטיים ולהורים - מחירי פיילוט, ו-14 ימי ניסיון חינם ללא כרטיס אשראי.">
+  <meta property="og:title" content="מחירים | חשבונאוטיקה">
+  <meta property="og:description" content="מנוי חודשי להורים ולמורים פרטיים, במחיר פיילוט של 50 שקלים לחודש. 14 ימי ניסיון חינם, בלי כרטיס אשראי.">
   <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
   <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="מחירון | חשבונאוטיקה">
-  <meta name="twitter:description" content="מחירים למורים פרטיים ולהורים - מחירי פיילוט, ו-14 ימי ניסיון חינם ללא כרטיס אשראי.">
+  <meta name="twitter:title" content="מחירים | חשבונאוטיקה">
+  <meta name="twitter:description" content="מנוי חודשי להורים ולמורים פרטיים, במחיר פיילוט של 50 שקלים לחודש. 14 ימי ניסיון חינם, בלי כרטיס אשראי.">
   <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
 
   <!-- Analytics is loaded by assets/consent-analytics.js, after consent, and
@@ -31,6 +31,9 @@
     .price-card { position:relative; display:flex; flex-direction:column; gap:14px; }
     .price-card.placeholder { opacity:0.6; border-style:dashed; }
     .price-badge { position:absolute; top:-12px; inset-inline-start:24px; background:linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 100%); color:var(--bg-deep); font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px; }
+    .nice-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .nice-list li { position:relative; padding-inline-start:20px; }
+    .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
   </style>
 </head>
 <body class="antialiased">
@@ -44,150 +47,70 @@
         <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
       </a>
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <a href="index.html" class="hidden sm:inline-flex nav-secondary-btn glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap">בחירת מסלול</a>
+        <a href="index.html" class="hidden sm:inline-flex nav-secondary-btn glass-btn !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap">לדף הבית</a>
         <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap shrink-0">כניסה למערכת</a>
       </div>
     </div>
   </nav>
 
-  <main class="relative z-10 max-w-5xl mx-auto px-5 pt-32 sm:pt-40 pb-20">
-    <div class="text-center space-y-3 mb-14">
-      <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-blue); padding:8px 16px;">
-        <span>💳</span><span>מחירון</span>
+  <main class="relative z-10 max-w-5xl mx-auto px-5 pt-32 sm:pt-40 pb-20 space-y-14">
+
+    <section class="text-center space-y-4">
+      <div class="label-tag glass-panel" style="display:inline-flex; color:var(--accent-turquoise); padding:8px 16px;"><span>מחירים</span></div>
+      <h1 class="font-space text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">פשוט וברור,<br><span class="text-gradient">ומתחילים בחינם.</span></h1>
+      <p class="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">14 ימי ניסיון חינם, בלי כרטיס אשראי ובלי התחייבות. אין חידוש אוטומטי: אם לא מצטרפים, פשוט לא משלמים.</p>
+      <p class="text-sm font-bold" style="color:var(--accent-flame);">מחיר פיילוט: 50% הנחה, עד ינואר.</p>
+    </section>
+
+    <section class="grid gap-6 sm:grid-cols-2 items-stretch">
+      <div class="glass-panel price-card p-7 text-right" style="border-color:rgba(138,180,255,.45);">
+        <span class="label-tag" style="display:inline-flex; align-self:flex-start; color:var(--accent-blue);">להורים</span>
+        <h2 class="font-space text-xl font-bold">מנוי חודשי</h2>
+        <p class="text-sm" style="color:var(--text-muted);">עד 2 ילדים. אפשר להתחיל ולהפסיק מתי שרוצים.</p>
+        <div><span class="font-space text-5xl font-bold">₪50</span> <span style="color:var(--text-muted);">לחודש, במקום <s>₪100</s></span></div>
+        <ul class="nice-list text-sm" style="color:var(--text-muted);">
+          <li>כל המשחקים וכל הרמות</li>
+          <li>יעד יומי, רצף ימים ופרס שאתם בוחרים</li>
+          <li>תזכורות בוואטסאפ ודוח התקדמות</li>
+          <li>תמיכה ישירה במייל ובוואטסאפ</li>
+        </ul>
+        <a href="https://aritmetica.nt-school.app/pricing" target="_blank" rel="noopener" class="glass-btn glass-btn-primary justify-center mt-auto" data-cta="price_parent">התחילו 14 ימים חינם</a>
       </div>
-      <h1 class="font-space text-3xl sm:text-4xl font-bold">בחרו את המסלול שמתאים לכם</h1>
-      <p style="color:var(--text-muted);">מתחילים ב-14 ימי ניסיון חינם, ללא כרטיס אשראי וללא התחייבות. מחיר פיילוט: 50% הנחה, זמין עד ינואר.</p>
-    </div>
 
-    <!-- Parents -->
-    <section class="mb-16">
-      <div class="text-center mb-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold mb-2">
-          <span>🔥</span>
-          <span>מחיר פיילוט: 50% הנחה, זמין עד ינואר</span>
-        </div>
-        <h2 class="font-space text-xl sm:text-2xl font-bold">👨‍👩‍👧 מחירון להורים</h2>
-        <p class="text-xs sm:text-sm mt-1" style="color:var(--text-muted);">
-          🎁 14 ימי ניסיון חינם מלאים · 🔒 ללא חידוש אוטומטי (ללא חיוב ללא אישורכם מראש)
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-        
-        <!-- מנוי חודשי -->
-        <div class="glass-panel p-6 price-card flex flex-col justify-between">
-          <div>
-            <h3 class="font-space text-lg font-bold mb-1">מנוי חודשי</h3>
-            <p class="text-xs" style="color:var(--text-muted);">עד 2 ילדים · התחלה גמישה, בלי התחייבות</p>
-            <div class="my-4">
-              <div class="flex items-baseline gap-2">
-                <span class="font-space text-3xl font-black text-rose-400">50 ₪</span>
-                <span class="text-xs line-through" style="color:var(--text-muted);">100 ₪</span>
-                <span class="text-xs" style="color:var(--text-muted);"> / חודש</span>
-              </div>
-              <div class="text-[10px] font-bold text-rose-400 mt-1">מחיר פיילוט: 50% הנחה, זמין עד ינואר</div>
-            </div>
-            <ul class="text-xs space-y-2 mb-4" style="color:var(--text-muted);">
-              <li>✓ כולל עד 2 ילדים</li>
-              <li>✓ גישה מלאה לכל השלבים והמשחקים</li>
-              <li>✓ דוח התקדמות להורים בזמן אמת</li>
-              <li>✓ תמיכה ישירה במייל ובוואטסאפ</li>
-              <li>✓ ללא חידוש אוטומטי</li>
-            </ul>
-          </div>
-          <a href="https://aritmetica.nt-school.app/pricing" target="_blank" rel="noopener" class="glass-btn justify-center text-xs font-bold w-full">התחלת 14 ימי ניסיון חינם</a>
-        </div>
-
-        <!-- חבילת VIP -->
-        <div class="glass-panel p-6 price-card flex flex-col justify-between border border-amber-400/30">
-          <div>
-            <div class="inline-flex items-center gap-1 text-[10px] font-black text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-full mb-1">
-              👑 ליווי אישי
-            </div>
-            <h3 class="font-space text-lg font-bold mb-1">VIP — מורה פרטי</h3>
-            <p class="text-xs" style="color:var(--text-muted);">10 שיעורים אישיים של שעה + תכנית למידה ייעודית</p>
-            <div class="my-4">
-              <span class="font-space text-3xl font-bold" style="color:var(--accent-blue);">1,500 ₪</span>
-              <span class="text-xs" style="color:var(--text-muted);"> לחבילה</span>
-            </div>
-            <ul class="text-xs space-y-2 mb-4" style="color:var(--text-muted);">
-              <li>✓ 10 מפגשים בני שעה עם המורה נתנאל</li>
-              <li>✓ בניית תכנית למידה אישית לילד</li>
-              <li>✓ גישה מלאה לחשבונאוטיקה לכל תקופת החבילה</li>
-              <li>✓ הערכה פדגוגית כתובה ומעקב רציף</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/972552569496?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D9%86%2F%D7%AA%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94-VIP%20%D7%A9%D7%9C%20%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%90%D7%95%D7%98%D7%99%D7%A2%D7%94" target="_blank" rel="noopener" class="glass-btn justify-center text-xs font-bold w-full">פנייה לתיאום מסלול VIP 💬</a>
-        </div>
-
+      <div class="glass-panel price-card p-7 text-right">
+        <span class="label-tag" style="display:inline-flex; align-self:flex-start; color:var(--accent-turquoise);">למורים פרטיים</span>
+        <h2 class="font-space text-xl font-bold">מנוי מורה פרטי</h2>
+        <p class="text-sm" style="color:var(--text-muted);">עד 2 תלמידים, ועוד ₪18 לכל תלמיד נוסף.</p>
+        <div><span class="font-space text-5xl font-bold">₪50</span> <span style="color:var(--text-muted);">לחודש, במקום <s>₪100</s></span></div>
+        <ul class="nice-list text-sm" style="color:var(--text-muted);">
+          <li>כל המשחקים וכל הרמות</li>
+          <li>שיעורי בית מדויקים ומעקב אחרי כל תלמיד</li>
+          <li>תמיכה ישירה במייל ובוואטסאפ</li>
+          <li>מתנה: מערכת לניהול יומן שיעורים ותשלומים</li>
+        </ul>
+        <a href="https://aritmetica.nt-school.app/pricing/teacher" target="_blank" rel="noopener" class="glass-btn glass-btn-primary justify-center mt-auto" data-cta="price_tutor">התחילו 14 ימים חינם</a>
       </div>
     </section>
 
-    <!-- Private teachers -->
-    <section id="teacher-pricing" class="scroll-mt-24 mb-16">
-      <div class="text-center mb-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold mb-2">
-          <span>🔥</span>
-          <span>מחיר פיילוט: 50% הנחה, זמין עד ינואר</span>
-        </div>
-        <br>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold mb-2">
-          <span>🎁</span>
-          <span>בונוס בלעדי: מערכת ניהול שיעורים מקומית במתנה בהשארת פרטים!</span>
-        </div>
-        <h2 class="font-space text-xl sm:text-2xl font-bold">👩‍🏫 מחירון למורים פרטיים</h2>
-        <p class="text-xs sm:text-sm mt-1" style="color:var(--text-muted);">
-          שיגור משימות, דוחות מפורטים ואבחון מיומנויות מתמטיות
-        </p>
+    <section class="glass-panel p-7 sm:p-8 grid gap-5 sm:grid-cols-3 items-center text-right">
+      <div class="sm:col-span-2 space-y-2">
+        <h2 class="font-space text-xl font-bold">רוצים גם שיעור פרטי?</h2>
+        <p class="text-sm leading-relaxed" style="color:var(--text-muted);">שיעור פרטי איתי עולה ₪150, בזום או בבית התלמיד. ויש גם חבילה של 10 שיעורים ב-₪1,500: היא כוללת תכנית למידה אישית לילד, הערכה פדגוגית כתובה וגישה לחשבונאוטיקה לכל התקופה.</p>
       </div>
-      <div class="grid grid-cols-1 gap-5 max-w-md mx-auto">
-        <div class="glass-panel p-6 sm:p-7 price-card flex flex-col justify-between">
-          <div>
-            <h3 class="font-space text-lg font-bold mb-1">מנוי חודשי</h3>
-            <p class="text-xs" style="color:var(--text-muted);">עד 2 תלמידים · ללא מעורבות הורים</p>
-            <div class="my-4">
-              <div class="flex items-baseline gap-2">
-                <span class="font-space text-3xl font-black text-rose-400">50 ₪</span>
-                <span class="text-xs line-through" style="color:var(--text-muted);">100 ₪</span>
-                <span class="text-xs" style="color:var(--text-muted);"> / חודש</span>
-              </div>
-              <div class="text-[10px] font-bold text-rose-400 mt-1">מחיר פיילוט: 50% הנחה, זמין עד ינואר</div>
-            </div>
-            <ul class="text-xs space-y-2 mb-4" style="color:var(--text-muted);">
-              <li>✓ כולל עד 2 תלמידים</li>
-              <li>✓ שיגור משימות ומעקב תוצאות</li>
-              <li>✓ תמיכה ישירה במייל ובוואטסאפ</li>
-              <li>✓ ללא חידוש אוטומטי — אתם מחליטים כל חודש מחדש</li>
-              <li class="font-bold text-amber-300">🎁 מתנה: מערכת ניהול שיעורים מקומית</li>
-            </ul>
-          </div>
-          <a href="https://aritmetica.nt-school.app/pricing/teacher" target="_blank" rel="noopener" class="glass-btn justify-center text-xs font-bold w-full">התחלת 14 ימי ניסיון חינם</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Institutions -->
-    <section class="glass-panel p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-5 justify-between">
-      <div class="flex items-start gap-4">
-        <div class="text-3xl">🏫</div>
-        <div>
-          <h3 class="font-space text-lg font-bold mb-1">מוסדות ובתי ספר</h3>
-          <p style="color:var(--text-muted);" class="text-sm leading-relaxed">צוות מורים גדול או מוסד חינוכי? ההצעה שונה לגמרי ממחירון המורה הפרטי - נבנה יחד הצעה מותאמת.</p>
-        </div>
-      </div>
-      <a href="index.html#tracks" class="glass-btn whitespace-nowrap">השאירו פרטים</a>
+      <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99" target="_blank" rel="noopener" class="glass-btn justify-center" data-cta="price_lessons">דברו איתי בוואטסאפ</a>
     </section>
   </main>
 
   <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
-    <a href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
-    <br class="sm:hidden">
-    <span class="mx-2 hidden sm:inline">·</span>
+    <a class="mx-3" href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br>
+    
     © 2026 חשבונאוטיקה. כל הזכויות שמורות.
   </footer>
 
