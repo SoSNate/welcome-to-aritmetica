@@ -5,6 +5,7 @@
   <script src="assets/frame-guard.js"></script>
   <!-- TODO(נתנאל): לפני פרסום, צריך לוודא מול עמותת "אור למשפחות" שהניסוח בדף מקובל עליה. -->
   <!-- TODO(נתנאל): הלוגו המשותף (assets/mentors-logo.webp) כולל את השם "אור למשפחות". לוודא מול העמותה שמותר להשתמש בו בדף. -->
+  <!-- TODO(נתנאל): פתוח ולא נכתב בדף: אופן החונכות (תדירות, זום או פרונטלי, התאמת חונך לילד), איך הורה וחונך מקבלים גישה, ופרטים על העמותה. -->
   <!-- TODO(נתנאל): אחרי שאישרת את הדף, להסיר את שורת ה-noindex שמתחת. -->
   <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -33,6 +34,9 @@
     .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
     .quiet-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; border-radius:999px; border:1px solid rgba(94,234,212,.5); color:var(--accent-turquoise); font-weight:700; font-size:16px; text-decoration:none; background:rgba(255,255,255,.04); }
     .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
+    .persona-head { display:flex; align-items:center; gap:14px; }
+    .persona { width:72px; height:72px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .persona .solid { fill:#111a36; }
     a:focus-visible, button:focus-visible { outline:3px solid var(--accent-blue); outline-offset:3px; }
     @media (prefers-reduced-motion: reduce) {
       #starfield { display:none; }
@@ -62,8 +66,9 @@
       <h1 class="page-h1 text-3xl sm:text-5xl leading-tight">פרויקט החונכים</h1>
       <div class="prose-he" style="color:var(--text-primary);">
         <p>אני נתנאל, ואני אח שכול.</p>
-        <p>אחרי האובדן ראיתי שאחיי מאבדים את המוטיבציה ללמוד. בשביל אחי הקטן בניתי את חשבונאוטיקה, כדי לתת לו כלי לתרגל בצורה יותר חוויתית.</p>
-        <p>המיזם הזה הוא מתנה ופרגון ממני. הוא לא שיווק ואין בו שום דבר למכור.</p>
+        <p>אחרי האובדן ראיתי שאחיי מאבדים את המוטיבציה ללמוד. בשביל אחי הקטן בניתי את חשבונאוטיקה, כדי שיהיה לו כלי לתרגל בצורה חווייתית יותר.</p>
+        <p>היום אני רוצה לתת את זה גם לילדים במשפחות שכולות אחרות, יחד עם סטודנטים מעמותת אור למשפחות שילוו אותם בדרך.</p>
+        <p>זו מתנה ממני. אין כאן שום דבר למכור.</p>
       </div>
     </section>
 
@@ -93,12 +98,10 @@
     <section class="mt-16 glass-panel p-6 sm:p-8 space-y-4">
       <h2 class="font-space text-2xl sm:text-3xl font-bold">מה המיזם</h2>
       <ul class="nice-list" style="color:var(--text-muted); font-size:17px; line-height:1.7;">
-        <li>המיזם ללא עלות, בחינם לחלוטין.</li>
-        <li>הוא נעשה בשיתוף סטודנטים שמקבלים מלגה מעמותת "אור למשפחות".</li>
-        <li>הסטודנטים הם החונכים.</li>
+        <li>ילדים במשפחות שכולות, בכיתות ב' עד ז', מתרגלים בחשבונאוטיקה ללא עלות.</li>
+        <li>סטודנטים שמקבלים מלגה מעמותת "אור למשפחות" מלווים אותם כחונכים.</li>
+        <li>החונך רואה במערכת מה הילד תרגל ואיפה הוא נתקע, כך שכל מפגש מתחיל ממה שבאמת צריך.</li>
       </ul>
-      <!-- TODO(נתנאל): אופן החונכות לא ידוע לי ולכן לא נכתב: תדירות המפגשים, זום או פרונטלי, כמה שעות בשבוע, מי מתאים להצטרף כחונך, כיצד מתאימים בין חונך לילד. להוסיף כאן אם תרצה. -->
-      <!-- TODO(נתנאל): לא נכתבו פרטים על העמותה ועל המלגות (מה היא עושה, איך מקבלים מלגה). להוסיף רק מה שהעמותה מאשרת. -->
     </section>
 
     <!-- 4. Two quiet invitations -->
@@ -107,8 +110,8 @@
       <div class="grid gap-5 sm:grid-cols-2 items-start">
         <div class="space-y-5">
         <div class="glass-panel p-6 space-y-4">
-          <h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3>
-          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים להשתמש בחשבונאוטיקה בליווי חונך. בחינם.</p>
+          <div class="persona-head"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="30" width="11" height="16" rx="4"/><path d="M38.5 38.5h6"/><path class="solid" d="M19 49V37a9 9 0 0 1 18 0v12"/><path d="M33 29.5 39 31"/><circle class="solid" cx="28" cy="17" r="9"/><path d="M24 49v8M32 49v8"/></svg><h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3></div>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים לתרגל בחשבונאוטיקה ללא עלות, ולקבל ליווי של סטודנט חונך. כתבו לי ונבדוק יחד מה מתאים לכם.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener">אשמח לשמוע</a>
         </div>
         <div class="glass-panel p-6 space-y-4">
@@ -122,14 +125,12 @@
             <li>תזכורות בוואטסאפ ובהתראות, והודעה אליכם אם הוא לא תרגל יומיים</li>
           </ul>
           <p class="leading-relaxed" style="color:var(--text-muted);">מספיק להציץ בדוח פעם בשבוע. ומומלץ לשבת איתו כל כמה ימים: זו חוויה משפחתית שעוזרת לו להתמיד ולהרגיש בטוח לטעות.</p>
-          <!-- TODO(נתנאל): לא הוגדר איך הורה מקבל גישה בפועל (פתיחת חשבון, הוספת הילד, מי מחבר בין הילד לחונך). לא נכתב. -->
-          <!-- TODO(נתנאל): לא הוגדר האם "קישור מעקב להורה" ו"סנכרון עם החונך" חלים במיזם הזה. לא נכתב. -->
         </div>
         </div>
         <div class="space-y-5">
         <div class="glass-panel p-6 space-y-4">
-          <h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3>
-          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות, אפשר להצטרף כחונכים.</p>
+          <div class="persona-head"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="11.5" r="6.5"/><rect class="solid" x="15" y="29" width="8.5" height="11" rx="1.5"/><path d="M19.25 29v11"/><path d="M26 43v15M32 43v15"/></svg><h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3></div>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות ורוצים ללוות ילד בתרגול חשבון, אשמח שתצטרפו כחונכים. לא צריך להיות מורים: המערכת מראה לכם מה לתרגל ואיפה הילד צריך עזרה.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A7%D7%91%D7%9C%20%D7%9E%D7%9C%D7%92%D7%94%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%95%D7%AA" target="_blank" rel="noopener">אפשר לכתוב לי</a>
         </div>
         <div class="glass-panel p-6 space-y-4">
@@ -141,8 +142,6 @@
             <li>המערכת מסמנת ילד שלא תרגל שבוע, ואפשר לשלוח להורה תזכורת בלחיצה, או סיכום שבועי מוכן לוואטסאפ</li>
             <li>הילד נכנס מקישור אישי, בלי סיסמה</li>
           </ul>
-          <!-- TODO(נתנאל): לא הוגדר איך חונך מקבל גישה בפועל (פתיחת חשבון, מי מקצה ילד לחונך). לא נכתב. -->
-          <!-- TODO(נתנאל): לא הוגדר האם התזכורת להורה והסיכום השבועי רלוונטיים במיזם הזה (מי מדבר עם ההורים). לא נכתב מעבר להסבר על המערכת. -->
         </div>
         </div>
       </div>
