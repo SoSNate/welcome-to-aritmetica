@@ -102,16 +102,46 @@
     <!-- 4. Two quiet invitations -->
     <section class="mt-16 space-y-6">
       <h2 class="font-space text-2xl sm:text-3xl font-bold">אפשר לכתוב לי</h2>
-      <div class="grid gap-5 sm:grid-cols-2">
+      <div class="grid gap-5 sm:grid-cols-2 items-start">
+        <div class="space-y-5">
         <div class="glass-panel p-6 space-y-4">
           <h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3>
           <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים להשתמש בחשבונאוטיקה בליווי חונך. בחינם.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener">אשמח לשמוע</a>
         </div>
         <div class="glass-panel p-6 space-y-4">
+          <h4 class="font-bold text-lg">מה הילד מקבל ומה אתם רואים</h4>
+          <p class="leading-relaxed" style="color:var(--text-muted);">משחקי חשבון וחידות לפי הכיתה של הילד, מכפל ושברים ועד משוואות ואחוזים. יש מצב תרגול רגוע, ויש מצב אתגר עם שעון. הילד נכנס מקישור אישי, בלי סיסמה, בטלפון, בטאבלט או במחשב.</p>
+          <p class="font-bold" style="color:var(--text-primary);">ומה שההורים מקבלים:</p>
+          <ul class="nice-list" style="color:var(--text-muted); line-height:1.7;">
+            <li>יעד תרגול יומי קצר שאתם קובעים, עד 30 דקות, ורצף ימים</li>
+            <li>אפשר לקבוע יחד עם הילד פרס</li>
+            <li>דוח התקדמות: זמן משחק שבועי, באילו נושאים הוא חזק ובאילו הוא נתקע, והאם הוא מתאתגר או תקוע באותה רמה</li>
+            <li>תזכורות בוואטסאפ ובהתראות, והודעה אליכם אם הוא לא תרגל יומיים</li>
+          </ul>
+          <p class="leading-relaxed" style="color:var(--text-muted);">מספיק להציץ בדוח פעם בשבוע. ומומלץ לשבת איתו כל כמה ימים: זו חוויה משפחתית שעוזרת לו להתמיד ולהרגיש בטוח לטעות.</p>
+          <!-- TODO(נתנאל): לא הוגדר איך הורה מקבל גישה בפועל (פתיחת חשבון, הוספת הילד, מי מחבר בין הילד לחונך). לא נכתב. -->
+          <!-- TODO(נתנאל): לא הוגדר האם "קישור מעקב להורה" ו"סנכרון עם החונך" חלים במיזם הזה. לא נכתב. -->
+        </div>
+        </div>
+        <div class="space-y-5">
+        <div class="glass-panel p-6 space-y-4">
           <h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3>
           <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות, אפשר להצטרף כחונכים.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A7%D7%91%D7%9C%20%D7%9E%D7%9C%D7%92%D7%94%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%95%D7%AA" target="_blank" rel="noopener">אפשר לכתוב לי</a>
+        </div>
+        <div class="glass-panel p-6 space-y-4">
+          <h4 class="font-bold text-lg">ככה המערכת עוזרת לכם כחונכים</h4>
+          <ul class="nice-list" style="color:var(--text-muted); line-height:1.7;">
+            <li>בוחרים לילד משחק ורמה מסוימים כתרגול בין המפגשים, או רצף של כמה שלבים. המשימה מחכה לו מסומנת כשהוא נכנס</li>
+            <li>לפני המפגש רואים כמה זמן הוא תרגל, מה אחוז הדיוק שלו, ובאילו נושאים הוא חזק ובאילו נתקע, במפת כישורים</li>
+            <li>לכל רמה יש מדריך קצר לחונך: איך לעזור לילד שנתקע בדיוק שם</li>
+            <li>המערכת מסמנת ילד שלא תרגל שבוע, ואפשר לשלוח להורה תזכורת בלחיצה, או סיכום שבועי מוכן לוואטסאפ</li>
+            <li>הילד נכנס מקישור אישי, בלי סיסמה</li>
+          </ul>
+          <!-- TODO(נתנאל): לא הוגדר איך חונך מקבל גישה בפועל (פתיחת חשבון, מי מקצה ילד לחונך). לא נכתב. -->
+          <!-- TODO(נתנאל): לא הוגדר האם התזכורת להורה והסיכום השבועי רלוונטיים במיזם הזה (מי מדבר עם ההורים). לא נכתב מעבר להסבר על המערכת. -->
+        </div>
         </div>
       </div>
       <p class="text-sm" style="color:var(--text-muted);">אפשר גם פשוט לכתוב ולשאול, בלי שום התחייבות. <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A9%D7%9E%D7%A2%D7%AA%D7%99%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">הודעה בוואטסאפ</a></p>
