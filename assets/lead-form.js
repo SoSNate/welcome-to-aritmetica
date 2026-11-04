@@ -27,6 +27,8 @@ function submitLeadForm(formEl, role, onSuccess) {
   const name = document.getElementById(prefix + '-name').value.trim();
   const phone = document.getElementById(prefix + '-phone').value.trim();
   const email = document.getElementById(prefix + '-email').value.trim();
+  const aboutField = document.getElementById(prefix + '-about');
+  const about = aboutField ? aboutField.value.trim() : '';
   const countField = document.getElementById(prefix + '-count');
   const studentsCount = countField ? countField.value : '';
 
@@ -38,7 +40,7 @@ function submitLeadForm(formEl, role, onSuccess) {
     }
     return false;
   }
-  if (!email) {
+  if (!email && formEl.dataset.emailOptional !== 'true') {
     if (errorDiv) {
       errorDiv.textContent = 'חובה להזין כתובת דוא"ל ליצירת קשר.';
       errorDiv.classList.remove('hidden');
@@ -51,7 +53,7 @@ function submitLeadForm(formEl, role, onSuccess) {
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name: name, phone: phone, email: email, studentsCount: studentsCount, role: role,
+      name: name, phone: phone, email: email, studentsCount: studentsCount, about: about, role: role,
       consentAt: new Date().toISOString()
     })
   });
