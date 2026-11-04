@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <script src="assets/frame-guard.js"></script>
+  <!-- TODO(נתנאל): לפני פרסום, צריך לוודא מול עמותת "אור למשפחות" שהניסוח בדף מקובל עליה. -->
+  <!-- TODO(נתנאל): הלוגו המשותף (assets/mentors-logo.webp) כולל את השם "אור למשפחות". לוודא מול העמותה שמותר להשתמש בו בדף. -->
+  <!-- TODO(נתנאל): פתוח ולא נכתב בדף: אופן החונכות (תדירות, זום או פרונטלי, התאמת חונך לילד), איך הורה וחונך מקבלים גישה, ופרטים על העמותה. -->
+  <!-- TODO(נתנאל): אחרי שאישרת את הדף, להסיר את שורת ה-noindex שמתחת. -->
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>פרויקט החונכים | חשבונאוטיקה</title>
+  <meta name="description" content="מיזם ללא עלות, בשיתוף סטודנטים מקבלי מלגה מעמותת אור למשפחות, שמלווים ילדים במשפחות שכולות בתרגול חשבון.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
+    :root { --text-muted: rgba(234, 240, 250, 0.88); }
+    .page-h1 { font-family:'Heebo', sans-serif; font-weight:900; }
+    .prose-he p { line-height:1.85; font-size:18px; }
+    .prose-he p + p { margin-top:14px; }
+    .phone { position:relative; width:min(300px, 80vw); aspect-ratio:9/18.5; margin:0 auto; border-radius:40px; padding:11px; background:#070C20; box-shadow:0 0 0 2px rgba(138,180,255,.25), 0 30px 70px rgba(0,0,0,.55); }
+    .phone-screen { position:relative; width:100%; height:100%; border-radius:30px; overflow:hidden; background:radial-gradient(circle at 30% 20%, #1E2A66 0%, #070C20 65%); }
+    .phone-screen iframe { position:absolute; top:0; left:0; border:0; transform-origin:top left; }
+    .phone-poster { position:absolute; inset:0; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; text-align:center; background:none; border:0; color:var(--text-primary); cursor:pointer; font-family:inherit; }
+    .phone-poster img { width:92px; height:92px; border-radius:50%; }
+    .play-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); color:var(--bg-deep); font-weight:900; padding:12px 22px; border-radius:999px; }
+    .play-ico { display:inline-block; width:.62em; height:.74em; margin-inline-end:.55em; background:currentColor; clip-path:polygon(0 0,100% 50%,0 100%); }
+    .nice-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .nice-list li { position:relative; padding-inline-start:20px; }
+    .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
+    .quiet-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; border-radius:999px; border:1px solid rgba(94,234,212,.5); color:var(--accent-turquoise); font-weight:700; font-size:16px; text-decoration:none; background:rgba(255,255,255,.04); }
+    .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
+    .persona-head { display:flex; align-items:center; gap:14px; }
+    .persona { width:88px; height:88px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .swap { position:relative; width:88px; height:88px; flex:none; display:block; animation:bob 2.6s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-5px) } }
+    .sw { position:absolute; inset:0; }
+    .sw-b { opacity:0; animation:swapB 8s ease-in-out infinite; }
+    .sw-a { animation:swapA 8s ease-in-out infinite; }
+    @keyframes swapA { 0%,42% {opacity:1} 50%,92% {opacity:0} 100% {opacity:1} }
+    @keyframes swapB { 0%,42% {opacity:0} 50%,92% {opacity:1} 100% {opacity:0} }
+    .persona .solid { fill:#111a36; }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--accent-blue); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) {
+      #starfield { display:none; }
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4" aria-label="ניווט ראשי">
+    <div class="max-w-5xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
+        <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20">
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
+      </a>
+      <a href="index.html" class="text-xs sm:text-sm font-semibold whitespace-nowrap" style="color:var(--text-muted);">חזרה לדף הבית</a>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-3xl mx-auto px-5 pt-28 sm:pt-36 pb-16">
+
+    <!-- 1. Opening: Natanel's own words, only what he told us -->
+    <section class="space-y-6">
+      <img src="assets/mentors-logo.webp" alt="אור למשפחות, בוחרים בחיים, בשיתוף חשבונאוטיקה" width="1024" height="1024" class="mx-auto rounded-3xl" style="width:min(280px, 70vw); height:auto;">
+      <h1 class="page-h1 text-3xl sm:text-5xl leading-tight">פרויקט החונכים</h1>
+      <div class="prose-he" style="color:var(--text-primary);">
+        <p>אני נתנאל, ואני אח שכול.</p>
+        <p>אחרי האובדן ראיתי שאחיי מאבדים את המוטיבציה ללמוד. בשביל אחי הקטן בניתי את חשבונאוטיקה, כדי שיהיה לו כלי לתרגל בצורה חווייתית יותר.</p>
+        <p>היום אני רוצה לתת את זה גם לילדים במשפחות שכולות אחרות, יחד עם סטודנטים מעמותת אור למשפחות שילוו אותם בדרך.</p>
+        <p>זו מתנה ממני. אין כאן שום דבר למכור.</p>
+      </div>
+    </section>
+
+    <!-- 2. What is Hesbonautica + demo -->
+    <section id="demo" class="mt-16 scroll-mt-24">
+      <div class="grid gap-10 sm:grid-cols-2 items-center">
+        <div class="space-y-4">
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">מה זה חשבונאוטיקה</h2>
+          <p class="leading-relaxed" style="color:var(--text-muted);">מערכת לתרגול חשבון לכיתות ב' עד ז', בנויה ממשחקים וחידות.</p>
+          <p class="text-sm" style="color:var(--text-muted);">אפשר לנסות בלי הרשמה. לא נפתח כאן? <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">אפשר לפתוח את הדמו במסך מלא</a></p>
+        </div>
+        <div>
+          <div class="phone">
+            <div class="phone-screen" id="demoScreen">
+              <button type="button" class="phone-poster" id="demoPlay" aria-label="פתיחת משחק לדוגמה">
+                <img src="assets/logo.jpg" alt="">
+                <strong style="font-size:20px;">משחק לדוגמה</strong>
+                <span class="play-pill"><span class="play-ico"></span>לחצו לנסות</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. The project: only known facts -->
+    <section class="mt-16 glass-panel p-6 sm:p-8 space-y-4">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">מה המיזם</h2>
+      <ul class="nice-list" style="color:var(--text-muted); font-size:17px; line-height:1.7;">
+        <li>ילדים במשפחות שכולות, בכיתות ב' עד ז', מתרגלים בחשבונאוטיקה ללא עלות.</li>
+        <li>סטודנטים שמקבלים מלגה מעמותת "אור למשפחות" מלווים אותם כחונכים.</li>
+        <li>החונך רואה במערכת מה הילד תרגל ואיפה הוא נתקע, כך שכל מפגש מתחיל ממה שבאמת צריך.</li>
+      </ul>
+    </section>
+
+    <!-- 4. Two quiet invitations -->
+    <section class="mt-16 space-y-6">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">אפשר לכתוב לי</h2>
+      <div class="grid gap-5 sm:grid-cols-2 items-start">
+        <div class="space-y-5">
+        <div class="glass-panel p-6 space-y-4">
+          <div class="persona-head"><span class="swap" aria-hidden="true"><span class="sw sw-a"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="31" width="10" height="15" rx="4"/><path d="M38.5 38.5h5"/><path class="solid" d="M19 50V38a9 9 0 0 1 18 0v12"/><path d="M33 30.5 38 32"/><circle class="solid" cx="28" cy="20" r="8.5"/><path class="solid" d="M19.5 18.5a8.5 8.5 0 0 1 17 0z"/><path d="M36.5 18.5h6.5"/><path d="M24 50v8M32 50v8"/></svg></span><span class="sw sw-b"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="31" width="10" height="15" rx="4"/><path d="M38.5 38.5h5"/><path class="solid" d="M28 29.5 18.5 50h19z"/><path d="M33 31 38 32.5"/><path d="M20.5 22c-5.5 1-7 6-5.5 11"/><circle class="solid" cx="28" cy="20" r="8.5"/><path class="solid" d="M19.5 18.5a8.5 8.5 0 0 1 17 0z"/><path d="M36.5 18.5h6.5"/><path d="M24 50v8M32 50v8"/></svg></span></span><h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3></div>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים לתרגל בחשבונאוטיקה ללא עלות, ולקבל ליווי של סטודנט חונך. כתבו לי ונבדוק יחד מה מתאים לכם.</p>
+          <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener">אשמח לשמוע</a>
+        </div>
+        <div class="glass-panel p-6 space-y-4">
+          <h4 class="font-bold text-lg">מה הילד מקבל ומה אתם רואים</h4>
+          <p class="leading-relaxed" style="color:var(--text-muted);">משחקי חשבון וחידות לפי הכיתה של הילד, מכפל ושברים ועד משוואות ואחוזים. יש מצב תרגול רגוע, ויש מצב אתגר עם שעון. הילד נכנס מקישור אישי, בלי סיסמה, בטלפון, בטאבלט או במחשב.</p>
+          <p class="font-bold" style="color:var(--text-primary);">ומה שההורים מקבלים:</p>
+          <ul class="nice-list" style="color:var(--text-muted); line-height:1.7;">
+            <li>יעד תרגול יומי קצר שאתם קובעים, עד 30 דקות, ורצף ימים</li>
+            <li>אפשר לקבוע יחד עם הילד פרס</li>
+            <li>דוח התקדמות: זמן משחק שבועי, באילו נושאים הוא חזק ובאילו הוא נתקע, והאם הוא מתאתגר או תקוע באותה רמה</li>
+            <li>תזכורות בוואטסאפ ובהתראות, והודעה אליכם אם הוא לא תרגל יומיים</li>
+          </ul>
+          <p class="leading-relaxed" style="color:var(--text-muted);">מספיק להציץ בדוח פעם בשבוע. ומומלץ לשבת איתו כל כמה ימים: זו חוויה משפחתית שעוזרת לו להתמיד ולהרגיש בטוח לטעות.</p>
+        </div>
+        </div>
+        <div class="space-y-5">
+        <div class="glass-panel p-6 space-y-4">
+          <div class="persona-head"><span class="swap" aria-hidden="true"><span class="sw sw-a"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="11.5" r="6.5"/><path d="M26 43v15M32 43v15"/></svg></span><span class="sw sw-b"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M21 12a8 8 0 0 1 16 0v14c0 1.5-1 2-2 2H23c-1 0-2-.5-2-2z"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="12" r="6"/><path d="M21 14c3 0 6-2 8-5 2 3 5 5 8 5" /><path d="M26 43v15M32 43v15"/></svg></span></span><h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3></div>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות ורוצים ללוות ילד בתרגול חשבון, אשמח שתצטרפו כחונכים. לא צריך להיות מורים: המערכת מראה לכם מה לתרגל ואיפה הילד צריך עזרה.</p>
+          <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A7%D7%91%D7%9C%20%D7%9E%D7%9C%D7%92%D7%94%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%95%D7%AA" target="_blank" rel="noopener">אפשר לכתוב לי</a>
+        </div>
+        <div class="glass-panel p-6 space-y-4">
+          <h4 class="font-bold text-lg">ככה המערכת עוזרת לכם כחונכים</h4>
+          <ul class="nice-list" style="color:var(--text-muted); line-height:1.7;">
+            <li>בוחרים לילד משחק ורמה מסוימים כתרגול בין המפגשים, או רצף של כמה שלבים. המשימה מחכה לו מסומנת כשהוא נכנס</li>
+            <li>לפני המפגש רואים כמה זמן הוא תרגל, מה אחוז הדיוק שלו, ובאילו נושאים הוא חזק ובאילו נתקע, במפת כישורים</li>
+            <li>לכל רמה יש מדריך קצר לחונך: איך לעזור לילד שנתקע בדיוק שם</li>
+            <li>המערכת מסמנת ילד שלא תרגל שבוע, ואפשר לשלוח להורה תזכורת בלחיצה, או סיכום שבועי מוכן לוואטסאפ</li>
+            <li>הילד נכנס מקישור אישי, בלי סיסמה</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <p class="text-sm" style="color:var(--text-muted);">אפשר גם פשוט לכתוב ולשאול, בלי שום התחייבות. <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A9%D7%9E%D7%A2%D7%AA%D7%99%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">הודעה בוואטסאפ</a></p>
+    </section>
+
+    <!-- 5. Privacy -->
+    <section class="mt-14">
+      <p class="text-sm leading-relaxed" style="color:var(--text-muted);">הדף הזה לא אוסף פרטים. מי שרוצה, כותב לי בוואטסאפ.</p>
+    </section>
+  </main>
+
+  <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+    <a class="mx-3" href="index.html" style="color:var(--text-muted); text-decoration:underline;">חזרה לדף הבית</a>
+    <a class="mx-3" href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br>
+    © 2026 חשבונאוטיקה. כל הזכויות שמורות.
+  </footer>
+
+  <script src="assets/starfield.js"></script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script src="assets/demo-frame.js"></script>
+  <script>
+    initAccessibilityWidget();
+    initStarfield();
+    initDemoFrame({ screenId: 'demoScreen', playId: 'demoPlay', page: 'mentors' });
+  </script>
+</body>
+</html>
