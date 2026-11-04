@@ -2,18 +2,19 @@
 <html lang="he" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <script src="assets/frame-guard.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>סדנאות הוראה חכמה עם AI | nt-school</title>
   <meta name="description" content="סדנאות הוראה חכמה עם AI מעשיות לצוותי הוראה: חיסכון של שעות עבודה, בניית משחקי למידה אינטראקטיביים והפקת חומרי הוראה חיים לכיתה מבית nt-school יזמות והדרכה.">
   
   <!-- Open Graph / WhatsApp / Facebook / Telegram Link Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://welcome-to-hesbonautika.nt-school.app/workshops">
+  <meta property="og:url" content="https://lighthouse.nt-school.app/workshops">
   <meta property="og:site_name" content="nt-school">
   <meta property="og:title" content="סדנאות הוראה חכמה עם AI | השראה אנושית, יצירה דיגיטלית">
   <meta property="og:description" content="השראה אנושית, יצירה דיגיטלית. סדנאות מעשיות לצוותי חינוך והוראה: פיתוח מיומנויות AI והפקת חומרי הוראה חיים לכיתה מבית nt-school יזמות והדרכה (עוסק פטור).">
-  <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/workshops-share.jpg">
-  <meta property="og:image:secure_url" content="https://welcome-to-hesbonautika.nt-school.app/assets/workshops-share.jpg">
+  <meta property="og:image" content="https://lighthouse.nt-school.app/assets/workshops-share.jpg">
+  <meta property="og:image:secure_url" content="https://lighthouse.nt-school.app/assets/workshops-share.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
@@ -24,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="סדנאות הוראה חכמה עם AI | השראה אנושית, יצירה דיגיטלית">
   <meta name="twitter:description" content="השראה אנושית, יצירה דיגיטלית. סדנאות מעשיות לצוותי חינוך והוראה מבית nt-school יזמות והדרכה.">
-  <meta name="twitter:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/workshops-share.jpg">
+  <meta name="twitter:image" content="https://lighthouse.nt-school.app/assets/workshops-share.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="/assets/nt-school-logo.jpg">
@@ -811,63 +812,79 @@
             <span class="text-xs sm:text-sm text-palette-700 font-bold">על כל 5 מעל 10 נפתחת הנחת כמות</span>
           </label>
 
-          <div class="glass-card-navy !rounded-2xl p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">
-            
-            <!-- Stepper Controls -->
-            <div class="flex items-center gap-3 w-full md:w-auto">
-              <button type="button" onclick="adjustParticipants(-1)" 
-                      class="glass-counter-btn w-11 h-11 text-palette-950 font-black flex items-center justify-center text-2xl">
-                -
-              </button>
+          <div class="glass-card-navy !rounded-2xl p-5 sm:p-7">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               
-              <div class="relative flex-1 md:w-36">
-                <input type="number" id="participantsCount" name="participantsCount" value="12" min="1" max="150" 
-                       class="glass-input w-full text-center text-2xl sm:text-3xl font-black text-palette-950 py-2 focus:outline-none" 
-                       oninput="calculateOrderTotal()">
-                <span class="text-xs text-palette-700 block text-center mt-1 font-bold">אנשי צוות</span>
+              <!-- Controls (Stepper + Presets) -->
+              <div class="lg:col-span-7 xl:col-span-8 flex flex-col sm:flex-row items-center gap-6">
+                
+                <!-- Stepper Controls -->
+                <div class="flex items-center gap-3 shrink-0" dir="ltr">
+                  <button type="button" onclick="adjustParticipants(-1)" 
+                          class="glass-counter-btn w-11 h-11 text-palette-950 font-black flex items-center justify-center text-2xl"
+                          aria-label="הפחתת משתתף">
+                    -
+                  </button>
+                  
+                  <div class="relative w-28 sm:w-32">
+                    <input type="number" id="participantsCount" name="participantsCount" value="12" min="1" max="150" 
+                           class="glass-input w-full text-center text-2xl sm:text-3xl font-black text-palette-950 py-2 focus:outline-none" 
+                           oninput="calculateOrderTotal()">
+                    <span class="text-xs text-palette-700 block text-center mt-1 font-bold">אנשי צוות</span>
+                  </div>
+
+                  <button type="button" onclick="adjustParticipants(1)" 
+                          class="glass-counter-btn w-11 h-11 text-palette-950 font-black flex items-center justify-center text-2xl"
+                          aria-label="הוספת משתתף">
+                    +
+                  </button>
+                </div>
+
+                <!-- Subtle separator for sm+ screens -->
+                <div class="hidden sm:block w-px h-14 bg-palette-200/80 shrink-0"></div>
+
+                <!-- Preset Buttons with Discount Markers -->
+                <div class="flex flex-col gap-2 w-full">
+                  <span class="text-xs sm:text-sm text-palette-700 font-bold">גדלי צוות נפוצים:</span>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <button type="button" onclick="setParticipants(6)" class="glass-pill text-xs sm:text-sm font-bold px-3 py-1.5 text-palette-900 hover:text-palette-950">צוות מוביל (6)</button>
+                    <button type="button" onclick="setParticipants(10)" class="glass-pill text-xs sm:text-sm font-bold px-3 py-1.5 text-palette-900 hover:text-palette-950">צוות שכבה (10)</button>
+                    <button type="button" onclick="setParticipants(15)" class="glass-pill text-xs sm:text-sm font-black px-3 py-1.5 text-palette-950 bg-palette-100 hover:bg-palette-200 border-palette-400 flex items-center gap-1.5">
+                      <span>15 מורים</span>
+                      <span class="text-[10px] bg-emerald-600 text-white rounded px-1.5 py-0.5 font-black">הנחה</span>
+                    </button>
+                    <button type="button" onclick="setParticipants(25)" class="glass-pill text-xs sm:text-sm font-black px-3 py-1.5 text-palette-950 bg-palette-200 hover:bg-palette-300 border-palette-600 flex items-center gap-1.5">
+                      <span>25 מורים</span>
+                      <span class="text-[10px] bg-palette-950 text-white rounded px-1.5 py-0.5 font-black">חיסכון מירבי</span>
+                    </button>
+                  </div>
+                </div>
+
               </div>
 
-              <button type="button" onclick="adjustParticipants(1)" 
-                      class="glass-counter-btn w-11 h-11 text-palette-950 font-black flex items-center justify-center text-2xl">
-                +
-              </button>
-            </div>
+              <!-- Live Calculation Summary Box (Moody Dark Glass Accent) -->
+              <div class="lg:col-span-5 xl:col-span-4 w-full">
+                <div class="glass-card-featured !bg-gradient-to-br !from-palette-950 !to-palette-900 p-5 rounded-2xl text-center text-white border-cyanGlow-500/40 w-full shadow-lg">
+                  <span class="text-xs sm:text-sm font-bold text-palette-200 block">סה״כ לתשלום משוער:</span>
+                  
+                  <div class="flex items-center justify-center gap-2 mt-1">
+                    <span id="originalPriceStrikethrough" class="text-sm text-palette-400 line-through font-bold hidden"></span>
+                    <div class="text-2xl sm:text-4xl font-black text-white" id="liveTotalPrice">5,880 ₪</div>
+                  </div>
+                  
+                  <span class="text-xs sm:text-sm text-palette-300 mt-1 block font-bold" id="calculationBreakdown">12 משתתפים × 490 ₪</span>
+                  
+                  <!-- Active Discount Badge -->
+                  <div id="discountBadge" class="mt-2.5 hidden">
+                    <span class="inline-flex items-center gap-1 bg-emerald-500/25 text-emerald-300 border border-emerald-400/50 text-xs font-black px-3 py-1 rounded-full"></span>
+                  </div>
 
-            <!-- Preset Buttons with Discount Markers -->
-            <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
-              <span class="text-xs sm:text-sm text-palette-700 font-bold ml-1">גדלי צוות נפוצים:</span>
-              <button type="button" onclick="setParticipants(6)" class="glass-pill text-xs sm:text-sm font-bold px-3.5 py-2 text-palette-900 hover:text-palette-950">צוות מוביל (6)</button>
-              <button type="button" onclick="setParticipants(10)" class="glass-pill text-xs sm:text-sm font-bold px-3.5 py-2 text-palette-900 hover:text-palette-950">צוות שכבה (10)</button>
-              <button type="button" onclick="setParticipants(15)" class="glass-pill text-xs sm:text-sm font-black px-3.5 py-2 text-palette-950 bg-palette-100 hover:bg-palette-200 border-palette-400 flex items-center gap-1.5">
-                <span>15 מורים</span>
-                <span class="text-[10px] bg-emerald-600 text-white rounded px-1.5 py-0.5 font-black">הנחה</span>
-              </button>
-              <button type="button" onclick="setParticipants(25)" class="glass-pill text-xs sm:text-sm font-black px-3.5 py-2 text-palette-950 bg-palette-200 hover:bg-palette-300 border-palette-600 flex items-center gap-1.5">
-                <span>25 מורים</span>
-                <span class="text-[10px] bg-palette-950 text-white rounded px-1.5 py-0.5 font-black">חיסכון מירבי</span>
-              </button>
-            </div>
-
-            <!-- Live Calculation Summary Box (Moody Dark Glass Accent) -->
-            <div class="glass-card-featured !bg-gradient-to-br !from-palette-950 !to-palette-900 p-5 w-full md:w-68 text-center text-white border-cyanGlow-500/40 shrink-0">
-              <span class="text-xs sm:text-sm font-bold text-palette-200 block">סה״כ לתשלום משוער:</span>
-              
-              <div class="flex items-center justify-center gap-2 mt-1">
-                <span id="originalPriceStrikethrough" class="text-sm text-palette-400 line-through font-bold hidden"></span>
-                <div class="text-2xl sm:text-4xl font-black text-white" id="liveTotalPrice">5,880 ₪</div>
-              </div>
-              
-              <span class="text-xs sm:text-sm text-palette-300 mt-1 block font-bold" id="calculationBreakdown">12 משתתפים × 490 ₪</span>
-              
-              <!-- Active Discount Badge -->
-              <div id="discountBadge" class="mt-2.5 hidden">
-                <span class="inline-flex items-center gap-1 bg-emerald-500/25 text-emerald-300 border border-emerald-400/50 text-xs font-black px-3 py-1 rounded-full"></span>
+                  <!-- Upsell Hint to Next Discount Tier -->
+                  <div id="upsellHint" class="mt-2 text-xs text-palette-200 font-bold hidden leading-snug"></div>
+                </div>
               </div>
 
-              <!-- Upsell Hint to Next Discount Tier -->
-              <div id="upsellHint" class="mt-2 text-xs text-palette-200 font-bold hidden leading-snug"></div>
             </div>
-
           </div>
         </div>
 
