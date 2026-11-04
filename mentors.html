@@ -36,6 +36,12 @@
     .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
     .persona-head { display:flex; align-items:center; gap:14px; }
     .persona { width:72px; height:72px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .swap { position:relative; width:72px; height:72px; flex:none; display:block; }
+    .sw { position:absolute; inset:0; }
+    .sw-b { opacity:0; animation:swapB 8s ease-in-out infinite; }
+    .sw-a { animation:swapA 8s ease-in-out infinite; }
+    @keyframes swapA { 0%,42% {opacity:1} 50%,92% {opacity:0} 100% {opacity:1} }
+    @keyframes swapB { 0%,42% {opacity:0} 50%,92% {opacity:1} 100% {opacity:0} }
     .persona .solid { fill:#111a36; }
     a:focus-visible, button:focus-visible { outline:3px solid var(--accent-blue); outline-offset:3px; }
     @media (prefers-reduced-motion: reduce) {
@@ -110,7 +116,7 @@
       <div class="grid gap-5 sm:grid-cols-2 items-start">
         <div class="space-y-5">
         <div class="glass-panel p-6 space-y-4">
-          <div class="persona-head"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="30" width="11" height="16" rx="4"/><path d="M38.5 38.5h6"/><path class="solid" d="M19 49V37a9 9 0 0 1 18 0v12"/><path d="M33 29.5 39 31"/><circle class="solid" cx="28" cy="17" r="9"/><path d="M24 49v8M32 49v8"/></svg><h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3></div>
+          <div class="persona-head"><span class="swap" aria-hidden="true"><span class="sw sw-a"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="31" width="10" height="15" rx="4"/><path d="M38.5 38.5h5"/><path class="solid" d="M19 50V38a9 9 0 0 1 18 0v12"/><path d="M33 30.5 38 32"/><circle class="solid" cx="28" cy="20" r="8.5"/><path class="solid" d="M19.5 18.5a8.5 8.5 0 0 1 17 0z"/><path d="M36.5 18.5h6.5"/><path d="M24 50v8M32 50v8"/></svg></span><span class="sw sw-b"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="36" y="31" width="10" height="15" rx="4"/><path d="M38.5 38.5h5"/><path class="solid" d="M28 29.5 18.5 50h19z"/><path d="M33 31 38 32.5"/><path d="M20.5 22c-5.5 1-7 6-5.5 11"/><circle class="solid" cx="28" cy="20" r="8.5"/><path class="solid" d="M19.5 18.5a8.5 8.5 0 0 1 17 0z"/><path d="M36.5 18.5h6.5"/><path d="M24 50v8M32 50v8"/></svg></span></span><h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3></div>
           <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים לתרגל בחשבונאוטיקה ללא עלות, ולקבל ליווי של סטודנט חונך. כתבו לי ונבדוק יחד מה מתאים לכם.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener">אשמח לשמוע</a>
         </div>
@@ -129,7 +135,7 @@
         </div>
         <div class="space-y-5">
         <div class="glass-panel p-6 space-y-4">
-          <div class="persona-head"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="11.5" r="6.5"/><rect class="solid" x="15" y="29" width="8.5" height="11" rx="1.5"/><path d="M19.25 29v11"/><path d="M26 43v15M32 43v15"/></svg><h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3></div>
+          <div class="persona-head"><span class="swap" aria-hidden="true"><span class="sw sw-a"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="11.5" r="6.5"/><path d="M26 43v15M32 43v15"/></svg></span><span class="sw sw-b"><svg class="persona" viewBox="0 0 64 64" aria-hidden="true"><rect class="solid" x="35" y="23" width="9.5" height="15" rx="3.5"/><path d="M37.5 30.5h5"/><path class="solid" d="M21 12a8 8 0 0 1 16 0v14c0 1.5-1 2-2 2H23c-1 0-2-.5-2-2z"/><path class="solid" d="M22 43V27.5a7 7 0 0 1 14 0V43"/><path d="M33 21.5 37.5 23.5"/><circle class="solid" cx="29" cy="12" r="6"/><path d="M21 14c3 0 6-2 8-5 2 3 5 5 8 5" /><path d="M26 43v15M32 43v15"/></svg></span></span><h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3></div>
           <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות ורוצים ללוות ילד בתרגול חשבון, אשמח שתצטרפו כחונכים. לא צריך להיות מורים: המערכת מראה לכם מה לתרגל ואיפה הילד צריך עזרה.</p>
           <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A7%D7%91%D7%9C%20%D7%9E%D7%9C%D7%92%D7%94%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%95%D7%AA" target="_blank" rel="noopener">אפשר לכתוב לי</a>
         </div>
