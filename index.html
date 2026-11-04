@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <script src="assets/frame-guard.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>חשבונאוטיקה | כיתה ה', פותר תרגילים של כיתה ז'</title>
+  <title>חשבונאוטיקה | אחי הקטן בכיתה ה' פותר תרגילים של כיתה ז'</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="אחי הקטן בכיתה ה'. פותר תרגילים של כיתה ז'.">
-  <meta property="og:description" content="לפני שנה הוא לא עשה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה, 10–15 דקות כל יום. נסו משחק בחינם, בלי הרשמה.">
+  <meta property="og:description" content="לפני שנה הוא אפילו לא היה עושה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה ומתרגל כל יום. נסו משחק בחינם, בלי הרשמה.">
   <meta property="og:image" content="https://welcome-to-hesbonautika.nt-school.app/assets/og-preview.jpg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
@@ -58,6 +58,13 @@
     .wa-msg { align-self:flex-start; max-width:88%; background:#202C33; color:#E9EDEF; padding:10px 14px; border-radius:12px 12px 12px 3px; font-size:15px; line-height:1.5; }
     .wa-msg time { display:block; text-align:left; font-size:11px; color:#8696A0; margin-top:2px; }
     .wa-note { text-align:center; font-size:12px; color:var(--text-muted); margin:4px 0 0; }
+    .play-ico { display:inline-block; width:.62em; height:.74em; margin-inline-end:.55em; background:currentColor; clip-path:polygon(0 0,100% 50%,0 100%); }
+    .tutor-pill { font-size:15px; padding:10px 22px; border-color:rgba(94,234,212,.4); color:var(--accent-turquoise); }
+    .tutor-band { padding:32px 28px; border-radius:28px; border:1px solid rgba(94,234,212,.35); background:radial-gradient(ellipse at 85% 30%, rgba(94,234,212,.12) 0%, rgba(138,180,255,.06) 45%, rgba(255,255,255,.03) 100%); box-shadow:0 0 40px rgba(94,234,212,.08); }
+    @media (min-width:640px) { .tutor-band { padding:44px 48px; } }
+    .nice-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .nice-list li { position:relative; padding-inline-start:20px; }
+    .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
     .faq details { border-bottom:1px solid var(--border-panel); }
     .faq summary { cursor:pointer; list-style:none; padding:16px 4px; font-weight:700; display:flex; justify-content:space-between; gap:12px; }
     .faq summary::-webkit-details-marker { display:none; }
@@ -78,8 +85,9 @@
         <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
       </a>
       <div class="flex items-center gap-3 shrink-0">
+        <a href="teacher.html" class="text-xs sm:text-sm font-bold whitespace-nowrap" style="color:var(--accent-turquoise);" data-cta="nav_tutors"><span class="sm:hidden">למורים</span><span class="hidden sm:inline">למורים פרטיים</span></a>
         <a href="https://aritmetica.nt-school.app" target="_blank" rel="noopener" class="text-xs sm:text-sm font-semibold whitespace-nowrap" style="color:var(--text-muted);" data-cta="nav_login">כניסה</a>
-        <a href="#demo" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap" data-cta="nav_demo">▶ נסו בחינם</a>
+        <a href="#demo" class="glass-btn glass-btn-primary !py-1.5 !px-3 sm:!py-2 sm:!px-5 !text-xs sm:!text-sm whitespace-nowrap" data-cta="nav_demo">נסו בחינם</a>
       </div>
     </div>
   </nav>
@@ -96,13 +104,14 @@
         <span class="story-line text-gradient">פותר תרגילים של כיתה ז'.</span>
       </h1>
       <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style="color:var(--text-muted);">
-        לפני שנה הוא לא עשה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה ומתרגל 10–15 דקות כל יום.
+        לפני שנה הוא אפילו לא היה עושה שיעורי בית. היום הוא נכנס לבד לחשבונאוטיקה ומתרגל כל יום, בין 10 ל-15 דקות.
         <strong style="color:var(--text-primary);">בלי ויכוחים.</strong>
       </p>
       <p class="text-sm" style="color:var(--text-muted);">נתנאל, מורה למתמטיקה ומפתח חשבונאוטיקה</p>
-      <div class="flex flex-col items-center gap-3 pt-2">
-        <a href="#demo" class="glass-btn" data-cta="hero_demo" style="display:inline-flex; font-size:18px; padding:16px 34px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900; box-shadow:0 0 28px rgba(94,234,212,0.35);">▶ תנו לילד שלכם לנסות</a>
-        <p class="text-sm" style="color:var(--text-muted);">משחק אמיתי · בלי הרשמה · בדפדפן · כיתות ב'–ז'</p>
+      <div class="flex flex-col items-center gap-4 pt-2">
+        <a href="#demo" class="glass-btn" data-cta="hero_demo" style="display:inline-flex; font-size:18px; padding:16px 34px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900; box-shadow:0 0 28px rgba(94,234,212,0.35);"><span class="play-ico"></span>תנו לילד שלכם לנסות</a>
+        <p class="text-sm" style="color:var(--text-muted);">משחק אמיתי, בלי הרשמה, ישר מהדפדפן. לכיתות ב' עד ז'.</p>
+        <a href="teacher.html" class="glass-btn tutor-pill" data-cta="hero_tutor">מלמדים מתמטיקה? יש גם דף בשבילכם</a>
       </div>
     </section>
 
@@ -110,9 +119,9 @@
     <section id="demo" class="mt-20 scroll-mt-24">
       <div class="grid gap-10 sm:grid-cols-2 items-center">
         <div class="text-right space-y-4 order-2 sm:order-1">
-          <h2 class="font-space text-2xl sm:text-3xl font-bold">נסו בעצמכם. עכשיו.</h2>
-          <p class="leading-relaxed" style="color:var(--text-muted);">זה לא סרטון. זה המשחק עצמו, אותו משחק שאחי משחק בו כל יום. תנו לילד דקה אחת איתו ותראו מה קורה.</p>
-          <p class="text-sm" style="color:var(--text-muted);">לא נפתח כאן? <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;" data-cta="demo_fullscreen">פתחו את הדמו במסך מלא</a></p>
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">נסו בעצמכם, זה לוקח דקה.</h2>
+          <p class="leading-relaxed" style="color:var(--text-muted);">זה לא סרטון, זה המשחק עצמו. אותו משחק שאחי משחק בו כל יום. תנו לילד לנסות דקה אחת ותראו מה קורה.</p>
+          <p class="text-sm" style="color:var(--text-muted);">לא נפתח כאן? <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;" data-cta="demo_fullscreen">אפשר לפתוח את הדמו במסך מלא</a></p>
         </div>
         <div class="order-1 sm:order-2">
           <div class="phone">
@@ -121,7 +130,7 @@
                 <img src="assets/logo.jpg" alt="">
                 <strong style="font-size:20px;">שברים, כפל, משוואות</strong>
                 <span style="color:var(--text-muted); font-size:15px;">משחק אמיתי מהמערכת</span>
-                <span class="play-pill">▶ לחצו לשחק</span>
+                <span class="play-pill"><span class="play-ico"></span>לחצו לשחק</span>
               </button>
             </div>
           </div>
@@ -133,7 +142,7 @@
     <section id="games" class="mt-24 scroll-mt-24 space-y-6">
       <div class="text-center space-y-2">
         <h2 class="font-space text-2xl sm:text-3xl font-bold">בדיוק מה שלומדים בכיתה שלו</h2>
-        <p class="max-w-2xl mx-auto" style="color:var(--text-muted);">המשחקים מסודרים לפי תכנית הלימודים של כל כיתה, ובנויים בגישת CPA: קודם רואים ומזיזים, אחר כך מבינים, ורק בסוף תרגיל. בחרו כיתה:</p>
+        <p class="max-w-2xl mx-auto" style="color:var(--text-muted);">המשחקים מסודרים לפי תכנית הלימודים של כל כיתה. קודם רואים ומזיזים, אחר כך מבינים, ורק בסוף פותרים תרגיל. בחרו כיתה ותראו.</p>
       </div>
       <div class="grade-chips" role="tablist" aria-label="בחירת כיתה">
         <button type="button" data-g="3">ג'</button>
@@ -145,21 +154,21 @@
       <div id="gradeTopics" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" aria-live="polite"></div>
     </section>
 
-    <!-- 3. Why it works: three short points, no feature list -->
+    <!-- 3. Why it works: three short points -->
     <section class="mt-24 space-y-6">
       <h2 class="font-space text-2xl sm:text-3xl font-bold text-center">למה הוא חוזר כל יום</h2>
       <div class="grid gap-4 sm:grid-cols-3">
         <div class="glass-panel p-6 text-right space-y-2">
-          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">חידה, לא דף עבודה</h3>
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">חידה במקום דף עבודה</h3>
           <p class="text-sm leading-relaxed" style="color:var(--text-muted);">מזיזים, מנסים, טועים בלי שמישהו מסתכל, ומגלים את התשובה לבד.</p>
         </div>
         <div class="glass-panel p-6 text-right space-y-2">
-          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">מתקדם בקצב שלו</h3>
-          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">רמה אחרי רמה. ילד שמוכן לרוץ קדימה, רץ. ילד שצריך עוד זמן, מקבל אותו.</p>
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">בקצב שלו</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">רמה אחרי רמה. ילד שמוכן לרוץ, רץ. ילד שצריך עוד קצת זמן, מקבל אותו.</p>
         </div>
         <div class="glass-panel p-6 text-right space-y-2">
-          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">רצף ימים</h3>
-          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">יעד יומי קצר, רצף שלא רוצים לשבור, ופרס שאתם בוחרים. ככה נבנה הרגל.</p>
+          <h3 class="font-bold text-lg" style="color:var(--accent-blue);">רצף שלא רוצים לשבור</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-muted);">יעד יומי קצר ופרס שאתם בוחרים. ככה בונים הרגל.</p>
         </div>
       </div>
     </section>
@@ -167,20 +176,20 @@
     <!-- WhatsApp bot -->
     <section class="mt-24 grid gap-8 sm:grid-cols-2 items-center">
       <div class="text-right space-y-4">
-        <span class="label-tag" style="display:inline-flex; color:var(--accent-turquoise);">סוכן וואטסאפ</span>
-        <h2 class="font-space text-2xl sm:text-3xl font-bold">ההתמדה לא תלויה בכם.</h2>
-        <p class="leading-relaxed" style="color:var(--text-muted);">הסוכן שלנו בוואטסאפ, יחד עם התראות פוש, מזכיר לילד לתרגל כל יום ומעדכן אתכם אם הוא לא תרגל יומיים. אתם לא צריכים לזכור, לבדוק או להציק.</p>
-        <ul class="space-y-2 text-sm" style="color:var(--text-muted);">
-          <li>✦ תזכורת יומית לילד לתרגל</li>
-          <li>✦ עדכון אליכם כשיש הפסקה בתרגול</li>
-          <li>✦ בלי להתקין אפליקציה ובלי להיכנס לשום מערכת</li>
+        <span class="label-tag" style="display:inline-flex; color:var(--accent-turquoise);">הסוכן בוואטסאפ</span>
+        <h2 class="font-space text-2xl sm:text-3xl font-bold">לא צריך לזכור, אנחנו מזכירים.</h2>
+        <p class="leading-relaxed" style="color:var(--text-muted);">הסוכן שלנו בוואטסאפ, יחד עם התראות בטלפון, מזכיר לילד לתרגל. ואם הוא לא תרגל יומיים, אתם מקבלים הודעה. בלי להציק ובלי לבדוק כל יום.</p>
+        <ul class="nice-list text-sm" style="color:var(--text-muted);">
+          <li>תזכורת יומית לילד</li>
+          <li>הודעה אליכם כשיש הפסקה בתרגול</li>
+          <li>בלי להתקין אפליקציה ובלי להיכנס לשום מערכת</li>
         </ul>
       </div>
       <div class="wa-chat" aria-label="הדגמה של הודעות הסוכן בוואטסאפ">
-        <div class="wa-head"><img src="assets/logo.jpg" alt=""><div><b>חשבונאוטיקה</b><small>סוכן וואטסאפ</small></div></div>
-        <div class="wa-msg">היי נועה! 🚀 עוד לא שיחקת היום. 10 דקות ואת שומרת על הרצף 🔥<time>17:30</time></div>
-        <div class="wa-msg">היי, נועה לא תרגלה יומיים. אולי תזכורת קטנה בערב? 🙂<time>19:00</time></div>
-        <p class="wa-note">הדגמה של סוג ההודעות</p>
+        <div class="wa-head"><img src="assets/logo.jpg" alt=""><div><b>חשבונאוטיקה</b><small>הסוכן בוואטסאפ</small></div></div>
+        <div class="wa-msg">היי נועה, עוד לא שיחקת היום. 10 דקות ואת שומרת על הרצף.<time>17:30</time></div>
+        <div class="wa-msg">היי, נועה לא תרגלה יומיים. אולי תזכורת קטנה בערב?<time>19:00</time></div>
+        <p class="wa-note">דוגמה לסוג ההודעות</p>
       </div>
     </section>
 
@@ -188,9 +197,9 @@
     <section class="mt-24 glass-panel p-6 sm:p-10 space-y-6">
       <h2 class="font-space text-2xl sm:text-3xl font-bold text-center">איך מתחילים</h2>
       <div class="grid gap-6 sm:grid-cols-3 text-right">
-        <div class="space-y-2"><span class="step-num">1</span><h3 class="font-bold text-lg">נרשמים עם Google</h3><p class="text-sm" style="color:var(--text-muted);">דקה אחת. 14 ימים חינם, בלי כרטיס אשראי.</p></div>
-        <div class="space-y-2"><span class="step-num">2</span><h3 class="font-bold text-lg">שולחים לילד קישור</h3><p class="text-sm" style="color:var(--text-muted);">לחיצה אחת, בלי סיסמה. טלפון, טאבלט או מחשב.</p></div>
-        <div class="space-y-2"><span class="step-num">3</span><h3 class="font-bold text-lg">הוא משחק, אתם רואים</h3><p class="text-sm" style="color:var(--text-muted);">תזכורת בוואטסאפ כשהוא לא תרגל, ודוח שמראה איפה הוא נתקע.</p></div>
+        <div class="space-y-2"><span class="step-num">1</span><h3 class="font-bold text-lg">נרשמים עם Google</h3><p class="text-sm" style="color:var(--text-muted);">זה לוקח דקה. מקבלים 14 ימים חינם, בלי כרטיס אשראי.</p></div>
+        <div class="space-y-2"><span class="step-num">2</span><h3 class="font-bold text-lg">שולחים לילד קישור</h3><p class="text-sm" style="color:var(--text-muted);">לחיצה אחת, בלי סיסמה. בטלפון, בטאבלט או במחשב.</p></div>
+        <div class="space-y-2"><span class="step-num">3</span><h3 class="font-bold text-lg">הוא משחק, ואתם בתמונה</h3><p class="text-sm" style="color:var(--text-muted);">מקבלים תזכורת כשהוא לא תרגל, ודוח שמראה איפה הוא חזק ואיפה הוא נתקע.</p></div>
       </div>
     </section>
 
@@ -199,50 +208,69 @@
       <div class="glass-panel p-8 max-w-lg mx-auto text-center space-y-4" style="border-color:rgba(138,180,255,.45);">
         <span class="label-tag" style="display:inline-flex; color:var(--accent-flame);">מחיר פיילוט, עד ינואר</span>
         <h2 class="font-space text-xl font-bold">מנוי חשבונאוטיקה</h2>
-        <div><span class="font-space text-5xl font-bold">₪50</span> <span style="color:var(--text-muted);">לחודש · <s>₪100</s></span></div>
+        <div><span class="font-space text-5xl font-bold">₪50</span> <span style="color:var(--text-muted);">לחודש, במקום <s>₪100</s></span></div>
         <ul class="text-sm space-y-1.5" style="color:var(--text-muted);">
-          <li>עד 2 ילדים · כל המשחקים וכל הרמות</li>
-          <li>14 ימים חינם · בלי חידוש אוטומטי</li>
+          <li>עד 2 ילדים, כל המשחקים וכל הרמות</li>
+          <li>14 ימים חינם, ובלי חידוש אוטומטי</li>
           <li>ליווי אישי בוואטסאפ בהתחלה</li>
         </ul>
         <a href="https://aritmetica.nt-school.app/pricing" target="_blank" rel="noopener" class="glass-btn glass-btn-primary w-full justify-center" data-cta="price_trial">התחילו 14 ימים חינם</a>
       </div>
-      <p class="text-center text-sm" style="color:var(--text-muted);">צריכים גם עזרה אישית? שיעור פרטי ₪150, בזום או בבית התלמיד · <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700;" data-cta="upsell_lesson">דברו איתי</a></p>
+      <p class="text-center text-sm" style="color:var(--text-muted);">רוצים גם עזרה אישית? יש שיעורים פרטיים ב-₪150, בזום או בבית התלמיד. <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;" data-cta="upsell_lesson">דברו איתי</a></p>
     </section>
 
-    <!-- 6. FAQ -->
+    <!-- 6. Tutors: a section of its own, hard to miss -->
+    <section id="tutors" class="mt-24 scroll-mt-24 tutor-band">
+      <div class="grid gap-8 sm:grid-cols-5 items-center">
+        <div class="sm:col-span-3 text-right space-y-4">
+          <span class="label-tag" style="display:inline-flex; color:var(--accent-turquoise);">למורים פרטיים</span>
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">מלמדים מתמטיקה? גם בשבילכם בנינו את זה.</h2>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אני מורה בעצמי, אז בניתי את מה שהיה חסר לי: תלמיד שמתרגל בין השיעורים, ואני שרואה בדיוק מה הוא עשה. בסוף השיעור שולחים לו משחק ורמה, ולפני השיעור הבא רואים כמה תרגל, כמה דייק ואיפה נתקע.</p>
+          <ul class="nice-list text-sm" style="color:var(--text-muted);">
+            <li>שיעורי בית מדויקים: בוחרים לכל תלמיד משחק ורמה</li>
+            <li>רואים מה קרה בין השיעורים: דיוק, זמן תרגול והמקומות שבהם הוא נתקע</li>
+            <li>סיכום שבועי להורים, מוכן לשליחה בוואטסאפ</li>
+          </ul>
+        </div>
+        <div class="sm:col-span-2 text-center space-y-3">
+          <a href="teacher.html" class="glass-btn glass-btn-primary w-full justify-center" data-cta="tutor_section" style="font-size:17px; padding:15px 24px;">ככה זה עובד למורים</a>
+          <p class="text-sm" style="color:var(--text-muted);">14 ימים חינם. ומתנה קטנה: מערכת לניהול יומן השיעורים והתשלומים.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
     <section class="mt-24 max-w-2xl mx-auto text-right faq">
       <h2 class="font-space text-2xl sm:text-3xl font-bold text-center mb-4">שאלות שהורים שואלים</h2>
-      <details><summary>לאיזה גילאים?</summary><p>כיתות ב' עד ז'. מלוח הכפל, דרך שברים ואחוזים, ועד משוואות.</p></details>
-      <details><summary>אני צריך לשבת לידו?</summary><p>לא. המשחקים בנויים כך שהילד משחק לבד. אתם קובעים יעד יומי ומקבלים תזכורת אם הוא לא תרגל.</p></details>
-      <details><summary>צריך להתקין משהו?</summary><p>לא. הכול בדפדפן. הילד נכנס מקישור אישי, בלי סיסמה.</p></details>
-      <details><summary>מה קורה אחרי 14 הימים?</summary><p>אין חיוב אוטומטי. רוצים להמשיך? מצטרפים. לא? פשוט לא ממשיכים.</p></details>
+      <details><summary>לאיזה גילאים זה מתאים?</summary><p>לכיתות ב' עד ז'. מלוח הכפל, דרך שברים ואחוזים, ועד משוואות.</p></details>
+      <details><summary>אני צריך לשבת לידו?</summary><p>ממש לא. הילד משחק לבד. אתם קובעים יעד יומי ומקבלים תזכורת אם הוא לא תרגל.</p></details>
+      <details><summary>צריך להתקין משהו?</summary><p>לא. הכול נפתח בדפדפן, והילד נכנס מקישור אישי בלי סיסמה.</p></details>
+      <details><summary>מה קורה אחרי 14 הימים?</summary><p>שום דבר. אין חיוב אוטומטי. רוצים להמשיך? מצטרפים. לא? זה בסדר גמור.</p></details>
     </section>
 
-    <!-- 7. Final CTA -->
+    <!-- 8. Final CTA -->
     <section class="mt-24 text-center space-y-4">
       <h2 class="font-space text-2xl sm:text-3xl font-bold">לפני שנה גם הוא לא רצה.</h2>
-      <p style="color:var(--text-muted);">דקה אחת עם המשחק, וזה מתחיל.</p>
-      <a href="#demo" class="glass-btn" data-cta="final_demo" style="display:inline-flex; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900;">▶ תנו לילד שלכם לנסות</a>
+      <p style="color:var(--text-muted);">דקה אחת עם המשחק, ותראו בעצמכם.</p>
+      <a href="#demo" class="glass-btn" data-cta="final_demo" style="display:inline-flex; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); border:none; color:var(--bg-deep); font-weight:900;"><span class="play-ico"></span>תנו לילד שלכם לנסות</a>
     </section>
 
-    <!-- 8. Other audiences: one line each, out of the parent's way -->
-    <section class="mt-20 text-center text-sm space-y-2" style="color:var(--text-muted);">
-      <p>מורה פרטי? <a href="teacher.html" style="color:var(--accent-blue); font-weight:700;">ככה חשבונאוטיקה עובדת עם התלמידים שלך ←</a></p>
-      <p>בית ספר או מוסד? <a href="pricing.html" style="color:var(--accent-blue); font-weight:700;">השאירו פרטים ←</a></p>
+    <!-- 9. Institutions: one quiet line -->
+    <section class="mt-20 text-center text-sm" style="color:var(--text-muted);">
+      <p>בית ספר או מוסד? <a href="pricing.html" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">השאירו פרטים ונחזור אליכם</a></p>
     </section>
   </main>
 
   <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
-    <a href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
-    <span class="mx-2">·</span>
-    <a href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
-    <br class="sm:hidden">
-    <span class="mx-2 hidden sm:inline">·</span>
+    <a class="mx-3" href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    
+    <a class="mx-3" href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br>
+    
     © 2026 חשבונאוטיקה. כל הזכויות שמורות.
   </footer>
 

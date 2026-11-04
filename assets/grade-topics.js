@@ -159,14 +159,11 @@
       var car = el('g', {}, s);
       el('rect', { x: 40, y: 0.8, width: 22, height: gap - 1.6, rx: 1.5, fill: C.teal }, car);
       el('line', { x1: 51, y1: 1.2, x2: 51, y2: gap - 1.2, stroke: '#070C20', 'stroke-width': .9 }, car);
-      var arrow = el('text', { x: 73, 'font-size': 7.5, 'font-weight': 700, 'text-anchor': 'start' }, s);
       var shown = -1;
       return { update: function (t) {
         var ph = phase(t, stops.length, 1.3, 1.5), a = stops[ph.i], b = stops[ph.next], d = b - a;
         var yy = lerp(Y(a), Y(b), back(ph.r));
         car.setAttribute('transform', 'translate(0,' + yy + ')');
-        arrow.setAttribute('y', yy + gap / 2 + 2.5); arrow.setAttribute('fill', d < 0 ? C.flame : C.teal);
-        arrow.textContent = (d < 0 ? '▼ ' : '▲ ') + Math.abs(d);
         var key = ph.i * 2 + (ph.r > .55 ? 1 : 0);
         if (key !== shown) {
           shown = key;
@@ -348,8 +345,8 @@
         ['חיבור שברים', 'מעבדת השברים', fraction([[1, 4], [2, 4], [3, 4], [6, 8]])],
         ['שטח והיקף', 'מהנדסי הצורות', areaGrid([[[8, 4]], [[5, 4], [3, 4]], [[8, 5]], [[4, 5], [4, 5]]])],
         ['אחוזים בחיים', 'שאלות מילוליות', wordProblem(words.percent)]],
-    7: [['משוואות', 'שומרים על איזון', balance([['2x + 3', '11', '2x + 3 = 11'], ['2x', '8', '−3 משני הצדדים'], ['x', '4', '÷2 משני הצדדים'], ['x', '4', 'x = 4 ✓']])],
-        ['נעלם בשני הצדדים', 'שומרים על איזון', balance([['3x', 'x + 6', '3x = x + 6'], ['2x', '6', '−x משני הצדדים'], ['x', '3', '÷2 משני הצדדים'], ['x', '3', 'x = 3 ✓']])],
+    7: [['משוואות', 'שומרים על איזון', balance([['2x + 3', '11', '2x + 3 = 11'], ['2x', '8', 'מחסרים 3 מכל צד'], ['x', '4', 'מחלקים ב-2 בכל צד'], ['x', '4', 'x = 4']])],
+        ['נעלם בשני הצדדים', 'שומרים על איזון', balance([['3x', 'x + 6', '3x = x + 6'], ['2x', '6', 'מחסרים x מכל צד'], ['x', '3', 'מחלקים ב-2 בכל צד'], ['x', '3', 'x = 3']])],
         ['שטח והיקף', 'מהנדסי הצורות', areaGrid([[[8, 5]], [[5, 5], [3, 5]], [[8, 4]], [[4, 4], [4, 4]]])],
         ['אחוזים בחיים', 'שאלות מילוליות', wordProblem(words.percent)]]
   };
