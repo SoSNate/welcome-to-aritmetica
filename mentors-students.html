@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <script src="assets/frame-guard.js"></script>
+  <!-- TODO(נתנאל): לפני פרסום, צריך לוודא מול עמותת "אור למשפחות" שהניסוח בדף מקובל עליה. -->
+  <!-- TODO(נתנאל): הלוגו המשותף (assets/mentors-logo.webp) כולל את השם "אור למשפחות". לוודא מול העמותה שמותר להשתמש בו בדף. -->
+  <!-- TODO(נתנאל): פתוח ולא נכתב בדף: כמה שעות בשבוע, זום או פרונטלי, משך ההתנדבות, האם יש הכשרה או אישור משטרה לעבודה עם ילדים, והאם העמותה מציעה מלגה או שעות התנדבות. -->
+  <!-- TODO(נתנאל): אחרי שאישרת את הדף, להסיר את שורת ה-noindex שמתחת. -->
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>התנדבות כחונכים | חשבונאוטיקה</title>
+  <meta name="description" content="סטודנטים ממשפחות שכולות מלווים ילדים ממשפחות שכולות בתרגול חשבון, בשיתוף עמותת אור למשפחות. כל סטודנט מוזמן להצטרף.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
+    :root { --text-muted: rgba(234, 240, 250, 0.88); }
+    .page-h1 { font-family:'Heebo', sans-serif; font-weight:900; }
+    .prose-he p { line-height:1.85; font-size:18px; }
+    .prose-he p + p { margin-top:14px; }
+    .phone { position:relative; width:min(300px, 80vw); aspect-ratio:9/18.5; margin:0 auto; border-radius:40px; padding:11px; background:#070C20; box-shadow:0 0 0 2px rgba(138,180,255,.25), 0 30px 70px rgba(0,0,0,.55); }
+    .phone-screen { position:relative; width:100%; height:100%; border-radius:30px; overflow:hidden; background:radial-gradient(circle at 30% 20%, #1E2A66 0%, #070C20 65%); }
+    .phone-screen iframe { position:absolute; top:0; left:0; border:0; transform-origin:top left; }
+    .phone-poster { position:absolute; inset:0; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; text-align:center; background:none; border:0; color:var(--text-primary); cursor:pointer; font-family:inherit; }
+    .phone-poster img { width:92px; height:92px; border-radius:50%; }
+    .play-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); color:var(--bg-deep); font-weight:900; padding:12px 22px; border-radius:999px; }
+    .play-ico { display:inline-block; width:.62em; height:.74em; margin-inline-end:.55em; background:currentColor; clip-path:polygon(0 0,100% 50%,0 100%); }
+    .nice-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .nice-list li { position:relative; padding-inline-start:20px; }
+    .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
+    .quiet-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; border-radius:999px; border:1px solid rgba(94,234,212,.5); color:var(--accent-turquoise); font-weight:700; font-size:16px; text-decoration:none; background:rgba(255,255,255,.04); }
+    .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
+    .persona-head { display:flex; align-items:center; gap:14px; }
+    .persona { width:88px; height:88px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .swap { position:relative; width:88px; height:88px; flex:none; display:block; animation:bob 2.6s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-5px) } }
+    .sw { position:absolute; inset:0; }
+    .sw-b { opacity:0; animation:swapB 8s ease-in-out infinite; }
+    .sw-a { animation:swapA 8s ease-in-out infinite; }
+    @keyframes swapA { 0%,42% {opacity:1} 50%,92% {opacity:0} 100% {opacity:1} }
+    @keyframes swapB { 0%,42% {opacity:0} 50%,92% {opacity:1} 100% {opacity:0} }
+    .persona .solid { fill:#111a36; }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--accent-blue); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) {
+      #starfield { display:none; }
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4" aria-label="ניווט ראשי">
+    <div class="max-w-5xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
+        <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20">
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
+      </a>
+      <a href="index.html" class="text-xs sm:text-sm font-semibold whitespace-nowrap" style="color:var(--text-muted);">חזרה לדף הבית</a>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-3xl mx-auto px-5 pt-28 sm:pt-36 pb-16">
+    <section class="space-y-6">
+      <img src="assets/mentors-logo.webp" alt="אור למשפחות, בוחרים בחיים, בשיתוף חשבונאוטיקה" width="1024" height="1024" class="mx-auto rounded-3xl" style="width:min(220px, 60vw); height:auto;">
+      <h1 class="page-h1 text-3xl sm:text-5xl leading-tight">מתנדבים ללוות ילד בחשבון</h1>
+      <div class="prose-he" style="color:var(--text-primary);">
+        <p>אני נתנאל, אח שכול. בניתי את חשבונאוטיקה בשביל אחי הקטן, ועכשיו אני רוצה שגם ילדים אחרים במשפחות שכולות יקבלו את זה, עם מישהו לצידם.</p>
+        <p>מלגת אור למשפחות ניתנת לסטודנטים ממשפחות שכולות, והמיזם הזה הוא ממשפחות שכולות למשפחות שכולות. סטודנטים אחרים ששמעו עלינו ורוצים לקחת חלק מוזמנים להצטרף.</p>
+        <p>והמערכת פתוחה לשימוש רחב: כל מי שרוצה לחנוך ילד באמצעותה יכול להירשם ולחנוך.</p>
+      </div>
+    </section>
+
+    <section class="mt-14 glass-panel p-6 sm:p-8 space-y-4">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">מה זה אומר להיות חונך</h2>
+      <ul class="nice-list" style="color:var(--text-muted); font-size:17px; line-height:1.7;">
+        <li>מלווים ילד או ילדה בכיתות ב' עד ז' בתרגול חשבון.</li>
+        <li>לא צריך להיות מורים ולא צריך להיות טובים בחשבון. המערכת עושה את רוב העבודה, ואתם נותנים את הנוכחות.</li>
+        <li>ההתנדבות ללא עלות לילד ולמשפחה, וגם לכם.</li>
+      </ul>
+    </section>
+
+    <section class="mt-14 space-y-4">
+      <div class="glass-panel p-6 space-y-4">
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">ככה המערכת עוזרת לכם כחונכים</h2>
+          <ul class="nice-list" style="color:var(--text-muted); line-height:1.7;">
+            <li>בוחרים לילד משחק ורמה מסוימים כתרגול בין המפגשים, או רצף של כמה שלבים. המשימה מחכה לו מסומנת כשהוא נכנס</li>
+            <li>לפני המפגש רואים כמה זמן הוא תרגל, מה אחוז הדיוק שלו, ובאילו נושאים הוא חזק ובאילו נתקע, במפת כישורים</li>
+            <li>לכל רמה יש מדריך קצר לחונך: איך לעזור לילד שנתקע בדיוק שם</li>
+            <li>המערכת מסמנת ילד שלא תרגל שבוע, ואפשר לשלוח להורה תזכורת בלחיצה, או סיכום שבועי מוכן לוואטסאפ</li>
+            <li>הילד נכנס מקישור אישי, בלי סיסמה</li>
+          </ul>
+        </div>
+    </section>
+
+    <section id="register" class="mt-16 scroll-mt-24 space-y-5">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">רוצים להתנדב?</h2>
+      <p class="leading-relaxed" style="color:var(--text-muted);">משאירים פרטים, ואני חוזר אליכם לספר איך זה עובד ולהתאים לכם ילד. בלי התחייבות.</p>
+      <div id="v-card" class="glass-panel p-6 sm:p-8 space-y-5">
+        <form id="volunteerForm" data-prefix="v" data-email-optional="true" class="space-y-4">
+          <div id="v-error-message" class="hidden p-3 rounded-xl text-xs font-semibold" style="background:rgba(255,107,74,0.12); color:var(--accent-flame);"></div>
+          <input id="v-name" placeholder="שם מלא" required autocomplete="name" class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <input id="v-phone" type="tel" placeholder="טלפון, לדוגמה 050-0000000" required autocomplete="tel" class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <input id="v-email" type="email" placeholder="אימייל (לא חובה)" autocomplete="email" class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <input id="v-count" placeholder="מה אתם לומדים ואיפה? (לא חובה)" class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;">
+          <textarea id="v-about" rows="3" maxlength="400" placeholder="כמה מילים עליכם, ואיזה ניסיון יש לכם עם ילדים או הוראה? לא חובה" class="w-full px-4 py-3 rounded-xl text-sm" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-panel); color:white;"></textarea>
+          <label class="flex items-start gap-2 text-xs leading-relaxed" style="color:var(--text-muted);">
+            <input type="checkbox" id="v-consent" required style="margin-top:3px; width:16px; height:16px; flex-shrink:0; accent-color:var(--accent-blue);">
+            <span>אני מאשר/ת שנתנאל יחזור אליי בטלפון או במייל, ואת <a href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--accent-blue); text-decoration:underline; font-weight:700;">מדיניות הפרטיות</a>.</span>
+          </label>
+          <button type="submit" class="glass-btn glass-btn-primary w-full justify-center">אני רוצה להתנדב</button>
+          <p class="text-center text-xs" style="color:var(--text-muted);">הפרטים משמשים ליצירת קשר בלבד, ואינם מועברים לאף גורם אחר.</p>
+        </form>
+      </div>
+      <div id="v-done" class="hidden glass-panel p-6 sm:p-8 text-center space-y-3">
+        <h3 class="font-bold text-2xl" style="color:var(--accent-turquoise);">תודה, קיבלתי.</h3>
+        <p class="leading-relaxed" style="color:var(--text-muted);">קיבלתי את הפרטים, ואחזור אליכם בקרוב לספר על ההתנדבות.</p>
+      </div>
+      <p class="text-sm" style="color:var(--text-muted);">הורים במשפחה שכולה: <a href="mentors.html#register" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">לדף ההורים</a></p>
+    </section>
+  </main>
+
+  <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+    <a class="mx-3" href="index.html" style="color:var(--text-muted); text-decoration:underline;">חזרה לדף הבית</a>
+    <a class="mx-3" href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br>
+    © 2026 חשבונאוטיקה. כל הזכויות שמורות.
+  </footer>
+
+  <script src="assets/starfield.js"></script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script src="assets/lead-form.js"></script>
+  <script>
+    initAccessibilityWidget();
+    initStarfield();
+    document.getElementById('volunteerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitLeadForm(this, 'חונך מתנדב (פרויקט חונכים)', function () {
+        document.getElementById('v-card').classList.add('hidden');
+        document.getElementById('v-done').classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
