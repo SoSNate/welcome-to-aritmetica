@@ -35,8 +35,9 @@
     .quiet-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; border-radius:999px; border:1px solid rgba(94,234,212,.5); color:var(--accent-turquoise); font-weight:700; font-size:16px; text-decoration:none; background:rgba(255,255,255,.04); }
     .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
     .persona-head { display:flex; align-items:center; gap:14px; }
-    .persona { width:72px; height:72px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .swap { position:relative; width:72px; height:72px; flex:none; display:block; }
+    .persona { width:88px; height:88px; flex:none; padding:6px; border-radius:18px; border:1px solid rgba(138,180,255,.28); background:rgba(138,180,255,.06); fill:none; stroke:var(--accent-turquoise); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .swap { position:relative; width:88px; height:88px; flex:none; display:block; animation:bob 2.6s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-5px) } }
     .sw { position:absolute; inset:0; }
     .sw-b { opacity:0; animation:swapB 8s ease-in-out infinite; }
     .sw-a { animation:swapA 8s ease-in-out infinite; }
