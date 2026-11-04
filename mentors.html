@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <script src="assets/frame-guard.js"></script>
+  <!-- TODO(נתנאל): לפני פרסום, צריך לוודא מול עמותת "אור למשפחות" שהניסוח בדף מקובל עליה. -->
+  <!-- TODO(נתנאל): אחרי שאישרת את הדף, להסיר את שורת ה-noindex שמתחת. -->
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>פרויקט החונכים | חשבונאוטיקה</title>
+  <meta name="description" content="מיזם ללא עלות, בשיתוף סטודנטים מקבלי מלגה מעמותת אור למשפחות, שמלווים ילדים במשפחות שכולות בתרגול חשבון.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    #starfield { position:fixed; inset:0; z-index:-3; pointer-events:none; }
+    :root { --text-muted: rgba(234, 240, 250, 0.88); }
+    .page-h1 { font-family:'Heebo', sans-serif; font-weight:900; }
+    .prose-he p { line-height:1.85; font-size:18px; }
+    .prose-he p + p { margin-top:14px; }
+    .phone { position:relative; width:min(300px, 80vw); aspect-ratio:9/18.5; margin:0 auto; border-radius:40px; padding:11px; background:#070C20; box-shadow:0 0 0 2px rgba(138,180,255,.25), 0 30px 70px rgba(0,0,0,.55); }
+    .phone-screen { position:relative; width:100%; height:100%; border-radius:30px; overflow:hidden; background:radial-gradient(circle at 30% 20%, #1E2A66 0%, #070C20 65%); }
+    .phone-screen iframe { position:absolute; top:0; left:0; border:0; transform-origin:top left; }
+    .phone-poster { position:absolute; inset:0; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; text-align:center; background:none; border:0; color:var(--text-primary); cursor:pointer; font-family:inherit; }
+    .phone-poster img { width:92px; height:92px; border-radius:50%; }
+    .play-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, var(--accent-turquoise) 0%, var(--accent-blue) 100%); color:var(--bg-deep); font-weight:900; padding:12px 22px; border-radius:999px; }
+    .play-ico { display:inline-block; width:.62em; height:.74em; margin-inline-end:.55em; background:currentColor; clip-path:polygon(0 0,100% 50%,0 100%); }
+    .nice-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .nice-list li { position:relative; padding-inline-start:20px; }
+    .nice-list li::before { content:''; position:absolute; inset-inline-start:0; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--accent-turquoise); }
+    .quiet-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; border-radius:999px; border:1px solid rgba(94,234,212,.5); color:var(--accent-turquoise); font-weight:700; font-size:16px; text-decoration:none; background:rgba(255,255,255,.04); }
+    .quiet-btn:hover, .quiet-btn:focus-visible { background:rgba(94,234,212,.12); }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--accent-blue); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) {
+      #starfield { display:none; }
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-4" aria-label="ניווט ראשי">
+    <div class="max-w-5xl mx-auto glass-panel !rounded-full px-3 sm:px-6 py-2 sm:py-3 flex justify-between items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 font-space font-bold text-sm sm:text-lg shrink-0" style="text-decoration:none; color:inherit;">
+        <img src="assets/logo.jpg" alt="חשבונאוטיקה" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20">
+        <span><span style="color:var(--accent-blue);">חשבונ</span>אוטיקה</span>
+      </a>
+      <a href="index.html" class="text-xs sm:text-sm font-semibold whitespace-nowrap" style="color:var(--text-muted);">חזרה לדף הבית</a>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-3xl mx-auto px-5 pt-28 sm:pt-36 pb-16">
+
+    <!-- 1. Opening: Natanel's own words, only what he told us -->
+    <section class="space-y-6">
+      <h1 class="page-h1 text-3xl sm:text-5xl leading-tight">פרויקט החונכים</h1>
+      <div class="prose-he" style="color:var(--text-primary);">
+        <p>אני נתנאל, ואני אח שכול.</p>
+        <p>אחרי האובדן ראיתי שאחיי מאבדים את המוטיבציה ללמוד. בשביל אחי הקטן בניתי את חשבונאוטיקה, כדי לתת לו כלי לתרגל בצורה יותר חוויתית.</p>
+        <p>המיזם הזה הוא מתנה ופרגון ממני. הוא לא שיווק ואין בו שום דבר למכור.</p>
+      </div>
+    </section>
+
+    <!-- 2. What is Hesbonautica + demo -->
+    <section id="demo" class="mt-16 scroll-mt-24">
+      <div class="grid gap-10 sm:grid-cols-2 items-center">
+        <div class="space-y-4">
+          <h2 class="font-space text-2xl sm:text-3xl font-bold">מה זה חשבונאוטיקה</h2>
+          <p class="leading-relaxed" style="color:var(--text-muted);">מערכת לתרגול חשבון לכיתות ב' עד ז', בנויה ממשחקים וחידות.</p>
+          <p class="text-sm" style="color:var(--text-muted);">אפשר לנסות בלי הרשמה. לא נפתח כאן? <a href="https://aritmetica.nt-school.app/demo" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">אפשר לפתוח את הדמו במסך מלא</a></p>
+        </div>
+        <div>
+          <div class="phone">
+            <div class="phone-screen" id="demoScreen">
+              <button type="button" class="phone-poster" id="demoPlay" aria-label="פתיחת משחק לדוגמה">
+                <img src="assets/logo.jpg" alt="">
+                <strong style="font-size:20px;">משחק לדוגמה</strong>
+                <span class="play-pill"><span class="play-ico"></span>לחצו לנסות</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. The project: only known facts -->
+    <section class="mt-16 glass-panel p-6 sm:p-8 space-y-4">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">מה המיזם</h2>
+      <ul class="nice-list" style="color:var(--text-muted); font-size:17px; line-height:1.7;">
+        <li>המיזם ללא עלות, בחינם לחלוטין.</li>
+        <li>הוא נעשה בשיתוף סטודנטים שמקבלים מלגה מעמותת "אור למשפחות".</li>
+        <li>הסטודנטים הם החונכים.</li>
+      </ul>
+      <!-- TODO(נתנאל): אופן החונכות לא ידוע לי ולכן לא נכתב: תדירות המפגשים, זום או פרונטלי, כמה שעות בשבוע, מי מתאים להצטרף כחונך, כיצד מתאימים בין חונך לילד. להוסיף כאן אם תרצה. -->
+      <!-- TODO(נתנאל): לא נכתבו פרטים על העמותה ועל המלגות (מה היא עושה, איך מקבלים מלגה). להוסיף רק מה שהעמותה מאשרת. -->
+    </section>
+
+    <!-- 4. Two quiet invitations -->
+    <section class="mt-16 space-y-6">
+      <h2 class="font-space text-2xl sm:text-3xl font-bold">אפשר לכתוב לי</h2>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div class="glass-panel p-6 space-y-4">
+          <h3 class="font-bold text-xl" style="color:var(--accent-blue);">להורים</h3>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם הורים במשפחה שכולה, והילדים שלכם בכיתות ב' עד ז', הם יכולים להשתמש בחשבונאוטיקה בליווי חונך. בחינם.</p>
+          <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%94%D7%95%D7%A8%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener">אשמח לשמוע</a>
+        </div>
+        <div class="glass-panel p-6 space-y-4">
+          <h3 class="font-bold text-xl" style="color:var(--accent-blue);">לסטודנטים</h3>
+          <p class="leading-relaxed" style="color:var(--text-muted);">אם אתם מקבלי מלגה מאור למשפחות, אפשר להצטרף כחונכים.</p>
+          <a class="quiet-btn" href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A7%D7%91%D7%9C%20%D7%9E%D7%9C%D7%92%D7%94%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%95%D7%AA" target="_blank" rel="noopener">אפשר לכתוב לי</a>
+        </div>
+      </div>
+      <p class="text-sm" style="color:var(--text-muted);">אפשר גם פשוט לכתוב ולשאול, בלי שום התחייבות. <a href="https://wa.me/972552569496?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A9%D7%9E%D7%A2%D7%AA%D7%99%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%94%D7%97%D7%95%D7%A0%D7%9B%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener" style="color:var(--accent-blue); font-weight:700; text-decoration:underline;">הודעה בוואטסאפ</a></p>
+    </section>
+
+    <!-- 5. Privacy -->
+    <section class="mt-14">
+      <p class="text-sm leading-relaxed" style="color:var(--text-muted);">הדף הזה לא אוסף פרטים. מי שרוצה, כותב לי בוואטסאפ.</p>
+    </section>
+  </main>
+
+  <footer class="py-8 px-5 text-center text-xs relative z-10" style="color:var(--text-muted); border-top:1px solid var(--border-panel);">
+    <a class="mx-3" href="index.html" style="color:var(--text-muted); text-decoration:underline;">חזרה לדף הבית</a>
+    <a class="mx-3" href="faq.html" style="color:var(--text-muted); text-decoration:underline;">שאלות ותשובות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/terms" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">תנאי שימוש</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/privacy" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">מדיניות פרטיות</a>
+    <a class="mx-3" href="https://aritmetica.nt-school.app/accessibility" target="_blank" rel="noopener" style="color:var(--text-muted); text-decoration:underline;">הצהרת נגישות</a>
+    <br>
+    © 2026 חשבונאוטיקה. כל הזכויות שמורות.
+  </footer>
+
+  <script src="assets/starfield.js"></script>
+  <script src="assets/accessibility.js"></script>
+  <script src="assets/consent-analytics.js"></script>
+  <script src="assets/demo-frame.js"></script>
+  <script>
+    initAccessibilityWidget();
+    initStarfield();
+    initDemoFrame({ screenId: 'demoScreen', playId: 'demoPlay', page: 'mentors' });
+  </script>
+</body>
+</html>
