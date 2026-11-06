@@ -1,10 +1,11 @@
 /**
  * Shared lead-capture form submission logic, reused across teacher/parent/
- * institution forms. Posts to the existing Apps Script Web App (no-cors,
+ * institution and mentors forms. Posts to the designated Apps Script Web App (no-cors,
  * so response body is unreadable — success is inferred by not throwing,
  * matching the pattern already used in the current index.html).
  */
 const LEAD_FORM_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzrRFJIYBSiXXGhR_jwbTfeTlGVRhH1YMuV8IwPWmSz36Wtv9CI4ydPnD8_VWQB9L8s/exec";
+const MENTORS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPhNIn4ZUE5Del-RqQBwGfGvm9HPgW-Q6ACFJ-0YX0waS_JmTYjst3Y9c3vuqeZ7rFUw/exec";
 
 function submitLeadForm(formEl, role, onSuccess) {
   const prefix = formEl.dataset.prefix || 'f';
@@ -48,12 +49,22 @@ function submitLeadForm(formEl, role, onSuccess) {
     return false;
   }
 
-  const submitPromise = fetch(LEAD_FORM_APPS_SCRIPT_URL, {
+  const isMentorProject = role && (role.indexOf('חונכים') !== -1 || role.indexOf('mentor') !== -1);
+  const targetUrl = isMentorProject ? MENTORS_APPS_SCRIPT_URL : LEAD_FORM_APPS_SCRIPT_URL;
+
+  const submitPromise = fetch(targetUrl, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name: name, phone: phone, email: email, studentsCount: studentsCount, about: about, role: role,
+      name: name,
+      phone: phone,
+      email: email,
+      studentsCount: studentsCount,
+      count: studentsCount,
+      about: about,
+      notes: about,
+      role: role,
       consentAt: new Date().toISOString()
     })
   });
